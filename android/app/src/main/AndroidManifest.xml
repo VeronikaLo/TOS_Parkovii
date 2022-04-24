@@ -4,6 +4,8 @@
         android:label="tos_parkovii"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDAQ8zOOfMIjmdmON_8Pabbu0eQ8wlpZq8"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
