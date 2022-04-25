@@ -3,37 +3,30 @@
 // third test veronika
 
 import 'package:flutter/material.dart';
+import 'screens/home_screen.dart';
+import 'screens/splash_screen.dart';
+import 'screens/test_screen.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  runApp( MyApp());
+}
 
 class MyApp extends StatelessWidget {
+ MyApp({Key? key}) : super(key: key);
+
+  final routes = <String, WidgetBuilder>{
+    // The path that creates the Home Screen
+    '/Home': (BuildContext context) => const HomeScreen(),
+    '/Third': (BuildContext context) => const NewScreen()
+  };
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: FirstPage(),
-    );
-  }
-}
-
-class FirstPage extends StatefulWidget {
-  @override
-  _FirstPageState createState() => _FirstPageState();
-}
-
-class _FirstPageState extends State {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 35),
-          child: Column(children: [
-            Image.asset('assets/images/logo.jpg'),
-            const SizedBox()
-          ]),
-        ),
-      ]),
+      home: const SplashScreen(nextRoute: '/Home'),
+      // passing routes to the application
+      routes: routes,
     );
   }
 }
