@@ -2,38 +2,35 @@
 // second test lily
 // third test veronika
 
-// import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+import 'package:tos_parkovii/widgets/details.dart';
+import 'screens/home_screen.dart';
+import 'screens/splash_screen.dart';
+//import 'screens/test_screen.dart';
+import 'package:tos_parkovii/third_page';
 
-// void main() => runApp(MyApp());
+void main() {
+  runApp(MyApp());
+}
 
-// class MyApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       debugShowCheckedModeBanner: false,
-//       home: FirstPage(),
-//     );
-//   }
-// }
+class MyApp extends StatelessWidget {
+  MyApp({Key? key}) : super(key: key);
 
-// class FirstPage extends StatefulWidget {
-//   @override
-//   _FirstPageState createState() => _FirstPageState();
-// }
+  final routes = <String, WidgetBuilder>{
+    // The path that creates the Home Screen
+    '/Home': (BuildContext context) => const HomeScreen(),
+    //'/Third': (BuildContext context) => const NewScreen(),
+    '/thirdPage': (BuildContext context) => ThirdPage(),
+    '/details': (BuildContext context) => DetailPage()
+  };
 
-// class _FirstPageState extends State {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: Stack(children: <Widget>[
-//         Padding(
-//           padding: const EdgeInsets.symmetric(horizontal: 35),
-//           child: Column(children: [
-//             Image.asset('assets/images/logo.jpg'),
-//             const SizedBox()
-//           ]),
-//         ),
-//       ]),
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: const SplashScreen(nextRoute: '/Home'),
+      // passing routes to the application
+      routes: routes,
+    );
+  }
+}
