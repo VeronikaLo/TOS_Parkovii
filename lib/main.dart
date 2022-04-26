@@ -8,6 +8,7 @@ import 'screens/home_screen.dart';
 import 'screens/splash_screen.dart';
 //import 'screens/test_screen.dart';
 import 'package:tos_parkovii/third_page';
+import 'package:tos_parkovii/fifth_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -21,7 +22,8 @@ class MyApp extends StatelessWidget {
     '/Home': (BuildContext context) => const HomeScreen(),
     //'/Third': (BuildContext context) => const NewScreen(),
     '/thirdPage': (BuildContext context) => ThirdPage(),
-    '/details': (BuildContext context) => DetailPage()
+    '/details': (BuildContext context) => DetailPage(),
+    '/fifthPage': (BuildContext context) => FifthPage(),
   };
 
   @override
