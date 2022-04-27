@@ -1,82 +1,144 @@
 import 'package:flutter/material.dart';
 
-class ThirdPage extends StatelessWidget {
-  const ThirdPage({Key? key}) : super(key: key);
+class Event {
+  final String title;
+  final String description;
+  final String time;
+
+  Event({required this.title, required this.description, required this.time});
+}
+
+class ThirdPage extends StatefulWidget {
+  ThirdPage({Key? key}) : super(key: key);
+
+  @override
+  State<ThirdPage> createState() => _ThirdPageState();
+}
+
+class _ThirdPageState extends State<ThirdPage> {
+  final _events = [
+    Event(
+      title: 'Название мероприятия',
+      description: 'Краткое описание мероприятия',
+      time: '25 мая 2022',
+    ),
+    Event(
+      title: 'Название мероприятия',
+      description: 'Краткое описание мероприятия',
+      time: '25 мая 2022',
+    ),
+    Event(
+      title: 'Название мероприятия',
+      description: 'Краткое описание мероприятия',
+      time: '25 мая 2022',
+    ),
+    Event(
+      title: 'Название мероприятия',
+      description: 'Краткое описание мероприятия',
+      time: '25 мая 2022',
+    ),
+    Event(
+      title: 'Название мероприятия',
+      description: 'Краткое описание мероприятия',
+      time: '25 мая 2022',
+    ),
+    Event(
+      title: 'Название мероприятия',
+      description: 'Краткое описание мероприятия',
+      time: '25 мая 2022',
+    ),
+  ];
+  int _selectedIndex = -1;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromRGBO(240, 240, 238, 1),
       appBar: AppBar(
-        leading: IconButton(icon: Icon(Icons.arrow_back), color: Color.fromRGBO(35, 33, 34, 1), splashRadius: 50,
-        splashColor: Colors.grey,
-        
-        onPressed: (){
-          Navigator.of(context).pushNamed('/Home');
-        }, tooltip: "На главную"),
-        
+        leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            color: Color.fromRGBO(35, 33, 34, 1),
+            splashRadius: 50,
+            splashColor: Colors.grey,
+            onPressed: () {
+              Navigator.of(context).pushNamed('/Home');
+            },
+            tooltip: "На главную"),
         backgroundColor: Color.fromRGBO(174, 213, 243, 1),
         title: const Text("Мероприятия",
             style: TextStyle(color: Color.fromRGBO(35, 33, 34, 1))),
+        centerTitle: true,
       ),
-      body: const SafeArea(
-        child: _ThirdPageList(),
-      ),
-    );
-  }
-}
+      body: Container(
+          width: 395,
+          height: 705,
+          decoration: const BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('assets/images/photo.png'),
+                  fit: BoxFit.cover)),
+          child: ListView.builder(
+              itemCount: _events.length,
+              itemBuilder: (BuildContext context, int index) {
+                final event = _events[index];
+                return Container(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                    alignment: FractionalOffset.bottomRight,
+                    child: Column(
+                      children: [
+                        Container(
+                            height: 67,
+                            decoration: BoxDecoration(
+                              color: index == _selectedIndex
+                                  ? Colors.grey
+                                  : Colors.white,
+                              border: Border.all(color: Colors.white),
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(12)),
+                            ),
+                            child: ListTile(
+                              title: Text(event.title,
+                                  maxLines: 1, overflow: TextOverflow.ellipsis),
 
-class _ThirdPageList extends StatefulWidget {
-  const _ThirdPageList({Key? key}) : super(key: key);
-
-  @override
-  _ThirdPageListState createState() => _ThirdPageListState();
-}
-
-class _ThirdPageListState extends State<_ThirdPageList> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.fromLTRB(10, 20, 10, 60),
-      height: 700,
-      width: 400,
-      decoration: BoxDecoration(
-          color: Colors.white,
-          border: Border.all(color: Colors.white),
-          borderRadius: BorderRadius.circular(12)),
-      child: ListView.separated(
-        itemCount: 15,
-        separatorBuilder: (BuildContext context, int index) {
-          return _ThirdPageListRow(indexInList: index);
-        },
-        itemBuilder: (BuildContext context, int index) {
-          return const Divider(height: 4);
-        },
-      ),
-    );
-  }
-}
-
-class _ThirdPageListRow extends StatelessWidget {
-  final int indexInList;
-  const _ThirdPageListRow({
-    Key? key,
-    required this.indexInList,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      title: Text('Заголовок мероприятия'),
-      subtitle: Text('Краткое описание мероприятия'),
-      trailing: Image(
-          image: AssetImage('assets/images/next.png'),
-          width: 27,
-          height: 27,
-          color: null),
-      onTap: () {
-        Navigator.of(context).pushNamed('/details');
-      },
+                              subtitle: Text(event.description,
+                                  maxLines: 1, overflow: TextOverflow.ellipsis),
+                              trailing: Icon(Icons.next_plan),
+                              onTap: () {
+                                setState(() {
+                                  _selectedIndex = index;
+                                  Navigator.of(context).pushNamed('/details');
+                                });
+                              },
+                              // Row(
+                              //   children: [
+                              //     Expanded(
+                              //         child: Container(
+                              //       margin: EdgeInsets.all(7),
+                              //       child: Column(
+                              //         crossAxisAlignment:
+                              //             CrossAxisAlignment.start,
+                              //         mainAxisAlignment:
+                              //             MainAxisAlignment.spaceBetween,
+                              //         children: [
+                              //           Text(
+                              //             event.title,
+                              //             style: TextStyle(fontSize: 20.0),
+                              //             maxLines: 1,
+                              //             overflow: TextOverflow.ellipsis,
+                              //           ),
+                              //           SizedBox(height: 2.0),
+                              //           Text(event.description,
+                              //               style: TextStyle(fontSize: 15.0),
+                              //               maxLines: 1,
+                              //               overflow: TextOverflow.ellipsis),
+                              //         ],
+                              //       ),
+                              //     ))
+                              //   ],
+                            )),
+                      ],
+                    ));
+              })),
     );
   }
 }

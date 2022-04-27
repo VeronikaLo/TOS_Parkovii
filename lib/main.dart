@@ -3,7 +3,7 @@
 // third test veronika
 
 import 'package:flutter/material.dart';
-import 'package:tos_parkovii/widgets/details.dart';
+import 'package:tos_parkovii/details.dart';
 import 'screens/home_screen.dart';
 import 'screens/splash_screen.dart';
 //import 'screens/test_screen.dart';
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
     // The path that creates the Home Screen
     '/Home': (BuildContext context) => const HomeScreen(),
     //'/Third': (BuildContext context) => const NewScreen(),
-    '/thirdPage': (BuildContext context) => const ThirdPage(),
+    '/thirdPage': (BuildContext context) => ThirdPage(),
     '/details': (BuildContext context) => DetailPage(),
     '/fifthPage': (BuildContext context) => const FifthPage(),
   };
