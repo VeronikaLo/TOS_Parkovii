@@ -10,12 +10,13 @@ class HomeScreen extends StatefulWidget {
 
 // Creation a widget state
 class _HomeScreenState extends State<HomeScreen> {
-  final List _titles = ["Мероприятия", "Организации", "Дома", "Пространства"];
+  final List _titles = ["Дома", "Мероприятия", "Пространства", "Организации", "Карта локаций"];
   final List _icons = [
-    "assets/images/events.png",
-    "assets/images/companies.png",
     "assets/images/buildings.png",
-    "assets/images/areas.png"
+    "assets/images/events.png",
+    "assets/images/areas.png",
+    "assets/images/companies.png",
+    "assets/images/companies.png"
   ];
 
   int _selectedIndex = -1;
@@ -57,6 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               ? Colors.yellow[100]
                               : Colors.white,
                           border: Border.all(width: 2, color: Colors.grey),
+                          borderRadius: BorderRadius.circular(40),
                           boxShadow: [
                             BoxShadow(
                               color: Colors.deepPurple.withOpacity(0.3),
@@ -67,14 +69,14 @@ class _HomeScreenState extends State<HomeScreen> {
                           ],
                         ),
                         alignment: Alignment.center,
-                        height: 100,
+                        height: 80,
                         margin: const EdgeInsets.symmetric(vertical: 7),
                         child: ListTile(
                           title: Text(
                             _titles[index],
-                            style: const TextStyle(fontSize: 24),
+                            style: const TextStyle(fontSize: 24, fontFamily: "Lato" ),
                           ),
-                          trailing: ImageIcon(
+                          leading: ImageIcon(
                             AssetImage(_icons[index]),
                             size: 50,
                             color: Colors.green,
@@ -83,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             setState(() {
                               // set selected index
                               _selectedIndex = index;
-                              Navigator.of(context).pushNamed('/thirdPage');
+                              Navigator.of(context).pushNamed(_selectedIndex==4? "/fifthPage" : '/thirdPage');
                             });
                           },
                         ),

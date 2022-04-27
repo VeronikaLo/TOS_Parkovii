@@ -20,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     // Create a timer to switch SplashScreen to HomeScreen after some seconds.
     Timer(
-      const Duration(seconds:5),
+      const Duration(seconds:4),
       () { Navigator.of(context).pushReplacementNamed(widget.nextRoute); }
     );
   }
@@ -36,9 +36,9 @@ class _SplashScreenState extends State<SplashScreen> {
             children: [
               Image.asset('assets/images/logo.jpg'),
               const SizedBox( height:45 ,),
-              const Text('ТОС "Парковый"', style: TextStyle(fontSize: 24, ),),
+              const Text('ТОС "Парковый"', style: TextStyle(fontSize: 32, fontFamily: 'AniconSans' ),),
               const SizedBox(height: 50,),
-              Text('Вместе сможем больше!'.toUpperCase(), style: const TextStyle(fontSize: 16, letterSpacing: 2),),
+              Text('Вместе сможем больше!'.toUpperCase(), style: const TextStyle(fontSize: 24, letterSpacing: 2, fontFamily: 'AniconSans'),),
             ],
           ),
         ),
