@@ -68,6 +68,7 @@ flutter:
     - assets/images/companies.png
     - assets/images/areas.png
     - assets/images/next.png
+    - assets/images/maps.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

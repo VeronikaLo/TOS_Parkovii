@@ -16,8 +16,14 @@ class _HomeScreenState extends State<HomeScreen> {
     "assets/images/events.png",
     "assets/images/areas.png",
     "assets/images/companies.png",
-    "assets/images/companies.png"
+    "assets/images/maps.png"
   ];
+  final List <Color> _colors = const[
+    Color.fromRGBO(166,197,0,1),
+    Color.fromRGBO(241,136,37,1),
+    Color.fromRGBO(0,58,90,1),
+    Color.fromRGBO(214,0,0,1),
+    Color.fromRGBO(166,197,0,1)];
 
   int _selectedIndex = -1;
 
@@ -41,6 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
+                  color: Color.fromRGBO(0,58,90,1),
                 ),
               ),
               const SizedBox(
@@ -54,10 +61,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     itemBuilder: (BuildContext context, int index) {
                       return Container(
                         decoration: BoxDecoration(
-                          color: index == _selectedIndex
-                              ? Colors.yellow[100]
-                              : Colors.white,
-                          border: Border.all(width: 2, color: Colors.grey),
+                          color: _colors[index],
+                          //border: Border.all(width: 2, color: Colors.grey),
                           borderRadius: BorderRadius.circular(40),
                           boxShadow: [
                             BoxShadow(
@@ -74,12 +79,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: ListTile(
                           title: Text(
                             _titles[index],
-                            style: const TextStyle(fontSize: 24, fontFamily: "Lato" ),
+                            style: const TextStyle(fontSize: 24, fontFamily: "Lato", color: Colors.white ),
                           ),
                           leading: ImageIcon(
                             AssetImage(_icons[index]),
                             size: 50,
-                            color: Colors.green,
+                            color: Colors.white,
                           ),
                           onTap: () {
                             setState(() {

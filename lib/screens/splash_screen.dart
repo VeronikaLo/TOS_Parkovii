@@ -38,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
               const SizedBox( height:45 ,),
               const Text('ТОС "Парковый"', style: TextStyle(fontSize: 32, fontFamily: 'AniconSans' ),),
               const SizedBox(height: 50,),
-              Text('Вместе сможем больше!'.toUpperCase(), style: const TextStyle(fontSize: 24, letterSpacing: 2, fontFamily: 'AniconSans'),),
+              Text('Вместе сможем больше!'.toUpperCase(), style: const TextStyle(fontSize: 22, letterSpacing: 2, fontFamily: 'AniconSans'),),
             ],
           ),
         ),
