@@ -21,9 +21,9 @@ class MyApp extends StatelessWidget {
     // The path that creates the Home Screen
     '/Home': (BuildContext context) => const HomeScreen(),
     //'/Third': (BuildContext context) => const NewScreen(),
-    '/thirdPage': (BuildContext context) => ThirdPage(),
+    '/thirdPage': (BuildContext context) => const ThirdPage(),
     '/details': (BuildContext context) => DetailPage(),
-    '/fifthPage': (BuildContext context) => FifthPage(),
+    '/fifthPage': (BuildContext context) => const FifthPage(),
   };
 
   @override
