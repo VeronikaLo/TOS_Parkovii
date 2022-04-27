@@ -69,6 +69,7 @@ flutter:
     - assets/images/areas.png
     - assets/images/next.png
     - assets/images/maps.png
+    - assets/images/background-homepage.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

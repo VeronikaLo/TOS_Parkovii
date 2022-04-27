@@ -31,11 +31,14 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(children: [
-        Image.asset(
-          'assets/images/logo.jpg',
-          color: const Color.fromRGBO(255, 255, 255, 0.3),
-          colorBlendMode: BlendMode.modulate,
-          fit: BoxFit.cover,
+        SizedBox(
+          height: double.infinity,
+          child: Image.asset(
+          'assets/images/background-homepage.jpg',
+            color: const Color.fromRGBO(255, 255, 255, 0.3),
+            colorBlendMode: BlendMode.modulate,
+            fit: BoxFit.cover,
+          ),
         ),
         Center(
           child: Column(
