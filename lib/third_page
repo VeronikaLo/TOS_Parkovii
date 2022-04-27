@@ -74,7 +74,7 @@ class _ThirdPageState extends State<ThirdPage> {
           height: 705,
           decoration: const BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('assets/images/foto.png'),
+                  image: AssetImage('assets/images/photo.png'),
                   fit: BoxFit.cover)),
           child: ListView.builder(
               itemCount: _events.length,
