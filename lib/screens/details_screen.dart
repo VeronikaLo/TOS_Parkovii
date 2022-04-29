@@ -14,11 +14,13 @@ class DetailPage extends StatelessWidget {
               splashRadius: 50,
               splashColor: Colors.grey,
               onPressed: () {
-                Navigator.of(context).pushNamed('/list');
+                Navigator.of(context).pushNamed('/Home');
               },
               tooltip: "Назад"),
+
+          // Необходимо показать title и цвет background в зависимости от предыдущих действий
           backgroundColor: const Color.fromRGBO(174, 213, 243, 1),
-          title: const Text('Мероприятия',
+          title: const Text('ЗАГЛУШКА',
               style: TextStyle(color: Color.fromRGBO(35, 33, 34, 1)))),
       body: Container(
           width: 395,
