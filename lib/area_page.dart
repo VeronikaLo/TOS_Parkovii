@@ -1,92 +1,57 @@
 import 'package:flutter/material.dart';
 
-class Event {
+class Area {
   final String title;
   final String description;
-  final String time;
 
-  Event({required this.title, required this.description, required this.time});
+  Area({required this.title, required this.description});
 }
 
-class ThirdPage extends StatefulWidget {
-  ThirdPage({Key? key}) : super(key: key);
+class AreaPage extends StatefulWidget {
+  const AreaPage({Key? key}) : super(key: key);
 
   @override
-  State<ThirdPage> createState() => _ThirdPageState();
+  State<AreaPage> createState() => _AreaPage();
 }
 
-class _ThirdPageState extends State<ThirdPage> {
-  final _events = [
-    Event(
-      title: 'Название мероприятия',
-      description: 'Краткое описание мероприятия',
-      time: '25 мая 2022',
-    ),
-    Event(
-      title: 'Название asdf мероприятия',
-      description: 'Краткое описание мероприятия',
-      time: '25 мая 2022',
-    ),
-    Event(
-      title: 'Название мероприятия',
-      description: 'Краткое описание мероприятия',
-      time: '25 мая 2022',
-    ),
-    Event(
-      title: 'Название мероприятия',
-      description: 'Краткое описание мероприятия',
-      time: '25 мая 2022',
-    ),
-    Event(
-      title: 'Название мероприятия',
-      description: 'Краткое описание мероприятия',
-      time: '25 мая 2022',
-    ),
-    Event(
-      title: 'Название мероприятия',
-      description: 'Краткое описание мероприятия',
-      time: '25 мая 2022',
-    ),
-    Event(
-      title: 'Название мероприятия',
-      description: 'Краткое описание мероприятия',
-      time: '25 мая 2022',
-    ),
-    Event(
-      title: 'Название мероприятия',
-      description: 'Краткое описание мероприятия',
-      time: '25 мая 2022',
-    ),
-    Event(
-      title: 'Название мероприятия',
-      description: 'Краткое описание мероприятия',
-      time: '25 мая 2022',
-    ),
-    Event(
-      title: 'Название мероприятия',
-      description: 'Краткое описание мероприятия',
-      time: '25 мая 2022',
-    ),
-    Event(
-      title: 'Название мероприятия',
-      description: 'Краткое описание мероприятия',
-      time: '25 мая 2022',
-    )
+class _AreaPage extends State<AreaPage> {
+  final _areas = [
+    Area(
+        title: 'Название пространства (сквер, аллея и др.)',
+        description: 'Краткое описание'),
+    Area(
+        title: 'Название пространства (сквер, аллея и др.)',
+        description: 'Краткое описание'),
+    Area(
+        title: 'Название пространства (сквер, аллея и др.)',
+        description: 'Краткое описание'),
+    Area(
+        title: 'Название пространства (сквер, аллея и др.)',
+        description: 'Краткое описание'),
+    Area(
+        title: 'Название пространства (сквер, аллея и др.)',
+        description: 'Краткое описание'),
+    Area(
+        title: 'Название пространства (сквер, аллея и др.)',
+        description: 'Краткое описание'),
+    Area(
+        title: 'Название пространства (сквер, аллея и др.)',
+        description: 'Краткое описание'),
   ];
   int _selectedIndex = -1;
 
-  var _filteredEvents = <Event>[];
+  var _filteredAreas = <Area>[];
 
   final _searchController = TextEditingController();
 
-  void _searchEvents() {
+  void _searchAreas() {
     final query = _searchController.text;
     if (query.isNotEmpty) {
-      _filteredEvents = _events.where((Event event) {
-        return event.title.toLowerCase().contains(query.toLowerCase());
+      _filteredAreas = _areas.where((Area area) {
+        return area.title.toLowerCase().contains(query.toLowerCase());
       }).toList();
     } else {
-      _filteredEvents = _events;
+      _filteredAreas = _areas;
     }
 
     setState(() {});
@@ -95,8 +60,8 @@ class _ThirdPageState extends State<ThirdPage> {
   @override
   void initState() {
     super.initState();
-    _filteredEvents = _events;
-    _searchController.addListener(_searchEvents);
+    _filteredAreas = _areas;
+    _searchController.addListener(_searchAreas);
   }
 
   @override
@@ -115,14 +80,14 @@ class _ThirdPageState extends State<ThirdPage> {
               Navigator.of(context).pushNamed('/Home');
             },
             tooltip: "На главную"),
-        backgroundColor: const Color.fromRGBO(174, 213, 243, 1),
-        title: const Text("Мероприятия",
+        backgroundColor: const Color.fromRGBO(0, 74, 173, 1),
+        title: const Text("Пространства",
             style: TextStyle(color: Color.fromRGBO(35, 33, 34, 1))),
         centerTitle: true,
       ),
       body: Container(
-          width: 395,
-          height: 700,
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
           decoration: const BoxDecoration(
               image: DecorationImage(
                   image: AssetImage('assets/images/background-thirdpage.jpg'),
@@ -133,9 +98,10 @@ class _ThirdPageState extends State<ThirdPage> {
                   padding: const EdgeInsets.only(top: 80),
                   keyboardDismissBehavior:
                       ScrollViewKeyboardDismissBehavior.onDrag,
-                  itemCount: _filteredEvents.length,
+                  itemCount: _filteredAreas.length,
                   itemBuilder: (BuildContext context, int index) {
-                    final event = _filteredEvents[index];
+                    final area = _filteredAreas[index];
+
                     return Container(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 15, vertical: 5),
@@ -148,15 +114,14 @@ class _ThirdPageState extends State<ThirdPage> {
                                   color: index == _selectedIndex
                                       ? Colors.grey
                                       : Colors.white,
-                                  border: Border.all(color: Colors.white),
                                   borderRadius: const BorderRadius.all(
                                       Radius.circular(12)),
                                 ),
                                 child: ListTile(
-                                  title: Text(event.title,
+                                  title: Text(area.title,
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis),
-                                  subtitle: Text(event.description,
+                                  subtitle: Text(area.description,
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis),
                                   trailing: const Icon(Icons.next_plan),

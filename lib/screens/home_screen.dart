@@ -10,7 +10,13 @@ class HomeScreen extends StatefulWidget {
 
 // Creation a widget state
 class _HomeScreenState extends State<HomeScreen> {
-  final List _titles = ["Дома", "Мероприятия", "Пространства", "Организации", "Карта локаций"];
+  final List _titles = [
+    "Дома",
+    "Мероприятия",
+    "Пространства",
+    "Организации",
+    "Карта локаций"
+  ];
   final List _icons = [
     "assets/images/buildings.png",
     "assets/images/events.png",
@@ -18,12 +24,13 @@ class _HomeScreenState extends State<HomeScreen> {
     "assets/images/companies.png",
     "assets/images/maps.png"
   ];
-  final List <Color> _colors = const[
-    Color.fromRGBO(166,197,0,1),
-    Color.fromRGBO(241,136,37,1),
-    Color.fromRGBO(0,58,90,1),
-    Color.fromRGBO(214,0,0,1),
-    Color.fromRGBO(166,197,0,1)];
+  final List<Color> _colors = const [
+    Color.fromRGBO(166, 197, 0, 1),
+    Color.fromRGBO(241, 136, 37, 1),
+    Color.fromRGBO(0, 58, 90, 1),
+    Color.fromRGBO(214, 0, 0, 1),
+    Color.fromRGBO(166, 197, 0, 1)
+  ];
 
   int _selectedIndex = -1;
 
@@ -34,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
         SizedBox(
           height: double.infinity,
           child: Image.asset(
-          'assets/images/background-homepage.jpg',
+            'assets/images/background-homepage.jpg',
             color: const Color.fromRGBO(255, 255, 255, 0.3),
             colorBlendMode: BlendMode.modulate,
             fit: BoxFit.cover,
@@ -50,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  color: Color.fromRGBO(0,58,90,1),
+                  color: Color.fromRGBO(0, 58, 90, 1),
                 ),
               ),
               const SizedBox(
@@ -82,7 +89,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: ListTile(
                           title: Text(
                             _titles[index],
-                            style: const TextStyle(fontSize: 24, fontFamily: "Lato", color: Colors.white ),
+                            style: const TextStyle(
+                                fontSize: 24,
+                                fontFamily: "Lato",
+                                color: Colors.white),
                           ),
                           leading: ImageIcon(
                             AssetImage(_icons[index]),
@@ -93,7 +103,10 @@ class _HomeScreenState extends State<HomeScreen> {
                             setState(() {
                               // set selected index
                               _selectedIndex = index;
-                              Navigator.of(context).pushNamed(_selectedIndex==4? "/fifthPage" : '/thirdPage');
+                              Navigator.of(context).pushNamed(
+                                  _selectedIndex == 4
+                                      ? "/fifthPage"
+                                      : '/areaPage');
                             });
                           },
                         ),
