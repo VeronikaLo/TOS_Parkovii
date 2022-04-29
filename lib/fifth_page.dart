@@ -11,9 +11,9 @@ class FifthPage extends StatefulWidget {
 
 class _FifthPageState extends State<FifthPage> {
   Set<Marker> markers = {};
-  Completer<GoogleMapController> _controller = Completer();
+  final Completer<GoogleMapController> _controller = Completer();
   double zoomValue = 17.0;
-  final _mainTarget = LatLng(54.10128, 37.57868); //add main target of screen
+  final _mainTarget = const LatLng(54.10128, 37.57868); //add main target of screen
 
   @override
   void initState() {
@@ -62,7 +62,7 @@ class _FifthPageState extends State<FifthPage> {
   //function for adding marker in the main target
   void _addMarkerMainTarget() {
     markers.add(Marker(
-      markerId: MarkerId('main target'),
+      markerId: const MarkerId('main target'),
       position: _mainTarget,
       icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
     ));
@@ -105,13 +105,13 @@ class _FifthPageState extends State<FifthPage> {
           ),
           //implementation of the buttons column
           Padding(
-            padding: EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(16.0),
             child: Align(
               alignment: Alignment.topRight,
               child: Column(
                 children: <Widget>[
                   _zoomPlusButton(),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   _zoomMinusButton()
