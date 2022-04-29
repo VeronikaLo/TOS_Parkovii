@@ -20,7 +20,13 @@ class DetailPage extends StatelessWidget {
           backgroundColor: const Color.fromRGBO(174, 213, 243, 1),
           title: const Text('Мероприятия',
               style: TextStyle(color: Color.fromRGBO(35, 33, 34, 1)))),
-      body: Center(
+      body: Container(
+          width: 395,
+          height: 700,
+          decoration: const BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('assets/images/background-details.jpg'),
+                  fit: BoxFit.cover)),
           child: TextButton(
               onPressed: () {
                 Navigator.of(context).pushNamed('/fifthPage');
