@@ -93,7 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             setState(() {
                               // set selected index
                               _selectedIndex = index;
-                              Navigator.of(context).pushNamed(_selectedIndex==4? "/fifthPage" : '/thirdPage');
+                              Navigator.of(context).pushNamed(_selectedIndex==4? "/map" : '/list');
                             });
                           },
                         ),

@@ -5,6 +5,7 @@ class SplashScreen extends StatefulWidget {
   // variable to store the route
   final String nextRoute;
 
+
   const SplashScreen({ Key? key, required this.nextRoute});
 
   @override

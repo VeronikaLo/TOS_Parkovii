@@ -14,7 +14,7 @@ class DetailPage extends StatelessWidget {
               splashRadius: 50,
               splashColor: Colors.grey,
               onPressed: () {
-                Navigator.of(context).pushNamed('/thirdPage');
+                Navigator.of(context).pushNamed('/list');
               },
               tooltip: "Назад"),
           backgroundColor: const Color.fromRGBO(174, 213, 243, 1),
@@ -29,7 +29,7 @@ class DetailPage extends StatelessWidget {
                   fit: BoxFit.cover)),
           child: TextButton(
               onPressed: () {
-                Navigator.of(context).pushNamed('/fifthPage');
+                Navigator.of(context).pushNamed('/map');
               },
               child: const Text("Смотреть на карте"))
           // child: Text('close'),
