@@ -103,7 +103,25 @@ class _HomeScreenState extends State<HomeScreen> {
                             setState(() {
                               // set selected index
                               _selectedIndex = index;
-                              Navigator.of(context).pushNamed(_selectedIndex==4? "/map" : '/list');
+
+                              switch(_selectedIndex){
+        
+                                case 0: 
+                                    Navigator.of(context).pushNamed('/house');
+                                    break;
+                                case 1: 
+                                    Navigator.of(context).pushNamed('/event');
+                                    break;
+                                case 2: 
+                                    Navigator.of(context).pushNamed('/area');
+                                    break;
+                                case 3: 
+                                    Navigator.of(context).pushNamed('/institut');
+                                    break;
+                                case 4: 
+                                    Navigator.of(context).pushNamed('/map');
+                                    break;   
+                              }
                             });
                           },
                         ),
