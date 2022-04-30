@@ -24,6 +24,7 @@ class _FifthPageState extends State<FifthPage> {
   // create widget-button-minus
   Widget _zoomMinusButton() {
     return FloatingActionButton(
+        heroTag: "btn1",
         materialTapTargetSize: MaterialTapTargetSize.padded,
         backgroundColor: Colors.lightGreen,
         child: const Text("-"),
@@ -36,6 +37,7 @@ class _FifthPageState extends State<FifthPage> {
   //create widget-button-plus
   Widget _zoomPlusButton() {
     return FloatingActionButton(
+        heroTag: "btn2",
         materialTapTargetSize: MaterialTapTargetSize.padded,
         backgroundColor: Colors.lightGreen,
         child: const Text("+"),
