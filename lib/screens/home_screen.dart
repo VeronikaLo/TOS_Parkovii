@@ -119,7 +119,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     Navigator.of(context).pushNamed('/institut');
                                     break;
                                 case 4: 
-                                    Navigator.of(context).pushNamed('/map');
+                                    Navigator.of(context).pushNamed('/map_all');
                                     break;   
                               }
                             });

@@ -11,6 +11,7 @@ import 'screens/house_page.dart';
 import 'screens/institute_page.dart';
 import 'screens/splash_screen.dart';
 import 'screens/map_screen.dart';
+import 'screens/map_all_screen.dart';
 
 
 void main() {
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
     '/area': (BuildContext context) => const AreaPage(),
     '/details': (BuildContext context) => DetailPage(),
     '/map': (BuildContext context) => const FifthPage(),
+    '/map_all': (BuildContext context) => const FifthScreen(),
     '/event': (BuildContext context) => const EventPage(),
     '/house': (BuildContext context) => const HousePage(),
     '/institut': (BuildContext context) => const InstitutePage(),
