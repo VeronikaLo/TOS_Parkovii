@@ -1,92 +1,68 @@
 import 'package:flutter/material.dart';
 
-class Event {
+class Detail {
   final String title;
   final String description;
-  final String time;
 
-  Event({required this.title, required this.description, required this.time});
+  Detail({required this.title, required this.description});
 }
 
-class EventPage extends StatefulWidget {
-  const EventPage({Key? key}) : super(key: key);
+class HouseDetail extends StatefulWidget {
+  const HouseDetail({Key? key}) : super(key: key);
 
   @override
-  State<EventPage> createState() => _EventPageState();
+  State<HouseDetail> createState() => _HouseDetail();
 }
 
-class _EventPageState extends State<EventPage> {
-  final _events = [
-    Event(
-      title: 'Название мероприятия',
-      description: 'Краткое описание мероприятия',
-      time: '25 мая 2022',
+class _HouseDetail extends State<HouseDetail> {
+  final _details = [
+    Detail(
+      title: 'Данные дома: Test search 15, пр-кт Кирова',
+      description: 'Пояснение: номер и улица',
     ),
-    Event(
-      title: 'Название Test search мероприятия',
-      description: 'Краткое описание мероприятия',
-      time: '25 мая 2022',
+    Detail(
+      title: 'Данные дома: 15, пр-кт Кирова',
+      description: 'Пояснение: номер и улица',
     ),
-    Event(
-      title: 'Название мероприятия',
-      description: 'Краткое описание мероприятия',
-      time: '25 мая 2022',
+    Detail(
+      title: 'Данные дома: 15, пр-кт Кирова',
+      description: 'Пояснение: номер и улица',
     ),
-    Event(
-      title: 'Название мероприятия',
-      description: 'Краткое описание мероприятия',
-      time: '25 мая 2022',
+    Detail(
+      title: 'Данные дома: 15, пр-кт Кирова',
+      description: 'Пояснение: номер и улица',
     ),
-    Event(
-      title: 'Название мероприятия',
-      description: 'Краткое описание мероприятия',
-      time: '25 мая 2022',
+    Detail(
+      title: 'Данные дома: 15, пр-кт Кирова',
+      description: 'Пояснение: номер и улица',
     ),
-    Event(
-      title: 'Название мероприятия',
-      description: 'Краткое описание мероприятия',
-      time: '25 мая 2022',
+    Detail(
+      title: 'Данные дома: 15, пр-кт Кирова',
+      description: 'Пояснение: номер и улица',
     ),
-    Event(
-      title: 'Название мероприятия',
-      description: 'Краткое описание мероприятия',
-      time: '25 мая 2022',
+    Detail(
+      title: 'Данные дома: 15, пр-кт Кирова',
+      description: 'Пояснение: номер и улица',
     ),
-    Event(
-      title: 'Название мероприятия',
-      description: 'Краткое описание мероприятия',
-      time: '25 мая 2022',
-    ),
-    Event(
-      title: 'Название мероприятия',
-      description: 'Краткое описание мероприятия',
-      time: '25 мая 2022',
-    ),
-    Event(
-      title: 'Название мероприятия',
-      description: 'Краткое описание мероприятия',
-      time: '25 мая 2022',
-    ),
-    Event(
-      title: 'Название мероприятия',
-      description: 'Краткое описание мероприятия',
-      time: '25 мая 2022',
+    Detail(
+      title: 'Данные дома: 15, пр-кт Кирова',
+      description: 'Пояснение: номер и улица',
     )
   ];
-  int _selectedIndex = -1;
+  final int _selectedIndex = -1;
 
-  var _filteredEvents = <Event>[];
+  var _filteredDetails = <Detail>[];
 
   final _searchController = TextEditingController();
 
-  void _searchEvents() {
+  void _searchDetails() {
     final query = _searchController.text;
     if (query.isNotEmpty) {
-      _filteredEvents = _events.where((Event event) {
-        return event.title.toLowerCase().contains(query.toLowerCase());
+      _filteredDetails = _details.where((Detail detail) {
+        return detail.title.toLowerCase().contains(query.toLowerCase());
       }).toList();
     } else {
-      _filteredEvents = _events;
+      _filteredDetails = _details;
     }
 
     setState(() {});
@@ -95,13 +71,12 @@ class _EventPageState extends State<EventPage> {
   @override
   void initState() {
     super.initState();
-    _filteredEvents = _events;
-    _searchController.addListener(_searchEvents);
+    _filteredDetails = _details;
+    _searchController.addListener(_searchDetails);
   }
 
   @override
   Widget build(BuildContext context) {
-    var bottom = MediaQuery.of(context).viewInsets.bottom;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: const Color.fromRGBO(240, 240, 238, 1),
@@ -112,23 +87,20 @@ class _EventPageState extends State<EventPage> {
             splashRadius: 50,
             splashColor: Colors.grey,
             onPressed: () {
-              Navigator.of(context).pushNamed('/Home');
+              Navigator.of(context).pop();
             },
-            tooltip: "На главную"),
-        backgroundColor: const Color.fromRGBO(241, 136, 37, 1),
-        title: const Text('Мероприятия',
-            style: TextStyle(
-                fontSize: 24,
-                fontFamily: "Lato",
-                color: Color.fromRGBO(35, 33, 34, 1))),
+            tooltip: "Назад"),
+        backgroundColor: const Color.fromRGBO(166, 197, 0, 1),
+        title: const Text('Дома',
+            style: TextStyle(color: Color.fromRGBO(35, 33, 34, 1))),
         centerTitle: true,
       ),
       body: Container(
-          width: 395,
-          height: 700,
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
           decoration: const BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('assets/images/background-thirdpage.jpg'),
+                  image: AssetImage('assets/images/background-details.jpg'),
                   fit: BoxFit.cover)),
           child: Stack(
             children: [
@@ -136,9 +108,10 @@ class _EventPageState extends State<EventPage> {
                   padding: const EdgeInsets.only(top: 80),
                   keyboardDismissBehavior:
                       ScrollViewKeyboardDismissBehavior.onDrag,
-                  itemCount: _filteredEvents.length,
+                  itemCount: _filteredDetails.length,
                   itemBuilder: (BuildContext context, int index) {
-                    final event = _filteredEvents[index];
+                    final detail = _filteredDetails[index];
+
                     return Container(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 15, vertical: 5),
@@ -149,13 +122,13 @@ class _EventPageState extends State<EventPage> {
                                 height: 67,
                                 decoration: BoxDecoration(
                                   color: index == _selectedIndex
-                                      ? const Color.fromRGBO(218, 218, 218, 1)
+                                      ? Colors.grey
                                       : Colors.white,
                                   borderRadius: const BorderRadius.all(
                                       Radius.circular(12)),
                                 ),
                                 child: ListTile(
-                                  title: Text(event.title,
+                                  title: Text(detail.title,
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
                                       style: const TextStyle(
@@ -163,7 +136,7 @@ class _EventPageState extends State<EventPage> {
                                           fontFamily: "Lato",
                                           color:
                                               Color.fromRGBO(35, 33, 34, 1))),
-                                  subtitle: Text(event.description,
+                                  subtitle: Text(detail.description,
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
                                       style: const TextStyle(
@@ -171,20 +144,23 @@ class _EventPageState extends State<EventPage> {
                                           fontFamily: "Lato",
                                           color:
                                               Color.fromRGBO(35, 33, 34, 1))),
-                                  trailing: const Icon(Icons.chevron_right_outlined),
-                                  onTap: () {
-                                    setState(() {
-                                      _selectedIndex = index;
-                                      Navigator.of(context)
-                                          .pushNamed('/details');
-                                    });
-                                  },
+                                  trailing: IconButton(
+                                      icon: const Icon(
+                                          Icons.chevron_right_outlined),
+                                      color:
+                                          const Color.fromRGBO(35, 33, 34, 1),
+                                      splashRadius: 50,
+                                      splashColor: Colors.grey,
+                                      onPressed: () {
+                                        Navigator.of(context).pushNamed('/map');
+                                      },
+                                      tooltip: "Перейти к карте"),
                                 )),
                           ],
                         ));
                   }),
               Padding(
-                padding: EdgeInsets.only(bottom: bottom),
+                padding: const EdgeInsets.only(bottom: 40),
                 child: TextField(
                   controller: _searchController,
                   decoration: InputDecoration(

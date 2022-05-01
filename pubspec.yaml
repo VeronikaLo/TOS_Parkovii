@@ -72,6 +72,7 @@ flutter:
     - assets/images/background-homepage.jpg
     - assets/images/background-thirdpage.jpg
     - assets/images/background-details.jpg
+    - assets/images/splash.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

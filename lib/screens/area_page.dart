@@ -120,11 +120,22 @@ class _AreaPage extends State<AreaPage> {
                                 child: ListTile(
                                   title: Text(area.title,
                                       maxLines: 1,
-                                      overflow: TextOverflow.ellipsis),
+                                      overflow: TextOverflow.ellipsis,
+                                      style: const TextStyle(
+                                          fontSize: 17,
+                                          fontFamily: "Lato",
+                                          color:
+                                              Color.fromRGBO(35, 33, 34, 1))),
                                   subtitle: Text(area.description,
                                       maxLines: 1,
-                                      overflow: TextOverflow.ellipsis),
-                                  trailing: const Icon(Icons.next_plan),
+                                      overflow: TextOverflow.ellipsis,
+                                      style: const TextStyle(
+                                          fontSize: 15,
+                                          fontFamily: "Lato",
+                                          color:
+                                              Color.fromRGBO(35, 33, 34, 1))),
+                                  trailing:
+                                      const Icon(Icons.chevron_right_outlined),
                                   onTap: () {
                                     setState(() {
                                       _selectedIndex = index;
