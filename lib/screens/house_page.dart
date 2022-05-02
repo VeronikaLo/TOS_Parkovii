@@ -42,7 +42,6 @@ class _HousePage extends State<HousePage> {
         description: 'Год постройки и тип постройки',
         amount: '100 жителей'),
   ];
-  int _selectedIndex = -1;
 
   var _filteredHouses = <House>[];
 
@@ -113,15 +112,13 @@ class _HousePage extends State<HousePage> {
                         child: Column(
                           children: [
                             Container(
-                                height: 67,
-                                decoration: BoxDecoration(
-                                  color: index == _selectedIndex
-                                      ? Colors.grey
-                                      : Colors.white,
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(12)),
-                                ),
-                                child: ListTile(
+                              height: 67,
+                              decoration: const BoxDecoration(
+                                color: Colors.white,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(12)),
+                              ),
+                              child: ListTile(
                                   title: Text(house.title,
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
@@ -138,16 +135,15 @@ class _HousePage extends State<HousePage> {
                                           fontFamily: "Lato",
                                           color:
                                               Color.fromRGBO(35, 33, 34, 1))),
-                                  trailing:
-                                      const Icon(Icons.chevron_right_outlined),
-                                  onTap: () {
-                                    setState(() {
-                                      _selectedIndex = index;
+                                  trailing: IconButton(
+                                    icon: const Icon(Icons.chevron_right),
+                                    color: const Color.fromRGBO(35, 33, 34, 1),
+                                    onPressed: () {
                                       Navigator.of(context)
                                           .pushNamed('/h_details');
-                                    });
-                                  },
-                                )),
+                                    },
+                                  )),
+                            )
                           ],
                         ));
                   }),

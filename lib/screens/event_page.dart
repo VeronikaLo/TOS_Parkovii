@@ -73,7 +73,7 @@ class _EventPageState extends State<EventPage> {
       time: '25 мая 2022',
     )
   ];
-  int _selectedIndex = -1;
+  
 
   var _filteredEvents = <Event>[];
 
@@ -147,39 +147,38 @@ class _EventPageState extends State<EventPage> {
                           children: [
                             Container(
                                 height: 67,
-                                decoration: BoxDecoration(
-                                  color: index == _selectedIndex
-                                      ? const Color.fromRGBO(218, 218, 218, 1)
-                                      : Colors.white,
-                                  borderRadius: const BorderRadius.all(
+                                decoration: const BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.all(
                                       Radius.circular(12)),
                                 ),
                                 child: ListTile(
-                                  title: Text(event.title,
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: const TextStyle(
-                                          fontSize: 17,
-                                          fontFamily: "Lato",
-                                          color:
-                                              Color.fromRGBO(35, 33, 34, 1))),
-                                  subtitle: Text(event.description,
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: const TextStyle(
-                                          fontSize: 15,
-                                          fontFamily: "Lato",
-                                          color:
-                                              Color.fromRGBO(35, 33, 34, 1))),
-                                  trailing: const Icon(Icons.chevron_right_outlined),
-                                  onTap: () {
-                                    setState(() {
-                                      _selectedIndex = index;
-                                      Navigator.of(context)
-                                          .pushNamed('/details');
-                                    });
-                                  },
-                                )),
+                                    title: Text(event.title,
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: const TextStyle(
+                                            fontSize: 17,
+                                            fontFamily: "Lato",
+                                            color:
+                                                Color.fromRGBO(35, 33, 34, 1))),
+                                    subtitle: Text(event.description,
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: const TextStyle(
+                                            fontSize: 15,
+                                            fontFamily: "Lato",
+                                            color:
+                                                Color.fromRGBO(35, 33, 34, 1))),
+                                    trailing: IconButton(
+                                      icon: const Icon(Icons.chevron_right),
+                                      color:
+                                          const Color.fromRGBO(35, 33, 34, 1),
+                                      onPressed: () {
+                                        //временно переходит на страницу с деталями "дома"
+                                        Navigator.of(context)
+                                            .pushNamed('/h_details');
+                                      },
+                                    ))),
                           ],
                         ));
                   }),

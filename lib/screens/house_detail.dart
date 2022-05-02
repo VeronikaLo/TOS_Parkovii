@@ -49,7 +49,6 @@ class _HouseDetail extends State<HouseDetail> {
       description: 'Пояснение: номер и улица',
     )
   ];
-  final int _selectedIndex = -1;
 
   var _filteredDetails = <Detail>[];
 
@@ -120,12 +119,10 @@ class _HouseDetail extends State<HouseDetail> {
                           children: [
                             Container(
                                 height: 67,
-                                decoration: BoxDecoration(
-                                  color: index == _selectedIndex
-                                      ? Colors.grey
-                                      : Colors.white,
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(12)),
+                                decoration: const BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(12)),
                                 ),
                                 child: ListTile(
                                   title: Text(detail.title,
@@ -149,8 +146,6 @@ class _HouseDetail extends State<HouseDetail> {
                                           Icons.chevron_right_outlined),
                                       color:
                                           const Color.fromRGBO(35, 33, 34, 1),
-                                      splashRadius: 50,
-                                      splashColor: Colors.grey,
                                       onPressed: () {
                                         Navigator.of(context).pushNamed('/map');
                                       },
