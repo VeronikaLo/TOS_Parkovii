@@ -13,7 +13,8 @@ class _FifthPageState extends State<FifthPage> {
   Set<Marker> markers = {};
   final Completer<GoogleMapController> _controller = Completer();
   double zoomValue = 17.0;
-  final _mainTarget = const LatLng(54.10128, 37.57868); //add main target of screen
+  final _mainTarget =
+      const LatLng(54.10128, 37.57868); //add main target of screen
 
   @override
   void initState() {
@@ -25,8 +26,9 @@ class _FifthPageState extends State<FifthPage> {
   Widget _zoomMinusButton() {
     return FloatingActionButton(
         heroTag: "btn1",
+        mini: true,
         materialTapTargetSize: MaterialTapTargetSize.padded,
-        backgroundColor: Colors.lightGreen,
+        backgroundColor: const Color.fromRGBO(241, 136, 37, 1),
         child: const Text("-"),
         onPressed: () {
           zoomValue--;
@@ -38,8 +40,9 @@ class _FifthPageState extends State<FifthPage> {
   Widget _zoomPlusButton() {
     return FloatingActionButton(
         heroTag: "btn2",
+        mini: true,
         materialTapTargetSize: MaterialTapTargetSize.padded,
-        backgroundColor: Colors.lightGreen,
+        backgroundColor: const Color.fromRGBO(241, 136, 37, 1),
         child: const Text("+"),
         onPressed: () {
           zoomValue++;
@@ -111,10 +114,11 @@ class _FifthPageState extends State<FifthPage> {
             child: Align(
               alignment: Alignment.topRight,
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   _zoomPlusButton(),
                   const SizedBox(
-                    height: 20,
+                    height: 1,
                   ),
                   _zoomMinusButton()
                 ],

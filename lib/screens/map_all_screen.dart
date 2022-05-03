@@ -13,7 +13,8 @@ class _FifthPageState extends State<FifthScreen> {
   Set<Marker> markers = {};
   final Completer<GoogleMapController> _controller = Completer();
   double zoomValue = 17.0;
-  final _mainTarget = const LatLng(54.10128, 37.57868); //add main target of screen
+  final _mainTarget =
+      const LatLng(54.10128, 37.57868); //add main target of screen
 
   @override
   void initState() {
@@ -25,9 +26,10 @@ class _FifthPageState extends State<FifthScreen> {
   Widget _zoomMinusButton() {
     return FloatingActionButton(
         heroTag: "btn1",
+        mini: true,
         materialTapTargetSize: MaterialTapTargetSize.padded,
-        backgroundColor: Colors.lightGreen,
-        child: const Text("-"),
+        backgroundColor: const Color.fromRGBO(241, 136, 37, 1),
+        child: const Text("-", style: TextStyle(fontSize: 25)),
         onPressed: () {
           zoomValue--;
           _minus(zoomValue);
@@ -38,9 +40,13 @@ class _FifthPageState extends State<FifthScreen> {
   Widget _zoomPlusButton() {
     return FloatingActionButton(
         heroTag: "btn2",
+        mini: true,
         materialTapTargetSize: MaterialTapTargetSize.padded,
-        backgroundColor: Colors.lightGreen,
-        child: const Text("+"),
+        backgroundColor: const Color.fromRGBO(241, 136, 37, 1),
+        child: const Text(
+          "+",
+          style: TextStyle(fontSize: 25),
+        ),
         onPressed: () {
           zoomValue++;
           _plus(zoomValue);
@@ -66,6 +72,9 @@ class _FifthPageState extends State<FifthScreen> {
     markers.add(Marker(
       markerId: const MarkerId('main target'),
       position: _mainTarget,
+      infoWindow: const InfoWindow(
+          title: 'Я название объекта',
+          snippet: 'А я краткое описание, если нужно'),
       icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
     ));
 
@@ -76,9 +85,20 @@ class _FifthPageState extends State<FifthScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Местоположение",
-            style: TextStyle(fontSize: 20, fontFamily: 'Lato')),
-        centerTitle: false,
+        leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            color: const Color.fromRGBO(35, 33, 34, 1),
+            splashRadius: 50,
+            splashColor: Colors.grey,
+            onPressed: () {
+              Navigator.of(context).pushNamed('/Home');
+            },
+            tooltip: "Назад"),
+        title: const Text("Карта ТОС",
+            style: TextStyle(
+                fontSize: 20, fontFamily: 'Lato', color: Colors.black)),
+        centerTitle: true,
+        backgroundColor: const Color.fromRGBO(166, 197, 0, 1),
       ),
       body: Stack(
         alignment: AlignmentDirectional.bottomCenter,
@@ -96,25 +116,18 @@ class _FifthPageState extends State<FifthScreen> {
             zoomGesturesEnabled: false,
             markers: markers,
           ),
-          Container(
-            height: 140,
-            width: double.infinity,
-            color: const Color.fromRGBO(255, 255, 255, 0.9),
-            child: const Text(
-              'Некие подробности',
-              style: TextStyle(fontSize: 25, fontFamily: 'Lato'),
-            ),
-          ),
+
           //implementation of the buttons column
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Align(
-              alignment: Alignment.topRight,
+          Align(
+            alignment: Alignment.centerRight,
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   _zoomPlusButton(),
                   const SizedBox(
-                    height: 20,
+                    height: 1,
                   ),
                   _zoomMinusButton()
                 ],
