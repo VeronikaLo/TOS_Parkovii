@@ -41,7 +41,6 @@ class _InstitutePage extends State<InstitutePage> {
       description: 'Краткое описание организации',
     ),
   ];
-  int _selectedIndex = -1;
 
   var _filteredInstitutes = <Institute>[];
 
@@ -113,29 +112,38 @@ class _InstitutePage extends State<InstitutePage> {
                           children: [
                             Container(
                                 height: 67,
-                                decoration: BoxDecoration(
-                                  color: index == _selectedIndex
-                                      ? Colors.grey
-                                      : Colors.white,
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(12)),
+                                decoration: const BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(12)),
                                 ),
                                 child: ListTile(
-                                  title: Text(institute.title,
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis),
-                                  subtitle: Text(institute.description,
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis),
-                                  trailing: const Icon(Icons.next_plan),
-                                  onTap: () {
-                                    setState(() {
-                                      _selectedIndex = index;
-                                      Navigator.of(context)
-                                          .pushNamed('/details');
-                                    });
-                                  },
-                                )),
+                                    title: Text(institute.title,
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: const TextStyle(
+                                            fontSize: 17,
+                                            fontFamily: "Lato",
+                                            color:
+                                                Color.fromRGBO(35, 33, 34, 1))),
+                                    subtitle: Text(institute.description,
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: const TextStyle(
+                                            fontSize: 15,
+                                            fontFamily: "Lato",
+                                            color:
+                                                Color.fromRGBO(35, 33, 34, 1))),
+                                    trailing: IconButton(
+                                      icon: const Icon(Icons.chevron_right),
+                                      color:
+                                          const Color.fromRGBO(35, 33, 34, 1),
+                                      onPressed: () {
+                                        Navigator.of(
+                                                context) //временно переходит на страницу с деталями "дома"
+                                            .pushNamed('/h_details');
+                                      },
+                                    ))),
                           ],
                         ));
                   }),

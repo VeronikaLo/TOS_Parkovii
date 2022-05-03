@@ -3,6 +3,7 @@
 // third test veronika
 
 import 'package:flutter/material.dart';
+import 'package:tos_parkovii/screens/house_detail.dart';
 import 'screens/area_page.dart';
 import 'screens/details_screen.dart';
 import 'screens/event_page.dart';
@@ -12,7 +13,6 @@ import 'screens/institute_page.dart';
 import 'screens/splash_screen.dart';
 import 'screens/map_screen.dart';
 import 'screens/map_all_screen.dart';
-
 
 void main() {
   runApp(MyApp());
@@ -31,6 +31,7 @@ class MyApp extends StatelessWidget {
     '/event': (BuildContext context) => const EventPage(),
     '/house': (BuildContext context) => const HousePage(),
     '/institut': (BuildContext context) => const InstitutePage(),
+    '/h_details': (BuildContext context) => const HouseDetail()
   };
 
   @override

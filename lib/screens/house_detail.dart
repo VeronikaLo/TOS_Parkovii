@@ -1,60 +1,67 @@
 import 'package:flutter/material.dart';
 
-class House {
+class Detail {
   final String title;
   final String description;
-  final String amount;
 
-  House({required this.title, required this.description, required this.amount});
+  Detail({required this.title, required this.description});
 }
 
-class HousePage extends StatefulWidget {
-  const HousePage({Key? key}) : super(key: key);
+class HouseDetail extends StatefulWidget {
+  const HouseDetail({Key? key}) : super(key: key);
 
   @override
-  State<HousePage> createState() => _HousePage();
+  State<HouseDetail> createState() => _HouseDetail();
 }
 
-class _HousePage extends State<HousePage> {
-  final _houses = [
-    House(
-        title: 'Номер дома',
-        description: 'Год постройки и тип постройки',
-        amount: '100 жителей'),
-    House(
-        title: 'Номер дома',
-        description: 'Год постройки и тип постройки',
-        amount: '100 жителей'),
-    House(
-        title: 'Номер дома',
-        description: 'Год постройки и тип постройки',
-        amount: '100 жителей'),
-    House(
-        title: 'Номер дома',
-        description: 'Год постройки и тип постройки',
-        amount: '100 жителей'),
-    House(
-        title: 'Номер дома',
-        description: 'Год постройки и тип постройки',
-        amount: '100 жителей'),
-    House(
-        title: 'Номер дома',
-        description: 'Год постройки и тип постройки',
-        amount: '100 жителей'),
+class _HouseDetail extends State<HouseDetail> {
+  final _details = [
+    Detail(
+      title: 'Данные дома: Test search 15, пр-кт Кирова',
+      description: 'Пояснение: номер и улица',
+    ),
+    Detail(
+      title: 'Данные дома: 15, пр-кт Кирова',
+      description: 'Пояснение: номер и улица',
+    ),
+    Detail(
+      title: 'Данные дома: 15, пр-кт Кирова',
+      description: 'Пояснение: номер и улица',
+    ),
+    Detail(
+      title: 'Данные дома: 15, пр-кт Кирова',
+      description: 'Пояснение: номер и улица',
+    ),
+    Detail(
+      title: 'Данные дома: 15, пр-кт Кирова',
+      description: 'Пояснение: номер и улица',
+    ),
+    Detail(
+      title: 'Данные дома: 15, пр-кт Кирова',
+      description: 'Пояснение: номер и улица',
+    ),
+    Detail(
+      title: 'Данные дома: 15, пр-кт Кирова',
+      description: 'Пояснение: номер и улица',
+    ),
+    Detail(
+      title: 'Данные дома: 15, пр-кт Кирова',
+      description: 'Пояснение: номер и улица',
+    )
   ];
 
-  var _filteredHouses = <House>[];
+  var _filteredDetails = <Detail>[];
 
   final _searchController = TextEditingController();
 
-  void _searchHouses() {
+  void _searchDetails() {
     final query = _searchController.text;
     if (query.isNotEmpty) {
-      _filteredHouses = _houses.where((House house) {
-        return house.title.toLowerCase().contains(query.toLowerCase());
+      _filteredDetails = _details.where((Detail detail) {
+        return detail.title.toLowerCase().contains(query.toLowerCase());
       }).toList();
     } else {
-      _filteredHouses = _houses;
+      _filteredDetails = _details;
     }
 
     setState(() {});
@@ -63,13 +70,12 @@ class _HousePage extends State<HousePage> {
   @override
   void initState() {
     super.initState();
-    _filteredHouses = _houses;
-    _searchController.addListener(_searchHouses);
+    _filteredDetails = _details;
+    _searchController.addListener(_searchDetails);
   }
 
   @override
   Widget build(BuildContext context) {
-    var bottom = MediaQuery.of(context).viewInsets.bottom;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: const Color.fromRGBO(240, 240, 238, 1),
@@ -80,11 +86,11 @@ class _HousePage extends State<HousePage> {
             splashRadius: 50,
             splashColor: Colors.grey,
             onPressed: () {
-              Navigator.of(context).pushNamed('/Home');
+              Navigator.of(context).pop();
             },
-            tooltip: "На главную"),
+            tooltip: "Назад"),
         backgroundColor: const Color.fromRGBO(166, 197, 0, 1),
-        title: const Text("Дома",
+        title: const Text('Дома',
             style: TextStyle(color: Color.fromRGBO(35, 33, 34, 1))),
         centerTitle: true,
       ),
@@ -93,7 +99,7 @@ class _HousePage extends State<HousePage> {
           height: MediaQuery.of(context).size.height,
           decoration: const BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('assets/images/background-thirdpage.jpg'),
+                  image: AssetImage('assets/images/background-details.jpg'),
                   fit: BoxFit.cover)),
           child: Stack(
             children: [
@@ -101,9 +107,9 @@ class _HousePage extends State<HousePage> {
                   padding: const EdgeInsets.only(top: 80),
                   keyboardDismissBehavior:
                       ScrollViewKeyboardDismissBehavior.onDrag,
-                  itemCount: _filteredHouses.length,
+                  itemCount: _filteredDetails.length,
                   itemBuilder: (BuildContext context, int index) {
-                    final house = _filteredHouses[index];
+                    final detail = _filteredDetails[index];
 
                     return Container(
                         padding: const EdgeInsets.symmetric(
@@ -112,14 +118,14 @@ class _HousePage extends State<HousePage> {
                         child: Column(
                           children: [
                             Container(
-                              height: 67,
-                              decoration: const BoxDecoration(
-                                color: Colors.white,
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(12)),
-                              ),
-                              child: ListTile(
-                                  title: Text(house.title,
+                                height: 67,
+                                decoration: const BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(12)),
+                                ),
+                                child: ListTile(
+                                  title: Text(detail.title,
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
                                       style: const TextStyle(
@@ -127,7 +133,7 @@ class _HousePage extends State<HousePage> {
                                           fontFamily: "Lato",
                                           color:
                                               Color.fromRGBO(35, 33, 34, 1))),
-                                  subtitle: Text(house.description,
+                                  subtitle: Text(detail.description,
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
                                       style: const TextStyle(
@@ -136,19 +142,20 @@ class _HousePage extends State<HousePage> {
                                           color:
                                               Color.fromRGBO(35, 33, 34, 1))),
                                   trailing: IconButton(
-                                    icon: const Icon(Icons.chevron_right),
-                                    color: const Color.fromRGBO(35, 33, 34, 1),
-                                    onPressed: () {
-                                      Navigator.of(context)
-                                          .pushNamed('/h_details');
-                                    },
-                                  )),
-                            )
+                                      icon: const Icon(
+                                          Icons.chevron_right_outlined),
+                                      color:
+                                          const Color.fromRGBO(35, 33, 34, 1),
+                                      onPressed: () {
+                                        Navigator.of(context).pushNamed('/map');
+                                      },
+                                      tooltip: "Перейти к карте"),
+                                )),
                           ],
                         ));
                   }),
               Padding(
-                padding: EdgeInsets.only(bottom: bottom),
+                padding: const EdgeInsets.only(bottom: 40),
                 child: TextField(
                   controller: _searchController,
                   decoration: InputDecoration(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// скорее всего страница будет удалена
 class DetailPage extends StatelessWidget {
   late final int index;
 
@@ -14,11 +15,9 @@ class DetailPage extends StatelessWidget {
               splashRadius: 50,
               splashColor: Colors.grey,
               onPressed: () {
-                Navigator.of(context).pushNamed('/Home');
+                Navigator.of(context).pop();
               },
               tooltip: "Назад"),
-
-          // Необходимо показать title и цвет background в зависимости от предыдущих действий
           backgroundColor: const Color.fromRGBO(174, 213, 243, 1),
           title: const Text('ЗАГЛУШКА',
               style: TextStyle(color: Color.fromRGBO(35, 33, 34, 1)))),
