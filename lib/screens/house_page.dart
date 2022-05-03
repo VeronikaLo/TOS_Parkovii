@@ -82,7 +82,7 @@ class _HousePage extends State<HousePage> {
               Navigator.of(context).pushNamed('/Home');
             },
             tooltip: "На главную"),
-        backgroundColor: const Color.fromRGBO(166, 197, 0, 1),
+        backgroundColor: const Color.fromARGB(255, 23, 134, 34),
         title: const Text("Дома",
             style: TextStyle(
                 fontSize: 24,
@@ -130,8 +130,8 @@ class _HousePage extends State<HousePage> {
                                           height: 51,
                                           width: 51,
                                           decoration: const BoxDecoration(
-                                              color: Color.fromRGBO(
-                                                  166, 197, 0, 0.7)),
+                                              color: Color.fromARGB(
+                                                  170, 23, 134, 34)),
                                           padding: const EdgeInsets.all(3),
                                           child: Align(
                                             alignment: Alignment.center,
