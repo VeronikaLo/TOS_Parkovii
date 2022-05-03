@@ -25,11 +25,11 @@ class _HomeScreenState extends State<HomeScreen> {
     "assets/images/maps.png"
   ];
   final List<Color> _colors = const [
-    Color.fromRGBO(166, 197, 0, 1),
+    Color.fromARGB(255, 23, 134, 34),
     Color.fromRGBO(241, 136, 37, 1),
     Color.fromRGBO(0, 58, 90, 1),
     Color.fromRGBO(214, 0, 0, 1),
-    Color.fromRGBO(166, 197, 0, 1)
+    Color.fromRGBO(247, 222, 28, 1)
   ];
 
   int _selectedIndex = -1;
@@ -55,14 +55,14 @@ class _HomeScreenState extends State<HomeScreen> {
               const Text(
                 "Выберите раздел",
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 22,
                   fontWeight: FontWeight.bold,
                   color: Color.fromRGBO(0, 58, 90, 1),
                 ),
               ),
-              const SizedBox(
-                height: 20,
-              ),
+              //const SizedBox(
+               // height: 20,
+              //),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 15),
                 height: 550,
@@ -85,18 +85,18 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         alignment: Alignment.center,
                         height: 80,
-                        margin: const EdgeInsets.symmetric(vertical: 7),
+                        margin: const EdgeInsets.symmetric(vertical: 8),
                         child: ListTile(
                           title: Text(
                             _titles[index],
                             style: const TextStyle(
-                                fontSize: 24,
+                                fontSize: 26,
                                 fontFamily: "Lato",
                                 color: Colors.white),
                           ),
                           leading: ImageIcon(
                             AssetImage(_icons[index]),
-                            size: 50,
+                            size: 65,
                             color: Colors.white,
                           ),
                           onTap: () {
