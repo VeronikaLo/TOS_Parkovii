@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 class Institute {
   final String title;
   final String description;
+  final String type;
 
-  Institute({required this.title, required this.description});
+  Institute(
+      {required this.title, required this.description, required this.type});
 }
 
 class InstitutePage extends StatefulWidget {
@@ -17,29 +19,29 @@ class InstitutePage extends StatefulWidget {
 class _InstitutePage extends State<InstitutePage> {
   final _institutes = [
     Institute(
-      title: 'Название организации',
-      description: 'Краткое описание организации',
-    ),
+        title: 'Название организации',
+        description: 'Краткое описание организации',
+        type: 'Коммерческая'),
     Institute(
-      title: 'Название организации',
-      description: 'Краткое описание организации',
-    ),
+        title: 'Название организации',
+        description: 'Краткое описание организации',
+        type: 'Государственная'),
     Institute(
-      title: 'Название организации',
-      description: 'Краткое описание организации',
-    ),
+        title: 'Название организации',
+        description: 'Краткое описание организации',
+        type: 'Общественная'),
     Institute(
-      title: 'Название организации',
-      description: 'Краткое описание организации',
-    ),
+        title: 'Название организации',
+        description: 'Краткое описание организации',
+        type: 'Коммерческая'),
     Institute(
-      title: 'Название организации',
-      description: 'Краткое описание организации',
-    ),
+        title: 'Название организации',
+        description: 'Краткое описание организации',
+        type: 'Коммерческая'),
     Institute(
-      title: 'Название организации',
-      description: 'Краткое описание организации',
-    ),
+        title: 'Название организации',
+        description: 'Краткое описание организации',
+        type: 'Коммерческая'),
   ];
 
   var _filteredInstitutes = <Institute>[];
@@ -84,7 +86,10 @@ class _InstitutePage extends State<InstitutePage> {
             tooltip: "На главную"),
         backgroundColor: const Color.fromRGBO(214, 0, 0, 1),
         title: const Text("Организации",
-            style: TextStyle(color: Color.fromRGBO(35, 33, 34, 1))),
+            style: TextStyle(
+                fontSize: 24,
+                fontFamily: "Lato",
+                color: Color.fromRGBO(35, 33, 34, 1))),
         centerTitle: true,
       ),
       body: Container(
@@ -104,48 +109,75 @@ class _InstitutePage extends State<InstitutePage> {
                   itemBuilder: (BuildContext context, int index) {
                     final institute = _filteredInstitutes[index];
 
-                    return Container(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 15, vertical: 5),
-                        alignment: FractionalOffset.bottomRight,
-                        child: Column(
-                          children: [
-                            Container(
-                                height: 67,
-                                decoration: const BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(12)),
-                                ),
-                                child: ListTile(
-                                    title: Text(institute.title,
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: const TextStyle(
-                                            fontSize: 17,
-                                            fontFamily: "Lato",
-                                            color:
-                                                Color.fromRGBO(35, 33, 34, 1))),
-                                    subtitle: Text(institute.description,
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: const TextStyle(
-                                            fontSize: 15,
-                                            fontFamily: "Lato",
-                                            color:
-                                                Color.fromRGBO(35, 33, 34, 1))),
-                                    trailing: IconButton(
-                                      icon: const Icon(Icons.chevron_right),
-                                      color:
-                                          const Color.fromRGBO(35, 33, 34, 1),
-                                      onPressed: () {
-                                        Navigator.of(
-                                                context) //временно переходит на страницу с деталями "дома"
-                                            .pushNamed('/h_details');
-                                      },
-                                    ))),
-                          ],
-                        ));
+                    return GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).pushNamed('/h_details');
+                        },
+                        child: Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 15, vertical: 5),
+                            alignment: FractionalOffset.bottomRight,
+                            child: Column(
+                              children: [
+                                Container(
+                                    height: 67,
+                                    decoration: const BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(12)),
+                                    ),
+                                    child: ListTile(
+                                        leading: Column(children: <Widget>[
+                                          Container(
+                                            height: 51,
+                                            width: 51,
+                                            decoration: const BoxDecoration(
+                                                color: Color.fromRGBO(
+                                                    214, 0, 0, 0.7)),
+                                            padding: const EdgeInsets.all(3),
+                                            child: Align(
+                                              alignment: Alignment.center,
+                                              child: Text(institute.type,
+                                                  textAlign: TextAlign.center,
+                                                  maxLines: 3,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  style: const TextStyle(
+                                                      fontSize: 12,
+                                                      fontFamily: "Lato",
+                                                      color: Color.fromRGBO(
+                                                          35, 33, 34, 1))),
+                                            ),
+                                          )
+                                        ]),
+                                        title: Text(institute.title,
+                                            maxLines: 1,
+                                            overflow: TextOverflow.ellipsis,
+                                            style: const TextStyle(
+                                                fontSize: 17,
+                                                fontFamily: "Lato",
+                                                color: Color.fromRGBO(
+                                                    35, 33, 34, 1))),
+                                        subtitle: Text(institute.description,
+                                            maxLines: 1,
+                                            overflow: TextOverflow.ellipsis,
+                                            style: const TextStyle(
+                                                fontSize: 15,
+                                                fontFamily: "Lato",
+                                                color: Color.fromRGBO(
+                                                    35, 33, 34, 1))),
+                                        trailing: IconButton(
+                                          icon: const Icon(Icons.chevron_right),
+                                          color: const Color.fromRGBO(
+                                              35, 33, 34, 1),
+                                          onPressed: () {
+                                            Navigator.of(
+                                                    context) //временно переходит на страницу с деталями "дома"
+                                                .pushNamed('/h_details');
+                                          },
+                                        ))),
+                              ],
+                            )));
                   }),
               Padding(
                 padding: EdgeInsets.only(bottom: bottom),

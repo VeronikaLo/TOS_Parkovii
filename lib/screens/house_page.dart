@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 class House {
   final String title;
   final String description;
-  final String amount;
+  final String number;
 
-  House({required this.title, required this.description, required this.amount});
+  House({required this.title, required this.description, required this.number});
 }
 
 class HousePage extends StatefulWidget {
@@ -18,29 +18,27 @@ class HousePage extends StatefulWidget {
 class _HousePage extends State<HousePage> {
   final _houses = [
     House(
-        title: 'Номер дома',
-        description: 'Год постройки и тип постройки',
-        amount: '100 жителей'),
+        title: 'Название улицы',
+        description: 'ФИО старшего по дому',
+        number: '19'),
     House(
-        title: 'Номер дома',
-        description: 'Год постройки и тип постройки',
-        amount: '100 жителей'),
+        title: 'Название улицы',
+        description: 'ФИО старшего по дому',
+        number: '19'),
     House(
-        title: 'Номер дома',
-        description: 'Год постройки и тип постройки',
-        amount: '100 жителей'),
+        title: 'Название улицы',
+        description: 'ФИО старшего по дому',
+        number: '19'),
     House(
-        title: 'Номер дома',
-        description: 'Год постройки и тип постройки',
-        amount: '100 жителей'),
+        title: 'Название улицы',
+        description: 'ФИО старшего по дому',
+        number: '19'),
     House(
-        title: 'Номер дома',
-        description: 'Год постройки и тип постройки',
-        amount: '100 жителей'),
+        title: 'Название улицы',
+        description: 'ФИО старшего по дому',
+        number: '19'),
     House(
-        title: 'Номер дома',
-        description: 'Год постройки и тип постройки',
-        amount: '100 жителей'),
+        title: 'Номер дома', description: 'ФИО старшего по дому', number: '19'),
   ];
 
   var _filteredHouses = <House>[];
@@ -67,6 +65,7 @@ class _HousePage extends State<HousePage> {
     _searchController.addListener(_searchHouses);
   }
 
+  int _selectedIndex = -1;
   @override
   Widget build(BuildContext context) {
     var bottom = MediaQuery.of(context).viewInsets.bottom;
@@ -85,7 +84,10 @@ class _HousePage extends State<HousePage> {
             tooltip: "На главную"),
         backgroundColor: const Color.fromRGBO(166, 197, 0, 1),
         title: const Text("Дома",
-            style: TextStyle(color: Color.fromRGBO(35, 33, 34, 1))),
+            style: TextStyle(
+                fontSize: 24,
+                fontFamily: "Lato",
+                color: Color.fromRGBO(35, 33, 34, 1))),
         centerTitle: true,
       ),
       body: Container(
@@ -105,47 +107,74 @@ class _HousePage extends State<HousePage> {
                   itemBuilder: (BuildContext context, int index) {
                     final house = _filteredHouses[index];
 
-                    return Container(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 15, vertical: 5),
-                        alignment: FractionalOffset.bottomRight,
-                        child: Column(
-                          children: [
-                            Container(
-                              height: 67,
-                              decoration: const BoxDecoration(
-                                color: Colors.white,
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(12)),
-                              ),
-                              child: ListTile(
-                                  title: Text(house.title,
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: const TextStyle(
-                                          fontSize: 17,
-                                          fontFamily: "Lato",
-                                          color:
-                                              Color.fromRGBO(35, 33, 34, 1))),
-                                  subtitle: Text(house.description,
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: const TextStyle(
-                                          fontSize: 15,
-                                          fontFamily: "Lato",
-                                          color:
-                                              Color.fromRGBO(35, 33, 34, 1))),
-                                  trailing: IconButton(
-                                    icon: const Icon(Icons.chevron_right),
-                                    color: const Color.fromRGBO(35, 33, 34, 1),
-                                    onPressed: () {
-                                      Navigator.of(context)
-                                          .pushNamed('/h_details');
-                                    },
-                                  )),
-                            )
-                          ],
-                        ));
+                    return GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).pushNamed('/h_details');
+                        },
+                        child: Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 15, vertical: 5),
+                            alignment: FractionalOffset.bottomRight,
+                            child: Column(
+                              children: [
+                                Container(
+                                  height: 67,
+                                  decoration: const BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(12)),
+                                  ),
+                                  child: ListTile(
+                                      leading: Column(children: <Widget>[
+                                        Container(
+                                          height: 51,
+                                          width: 51,
+                                          decoration: const BoxDecoration(
+                                              color: Color.fromRGBO(
+                                                  166, 197, 0, 0.7)),
+                                          padding: const EdgeInsets.all(3),
+                                          child: Align(
+                                            alignment: Alignment.center,
+                                            child: Text(house.number,
+                                                textAlign: TextAlign.center,
+                                                maxLines: 3,
+                                                overflow: TextOverflow.ellipsis,
+                                                style: const TextStyle(
+                                                    fontSize: 13,
+                                                    fontFamily: "Lato",
+                                                    color: Color.fromRGBO(
+                                                        35, 33, 34, 1))),
+                                          ),
+                                        )
+                                      ]),
+                                      title: Text(house.title,
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: const TextStyle(
+                                              fontSize: 17,
+                                              fontFamily: "Lato",
+                                              color: Color.fromRGBO(
+                                                  35, 33, 34, 1))),
+                                      subtitle: Text(house.description,
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: const TextStyle(
+                                              fontSize: 15,
+                                              fontFamily: "Lato",
+                                              color: Color.fromRGBO(
+                                                  35, 33, 34, 1))),
+                                      trailing: IconButton(
+                                        icon: const Icon(Icons.chevron_right),
+                                        color:
+                                            const Color.fromRGBO(35, 33, 34, 1),
+                                        onPressed: () {
+                                          Navigator.of(context)
+                                              .pushNamed('/h_details');
+                                        },
+                                      )),
+                                )
+                              ],
+                            )));
                   }),
               Padding(
                 padding: EdgeInsets.only(bottom: bottom),
