@@ -93,6 +93,9 @@ flutter:
     - family: AniconSans
       fonts:
         - asset: assets/fonts/AniconSans-Regular.otf
+    - family: Aerovista
+      fonts: 
+        - asset: assets/fonts/Aerovista.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #
