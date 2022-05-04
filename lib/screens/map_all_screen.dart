@@ -19,7 +19,6 @@ class _FifthPageState extends State<FifthScreen> {
   @override
   void initState() {
     super.initState();
-    _addMarkerMainTarget();
   }
 
   // create widget-button-minus
@@ -68,18 +67,19 @@ class _FifthPageState extends State<FifthScreen> {
   }
 
   //function for adding marker in the main target
-  void _addMarkerMainTarget() {
-    markers.add(Marker(
-      markerId: const MarkerId('main target'),
-      position: _mainTarget,
-      infoWindow: const InfoWindow(
-          title: 'Я название объекта',
-          snippet: 'А я краткое описание, если нужно'),
-      icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
-    ));
 
-    setState(() {});
-  }
+  // void _addMarkerMainTarget() {
+  //   markers.add(Marker(
+  //     markerId: const MarkerId('main target'),
+  //     position: _mainTarget,
+  //     infoWindow: const InfoWindow(
+  //         title: 'Я название объекта',
+  //         snippet: 'А я краткое описание, если нужно'),
+  //     icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
+  //   ));
+
+  //   setState(() {});
+  // }
 
   @override
   Widget build(BuildContext context) {
