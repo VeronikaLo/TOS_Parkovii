@@ -36,14 +36,14 @@ class _SplashScreenState extends State<SplashScreen> {
               ),
               const Text(
                 'ТОС "Парковый"',
-                style: TextStyle(fontSize: 32, fontFamily: 'AniconSans'),
+                style: TextStyle(fontSize: 34, color: Colors.green, fontFamily: 'AniconSans', fontWeight: FontWeight.bold),
               ),
               const SizedBox(
                 height: 50,
               ),
-              Text(
-                'Вместе сможем больше!'.toUpperCase(),
-                style: const TextStyle(
+              const Text(
+                'Вместе сможем больше!',
+                style:  TextStyle(
                     fontSize: 22, letterSpacing: 2, fontFamily: 'AniconSans'),
               ),
             ],
