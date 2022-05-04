@@ -1,0 +1,22 @@
+{
+    "coords": [
+        {
+            "ID": "1",
+            "longitude": "37.592364",
+            "latitude": "54.183307",
+            "description": "ЦПКО им.Белоусова"
+        },
+        {
+            "ID": "2",
+            "longitude": "37.596442",
+            "latitude": "54.185128",
+            "description": "Детская площадка"
+        },
+        {
+            "ID": "3",
+            "longitude": "37.595198",
+            "latitude": "54.187489",
+            "description": "Ключ, родник"
+        }
+    ]
+}

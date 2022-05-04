@@ -73,6 +73,10 @@ flutter:
     - assets/images/background-thirdpage.jpg
     - assets/images/background-details.jpg
     - assets/images/splash.jpg
+    - assets/test_json_for_map/areas.json
+    - assets/test_json_for_map/events.json
+    - assets/test_json_for_map/houses.json
+    - assets/test_json_for_map/institutes.json
     
 
   # An image asset can refer to one or more resolution-specific "variants", see

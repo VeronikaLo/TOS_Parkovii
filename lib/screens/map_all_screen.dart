@@ -1,6 +1,8 @@
 import 'dart:async';
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:flutter/services.dart' show rootBundle;
 
 class FifthScreen extends StatefulWidget {
   const FifthScreen({Key? key}) : super(key: key);
@@ -12,13 +14,16 @@ class FifthScreen extends StatefulWidget {
 class _FifthPageState extends State<FifthScreen> {
   Set<Marker> markers = {};
   final Completer<GoogleMapController> _controller = Completer();
-  double zoomValue = 17.0;
+  double zoomValue = 15.0;
   final _mainTarget =
-      const LatLng(54.10128, 37.57868); //add main target of screen
+      const LatLng(54.188322, 37.592454); //add main target of screen
 
   @override
   void initState() {
     super.initState();
+    setState(() {
+      loadMarkersArea();
+    });
   }
 
   // create widget-button-minus
@@ -66,6 +71,25 @@ class _FifthPageState extends State<FifthScreen> {
         CameraPosition(target: _mainTarget, zoom: zoomVal)));
   }
 
+  Future loadMarkersArea() async {
+    var jsonData =
+        await rootBundle.loadString('assets/test_json_for_map/areas.json');
+    var data = json.decode(jsonData);
+
+    data["coords"].forEach((item) {
+      markers.add(Marker(
+          markerId: MarkerId(item["ID"]),
+          position: LatLng(
+              double.parse(item["latitude"]), double.parse(item["longitude"])),
+          infoWindow: InfoWindow(
+            title: item["description"],
+          ),
+          icon:
+              BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRose)));
+    });
+    setState(() {});
+  }
+
   //function for adding marker in the main target
 
   // void _addMarkerMainTarget() {
@@ -106,15 +130,16 @@ class _FifthPageState extends State<FifthScreen> {
           GoogleMap(
             initialCameraPosition: CameraPosition(
               target: _mainTarget,
-              zoom: 17,
+              zoom: 14,
             ),
             onMapCreated: (GoogleMapController controller) {
               _controller.complete(controller);
             },
+            mapType: MapType.hybrid,
             zoomControlsEnabled: false,
             myLocationButtonEnabled: false,
             zoomGesturesEnabled: false,
-            markers: markers,
+            markers: Set.from(markers),
           ),
 
           //implementation of the buttons column
