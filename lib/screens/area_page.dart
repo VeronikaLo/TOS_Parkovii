@@ -21,35 +21,35 @@ class AreaPage extends StatefulWidget {
 class _AreaPage extends State<AreaPage> {
   final _areas = [
     Area(
+        title: 'Название  пространства (сквер, аллея и др.)',
+        description: 'Название Test search улицы и номер дома',
+        condition: 'Проект'),
+    Area(
         title: 'Название пространства (сквер, аллея и др.)',
-        description: 'Название улицы и номер дома',
-        condition: 'состояние: OK'),
+        description: 'Название test улицы и номер дома',
+        condition: '2023'),
     Area(
         title: 'Название пространства (сквер, аллея и др.)',
         description: 'Название улицы и номер дома',
-        condition: 'состояние: OK'),
+        condition: '2025'),
     Area(
         title: 'Название пространства (сквер, аллея и др.)',
         description: 'Название улицы и номер дома',
-        condition: 'состояние: OK'),
+        condition: 'Проект'),
     Area(
         title: 'Название пространства (сквер, аллея и др.)',
         description: 'Название улицы и номер дома',
-        condition: 'состояние: OK'),
+        condition: 'Проект'),
     Area(
         title: 'Название пространства (сквер, аллея и др.)',
         description: 'Название улицы и номер дома',
-        condition: 'состояние: OK'),
+        condition: 'Проект'),
     Area(
         title: 'Название пространства (сквер, аллея и др.)',
         description: 'Название улицы и номер дома',
-        condition: 'состояние: OK'),
-    Area(
-        title: 'Название пространства (сквер, аллея и др.)',
-        description: 'Название улицы и номер дома',
-        condition: 'состояние: OK'),
+        condition: 'Проект'),
   ];
-
+  //title&description search
   var _filteredAreas = <Area>[];
 
   final _searchController = TextEditingController();
@@ -59,6 +59,11 @@ class _AreaPage extends State<AreaPage> {
     if (query.isNotEmpty) {
       _filteredAreas = _areas.where((Area area) {
         return area.title.toLowerCase().contains(query.toLowerCase());
+      }).toList();
+    }
+    if (query.isNotEmpty) {
+      _filteredAreas = _areas.where((Area area) {
+        return area.description.toLowerCase().contains(query.toLowerCase());
       }).toList();
     } else {
       _filteredAreas = _areas;
@@ -109,13 +114,14 @@ class _AreaPage extends State<AreaPage> {
             children: [
               ListView.builder(
                   padding: const EdgeInsets.only(top: 80),
-                  keyboardDismissBehavior:
-                      ScrollViewKeyboardDismissBehavior.onDrag,
+                  keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior
+                      .onDrag, //Hide keyboard on scroll
                   itemCount: _filteredAreas.length,
                   itemBuilder: (BuildContext context, int index) {
                     final area = _filteredAreas[index];
 
                     return GestureDetector(
+                        //pressing with no response
                         onTap: () {
                           Navigator.of(context).pushNamed('/h_details');
                         },
@@ -138,6 +144,8 @@ class _AreaPage extends State<AreaPage> {
                                             height: 51,
                                             width: 51,
                                             decoration: const BoxDecoration(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(20)),
                                                 color: Color.fromRGBO(
                                                     0, 58, 90, 0.7)),
                                             padding: const EdgeInsets.all(3),

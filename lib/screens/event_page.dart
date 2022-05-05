@@ -19,7 +19,7 @@ class _EventPageState extends State<EventPage> {
   final _events = [
     Event(
       title: 'Название мероприятия',
-      description: 'Место проведения мероприятия',
+      description: 'Место find me проведения мероприятия',
       time: '25 мая 2022',
     ),
     Event(
@@ -73,7 +73,7 @@ class _EventPageState extends State<EventPage> {
       time: '25.05.22',
     )
   ];
-
+  //title&description search
   var _filteredEvents = <Event>[];
 
   final _searchController = TextEditingController();
@@ -84,6 +84,10 @@ class _EventPageState extends State<EventPage> {
       _filteredEvents = _events.where((Event event) {
         return event.title.toLowerCase().contains(query.toLowerCase());
       }).toList();
+    } if (query.isNotEmpty) {
+      _filteredEvents = _events.where((Event event) {
+        return event.description.toLowerCase().contains(query.toLowerCase());
+      }).toList(); 
     } else {
       _filteredEvents = _events;
     }
@@ -134,11 +138,12 @@ class _EventPageState extends State<EventPage> {
               ListView.builder(
                   padding: const EdgeInsets.only(top: 80),
                   keyboardDismissBehavior:
-                      ScrollViewKeyboardDismissBehavior.onDrag,
+                      ScrollViewKeyboardDismissBehavior.onDrag, //Hide keyboard on scroll
                   itemCount: _filteredEvents.length,
                   itemBuilder: (BuildContext context, int index) {
                     final event = _filteredEvents[index];
                     return GestureDetector(
+                      //pressing with no response
                         onTap: () {
                           Navigator.of(context).pushNamed('/h_details');
                         },
@@ -161,6 +166,8 @@ class _EventPageState extends State<EventPage> {
                                             height: 51,
                                             width: 51,
                                             decoration: const BoxDecoration(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(20)),
                                                 color: Color.fromRGBO(
                                                     241, 136, 37, 0.7)),
                                             padding: const EdgeInsets.all(3),

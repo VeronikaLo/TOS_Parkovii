@@ -19,8 +19,16 @@ class _HousePage extends State<HousePage> {
   final _houses = [
     House(
         title: 'Название улицы',
+        description: 'ФИО Test старшего по дому',
+        number: '19А'),
+    House(
+        title: 'Название улицы',
         description: 'ФИО старшего по дому',
-        number: '19'),
+        number: '12 к 3'),
+    House(
+        title: 'Название улицы',
+        description: 'ФИО старшего по дому',
+        number: '255а'),
     House(
         title: 'Название улицы',
         description: 'ФИО старшего по дому',
@@ -30,17 +38,9 @@ class _HousePage extends State<HousePage> {
         description: 'ФИО старшего по дому',
         number: '19'),
     House(
-        title: 'Название улицы',
-        description: 'ФИО старшего по дому',
-        number: '19'),
-    House(
-        title: 'Название улицы',
-        description: 'ФИО старшего по дому',
-        number: '19'),
-    House(
-        title: 'Номер дома', description: 'ФИО старшего по дому', number: '19'),
+        title: 'Название улицы', description: 'ФИО старшего по дому', number: '19'),
   ];
-
+  //title&description search
   var _filteredHouses = <House>[];
 
   final _searchController = TextEditingController();
@@ -50,6 +50,10 @@ class _HousePage extends State<HousePage> {
     if (query.isNotEmpty) {
       _filteredHouses = _houses.where((House house) {
         return house.title.toLowerCase().contains(query.toLowerCase());
+      }).toList();
+    } if (query.isNotEmpty) {
+      _filteredHouses = _houses.where((House house) {
+        return house.description.toLowerCase().contains(query.toLowerCase());
       }).toList();
     } else {
       _filteredHouses = _houses;
@@ -102,12 +106,13 @@ class _HousePage extends State<HousePage> {
               ListView.builder(
                   padding: const EdgeInsets.only(top: 80),
                   keyboardDismissBehavior:
-                      ScrollViewKeyboardDismissBehavior.onDrag,
+                      ScrollViewKeyboardDismissBehavior.onDrag,//Hide keyboard on scroll
                   itemCount: _filteredHouses.length,
                   itemBuilder: (BuildContext context, int index) {
                     final house = _filteredHouses[index];
 
                     return GestureDetector(
+                      //pressing with no response
                         onTap: () {
                           Navigator.of(context).pushNamed('/h_details');
                         },
@@ -130,6 +135,8 @@ class _HousePage extends State<HousePage> {
                                           height: 51,
                                           width: 51,
                                           decoration: const BoxDecoration(
+                                            borderRadius: BorderRadius.all(
+                                                    Radius.circular(20)),
                                               color: Color.fromARGB(
                                                   170, 23, 134, 34)),
                                           padding: const EdgeInsets.all(3),

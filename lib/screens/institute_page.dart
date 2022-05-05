@@ -20,29 +20,30 @@ class _InstitutePage extends State<InstitutePage> {
   final _institutes = [
     Institute(
         title: 'Название организации',
-        description: 'Краткое описание организации',
-        type: 'Коммерческая'),
+        description: 'Краткое Testописание организации',
+        type: 'НКО'),
     Institute(
         title: 'Название организации',
         description: 'Краткое описание организации',
-        type: 'Государственная'),
+        type: 'ГОС'),
     Institute(
         title: 'Название организации',
         description: 'Краткое описание организации',
-        type: 'Общественная'),
+        type: 'КО'),
     Institute(
         title: 'Название организации',
         description: 'Краткое описание организации',
-        type: 'Коммерческая'),
+        type: 'НКО'),
     Institute(
         title: 'Название организации',
         description: 'Краткое описание организации',
-        type: 'Коммерческая'),
+        type: 'ГОС'),
     Institute(
         title: 'Название организации',
         description: 'Краткое описание организации',
-        type: 'Коммерческая'),
+        type: 'ГОС'),
   ];
+  //title&description search
 
   var _filteredInstitutes = <Institute>[];
 
@@ -53,6 +54,13 @@ class _InstitutePage extends State<InstitutePage> {
     if (query.isNotEmpty) {
       _filteredInstitutes = _institutes.where((Institute institute) {
         return institute.title.toLowerCase().contains(query.toLowerCase());
+      }).toList();
+    }
+    if (query.isNotEmpty) {
+      _filteredInstitutes = _institutes.where((Institute institute) {
+        return institute.description
+            .toLowerCase()
+            .contains(query.toLowerCase());
       }).toList();
     } else {
       _filteredInstitutes = _institutes;
@@ -103,13 +111,14 @@ class _InstitutePage extends State<InstitutePage> {
             children: [
               ListView.builder(
                   padding: const EdgeInsets.only(top: 80),
-                  keyboardDismissBehavior:
-                      ScrollViewKeyboardDismissBehavior.onDrag,
+                  keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior
+                      .onDrag, //Hide keyboard on scroll
                   itemCount: _filteredInstitutes.length,
                   itemBuilder: (BuildContext context, int index) {
                     final institute = _filteredInstitutes[index];
 
                     return GestureDetector(
+                        //pressing with no response
                         onTap: () {
                           Navigator.of(context).pushNamed('/h_details');
                         },
@@ -132,6 +141,8 @@ class _InstitutePage extends State<InstitutePage> {
                                             height: 51,
                                             width: 51,
                                             decoration: const BoxDecoration(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(20)),
                                                 color: Color.fromRGBO(
                                                     214, 0, 0, 0.7)),
                                             padding: const EdgeInsets.all(3),
@@ -148,7 +159,7 @@ class _InstitutePage extends State<InstitutePage> {
                                                       color: Color.fromRGBO(
                                                           35, 33, 34, 1))),
                                             ),
-                                          )
+                                          ),
                                         ]),
                                         title: Text(institute.title,
                                             maxLines: 1,
