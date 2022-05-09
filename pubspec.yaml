@@ -77,6 +77,11 @@ flutter:
     - assets/test_json_for_map/events.json
     - assets/test_json_for_map/houses.json
     - assets/test_json_for_map/institutes.json
+    - assets/images/pin_area.png
+    - assets/images/pin_institute.png
+    - assets/images/pin_house.png
+    - assets/images/pin_event.png
+    - assets/images/pin_event.png
     
 
   # An image asset can refer to one or more resolution-specific "variants", see
