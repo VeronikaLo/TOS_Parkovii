@@ -2,6 +2,28 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
+class Institute {
+  final String title;
+  final String type;
+  final String shortDesc;
+  final String fullDesc;
+  final String adress;
+  final dynamic latitude;
+  final dynamic longitude;
+  final String openHours;
+
+  Institute({
+    required this.title,
+    required this.type,
+    required this.shortDesc,
+    required this.fullDesc,
+    required this.adress,
+    required this.latitude,
+    required this.longitude,
+    required this.openHours,
+  });
+}
+
 class FifthPage extends StatefulWidget {
   const FifthPage({Key? key}) : super(key: key);
 
@@ -12,9 +34,20 @@ class FifthPage extends StatefulWidget {
 class _FifthPageState extends State<FifthPage> {
   Set<Marker> markers = {};
   final Completer<GoogleMapController> _controller = Completer();
-  double zoomValue = 17.0;
-  final _mainTarget =
-      const LatLng(54.10128, 37.57868); //add main target of screen
+  double zoomValue = 14.0;
+  //add main target of screen
+  final institute = Institute(
+    title: 'Пенсионный фонд РФ',
+    type: 'ГОС',
+    shortDesc:
+        'Государственное учреждение, занимающееся обязательным социальным обеспечением.',
+    fullDesc:
+        'Пенсионный фонд Российской Федерации (ПФР) создан для государственного управления средствами пенсионной системы и обеспечения прав граждан РФ на пенсионное обеспечение.',
+    adress: 'ул. Льва Толстого, 107',
+    latitude: 54.186088,
+    longitude: 37.600088,
+    openHours: '10:00 - 21:00',
+  );
 
   @override
   void initState() {
@@ -28,8 +61,11 @@ class _FifthPageState extends State<FifthPage> {
         heroTag: "btn1",
         mini: true,
         materialTapTargetSize: MaterialTapTargetSize.padded,
-        backgroundColor: const Color.fromRGBO(241, 136, 37, 1),
-        child: const Text("-"),
+        backgroundColor: const Color.fromRGBO(247, 222, 28, 0.8),
+        child: const Text(
+          "-",
+          style: TextStyle(fontSize: 25),
+        ),
         onPressed: () {
           zoomValue--;
           _minus(zoomValue);
@@ -42,8 +78,11 @@ class _FifthPageState extends State<FifthPage> {
         heroTag: "btn2",
         mini: true,
         materialTapTargetSize: MaterialTapTargetSize.padded,
-        backgroundColor: const Color.fromRGBO(241, 136, 37, 1),
-        child: const Text("+"),
+        backgroundColor: const Color.fromRGBO(247, 222, 28, 0.8),
+        child: const Text(
+          "+",
+          style: TextStyle(fontSize: 25),
+        ),
         onPressed: () {
           zoomValue++;
           _plus(zoomValue);
@@ -53,23 +92,26 @@ class _FifthPageState extends State<FifthPage> {
   //function for animating camera '-'
   Future<void> _minus(double zoomVal) async {
     final GoogleMapController controller = await _controller.future;
-    controller.animateCamera(CameraUpdate.newCameraPosition(
-        CameraPosition(target: _mainTarget, zoom: zoomVal)));
+    controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
+        target: LatLng(institute.latitude, institute.longitude),
+        zoom: zoomVal)));
   }
 
   //function for animating camera '+'
   Future<void> _plus(double zoomVal) async {
     final GoogleMapController controller = await _controller.future;
-    controller.animateCamera(CameraUpdate.newCameraPosition(
-        CameraPosition(target: _mainTarget, zoom: zoomVal)));
+    controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
+        target: LatLng(institute.latitude, institute.longitude),
+        zoom: zoomVal)));
   }
 
   //function for adding marker in the main target
   void _addMarkerMainTarget() {
     markers.add(Marker(
       markerId: const MarkerId('main target'),
-      position: _mainTarget,
-      icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
+      infoWindow: InfoWindow(title: institute.title),
+      position: LatLng(institute.latitude, institute.longitude),
+      icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
     ));
 
     setState(() {});
@@ -79,52 +121,109 @@ class _FifthPageState extends State<FifthPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Местоположение",
-            style: TextStyle(fontSize: 20, fontFamily: 'Lato')),
-        centerTitle: false,
-      ),
-      body: Stack(
-        alignment: AlignmentDirectional.bottomCenter,
-        children: [
-          GoogleMap(
-            initialCameraPosition: CameraPosition(
-              target: _mainTarget,
-              zoom: 17,
-            ),
-            onMapCreated: (GoogleMapController controller) {
-              _controller.complete(controller);
-            },
-            zoomControlsEnabled: false,
-            myLocationButtonEnabled: false,
-            zoomGesturesEnabled: false,
-            markers: markers,
-          ),
-          Container(
-            height: 140,
-            width: double.infinity,
-            color: const Color.fromRGBO(255, 255, 255, 0.9),
-            child: const Text(
-              'Некие подробности',
-              style: TextStyle(fontSize: 25, fontFamily: 'Lato'),
-            ),
-          ),
-          //implementation of the buttons column
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Align(
-              alignment: Alignment.topRight,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  _zoomPlusButton(),
-                  const SizedBox(
-                    height: 1,
-                  ),
-                  _zoomMinusButton()
-                ],
+          leading: IconButton(
+              icon: const Icon(
+                Icons.arrow_back,
+                color: Colors.white,
               ),
+              color: const Color.fromRGBO(35, 33, 34, 1),
+              splashRadius: 50,
+              splashColor: Colors.grey,
+              onPressed: () {
+                Navigator.of(context).pushNamed('/Home');
+              },
+              tooltip: "Назад"),
+          title: const Text("Местоположение",
+              style: TextStyle(
+                  fontSize: 24, fontFamily: 'Lato', color: Colors.white)),
+          centerTitle: true,
+          backgroundColor: const Color.fromRGBO(247, 222, 28, 1)),
+      body: Column(
+        children: [
+          Flexible(
+            flex: 5,
+            child: Stack(
+              children: [
+                GoogleMap(
+                    initialCameraPosition: CameraPosition(
+                      target: LatLng(institute.latitude, institute.longitude),
+                      zoom: 14,
+                    ),
+                    onMapCreated: (GoogleMapController controller) {
+                      _controller.complete(controller);
+                    },
+                    mapType: MapType.normal,
+                    zoomControlsEnabled: false,
+                    myLocationButtonEnabled: false,
+                    zoomGesturesEnabled: false,
+                    markers: markers),
+
+                // implement column of the buttons +/-
+                Container(
+                  height: double.infinity,
+                  width: MediaQuery.of(context).size.width,
+                  alignment: Alignment.centerRight,
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        _zoomPlusButton(),
+                        const SizedBox(
+                          height: 1,
+                        ),
+                        _zoomMinusButton()
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
-          )
+          ),
+          Flexible(
+              flex: 1,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Flexible(
+                        flex: 2,
+                        fit: FlexFit.tight,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            const Text('Адрес:',
+                                style: TextStyle(fontFamily: 'Lato')),
+                            const SizedBox(height: 20),
+                            Text((institute.adress),
+                                style: const TextStyle(
+                                    fontSize: 18, fontFamily: 'Lato')),
+                          ],
+                        )),
+                    const VerticalDivider(
+                      color: Colors.black,
+                    ),
+                    Flexible(
+                      flex: 1,
+                      fit: FlexFit.tight,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const Text('График работы:',
+                              style: TextStyle(fontFamily: 'Lato')),
+                          const SizedBox(height: 20),
+                          Text(institute.openHours,
+                              style: const TextStyle(
+                                  fontSize: 18, fontFamily: 'Lato')),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              )),
         ],
       ),
     );

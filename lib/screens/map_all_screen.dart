@@ -192,7 +192,10 @@ class _FifthPageState extends State<FifthScreen> {
     return Scaffold(
       appBar: AppBar(
           leading: IconButton(
-              icon: const Icon(Icons.arrow_back),
+              icon: const Icon(
+                Icons.arrow_back,
+                color: Colors.white,
+              ),
               color: const Color.fromRGBO(35, 33, 34, 1),
               splashRadius: 50,
               splashColor: Colors.grey,
@@ -202,7 +205,7 @@ class _FifthPageState extends State<FifthScreen> {
               tooltip: "Назад"),
           title: const Text("Карта ТОС",
               style: TextStyle(
-                  fontSize: 20, fontFamily: 'Lato', color: Colors.black)),
+                  fontSize: 24, fontFamily: 'Lato', color: Colors.white)),
           centerTitle: true,
           backgroundColor: const Color.fromRGBO(247, 222, 28, 1)),
       body: Column(
