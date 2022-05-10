@@ -110,49 +110,54 @@ class _HouseDetail extends State<HouseDetail> {
                   itemCount: _filteredDetails.length,
                   itemBuilder: (BuildContext context, int index) {
                     final detail = _filteredDetails[index];
-
-                    return Container(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 15, vertical: 5),
-                        alignment: FractionalOffset.bottomRight,
-                        child: Column(
-                          children: [
-                            Container(
-                                height: 67,
-                                decoration: const BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(12)),
-                                ),
-                                child: ListTile(
-                                  title: Text(detail.title,
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: const TextStyle(
-                                          fontSize: 17,
-                                          fontFamily: "Lato",
-                                          color:
-                                              Color.fromRGBO(35, 33, 34, 1))),
-                                  subtitle: Text(detail.description,
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: const TextStyle(
-                                          fontSize: 15,
-                                          fontFamily: "Lato",
-                                          color:
-                                              Color.fromRGBO(35, 33, 34, 1))),
-                                  trailing: IconButton(
-                                      icon: const Icon(
-                                          Icons.chevron_right_outlined),
-                                      color:
-                                          const Color.fromRGBO(35, 33, 34, 1),
-                                      onPressed: () {
-                                        Navigator.of(context).pushNamed('/map');
-                                      },
-                                      tooltip: "Перейти к карте"),
-                                )),
-                          ],
-                        ));
+                    return GestureDetector(
+                        //pressing with no response
+                        onTap: () {
+                          Navigator.of(context).pushNamed('/map');
+                        },
+                        child: Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 15, vertical: 5),
+                            alignment: FractionalOffset.bottomRight,
+                            child: Column(
+                              children: [
+                                Container(
+                                    height: 67,
+                                    decoration: const BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(12)),
+                                    ),
+                                    child: ListTile(
+                                      title: Text(detail.title,
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: const TextStyle(
+                                              fontSize: 17,
+                                              fontFamily: "Lato",
+                                              color: Color.fromRGBO(
+                                                  35, 33, 34, 1))),
+                                      subtitle: Text(detail.description,
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: const TextStyle(
+                                              fontSize: 15,
+                                              fontFamily: "Lato",
+                                              color: Color.fromRGBO(
+                                                  35, 33, 34, 1))),
+                                      trailing: IconButton(
+                                          icon: const Icon(
+                                              Icons.chevron_right_outlined),
+                                          color: const Color.fromRGBO(
+                                              35, 33, 34, 1),
+                                          onPressed: () {
+                                            Navigator.of(context)
+                                                .pushNamed('/map');
+                                          },
+                                          tooltip: "Перейти к карте"),
+                                    )),
+                              ],
+                            )));
                   }),
               Padding(
                 padding: const EdgeInsets.only(bottom: 40),

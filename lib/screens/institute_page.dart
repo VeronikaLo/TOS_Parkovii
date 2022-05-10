@@ -95,9 +95,7 @@ class _InstitutePage extends State<InstitutePage> {
         backgroundColor: const Color.fromRGBO(214, 0, 0, 1),
         title: const Text("Организации",
             style: TextStyle(
-                fontSize: 24,
-                fontFamily: "Lato",
-                color: Color.fromRGBO(35, 33, 34, 1))),
+                fontSize: 24, fontFamily: "Lato", color: Colors.white)),
         centerTitle: true,
       ),
       body: Container(
@@ -156,8 +154,7 @@ class _InstitutePage extends State<InstitutePage> {
                                                   style: const TextStyle(
                                                       fontSize: 12,
                                                       fontFamily: "Lato",
-                                                      color: Color.fromRGBO(
-                                                          35, 33, 34, 1))),
+                                                      color: Colors.white)),
                                             ),
                                           ),
                                         ]),

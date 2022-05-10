@@ -98,9 +98,7 @@ class _AreaPage extends State<AreaPage> {
         backgroundColor: const Color.fromRGBO(0, 58, 90, 1),
         title: const Text("Пространства",
             style: TextStyle(
-                fontSize: 24,
-                fontFamily: "Lato",
-                color: Color.fromRGBO(35, 33, 34, 1))),
+                fontSize: 24, fontFamily: "Lato", color: Colors.white)),
         centerTitle: true,
       ),
       body: Container(
@@ -159,8 +157,7 @@ class _AreaPage extends State<AreaPage> {
                                                   style: const TextStyle(
                                                       fontSize: 13,
                                                       fontFamily: "Lato",
-                                                      color: Color.fromRGBO(
-                                                          35, 33, 34, 1))),
+                                                      color: Colors.white)),
                                             ),
                                           )
                                         ]),

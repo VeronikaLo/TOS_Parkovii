@@ -91,7 +91,7 @@ class _HousePage extends State<HousePage> {
             style: TextStyle(
                 fontSize: 24,
                 fontFamily: "Lato",
-                color: Color.fromRGBO(35, 33, 34, 1))),
+                color: Colors.white)),
         centerTitle: true,
       ),
       body: Container(
@@ -149,8 +149,7 @@ class _HousePage extends State<HousePage> {
                                                 style: const TextStyle(
                                                     fontSize: 13,
                                                     fontFamily: "Lato",
-                                                    color: Color.fromRGBO(
-                                                        35, 33, 34, 1))),
+                                                    color: Colors.white)),
                                           ),
                                         )
                                       ]),

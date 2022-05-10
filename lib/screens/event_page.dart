@@ -84,10 +84,11 @@ class _EventPageState extends State<EventPage> {
       _filteredEvents = _events.where((Event event) {
         return event.title.toLowerCase().contains(query.toLowerCase());
       }).toList();
-    } if (query.isNotEmpty) {
+    }
+    if (query.isNotEmpty) {
       _filteredEvents = _events.where((Event event) {
         return event.description.toLowerCase().contains(query.toLowerCase());
-      }).toList(); 
+      }).toList();
     } else {
       _filteredEvents = _events;
     }
@@ -121,9 +122,7 @@ class _EventPageState extends State<EventPage> {
         backgroundColor: const Color.fromRGBO(241, 136, 37, 1),
         title: const Text('Мероприятия',
             style: TextStyle(
-                fontSize: 24,
-                fontFamily: "Lato",
-                color: Color.fromRGBO(35, 33, 34, 1))),
+                fontSize: 24, fontFamily: "Lato", color: Colors.white)),
         centerTitle: true,
       ),
       body: Container(
@@ -137,13 +136,13 @@ class _EventPageState extends State<EventPage> {
             children: [
               ListView.builder(
                   padding: const EdgeInsets.only(top: 80),
-                  keyboardDismissBehavior:
-                      ScrollViewKeyboardDismissBehavior.onDrag, //Hide keyboard on scroll
+                  keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior
+                      .onDrag, //Hide keyboard on scroll
                   itemCount: _filteredEvents.length,
                   itemBuilder: (BuildContext context, int index) {
                     final event = _filteredEvents[index];
                     return GestureDetector(
-                      //pressing with no response
+                        //pressing with no response
                         onTap: () {
                           Navigator.of(context).pushNamed('/h_details');
                         },
@@ -181,8 +180,7 @@ class _EventPageState extends State<EventPage> {
                                                   style: const TextStyle(
                                                       fontSize: 12,
                                                       fontFamily: "Lato",
-                                                      color: Color.fromRGBO(
-                                                          35, 33, 34, 1))),
+                                                      color: Colors.white)),
                                             ),
                                           )
                                         ]),
