@@ -10,28 +10,7 @@ class HomeScreen extends StatefulWidget {
 
 // Creation a widget state
 class _HomeScreenState extends State<HomeScreen> {
-  final List _titles = [
-    "Дома",
-    "Мероприятия",
-    "Пространства",
-    "Организации",
-    "Карта локаций"
-  ];
-  final List _icons = [
-    "assets/images/buildings.png",
-    "assets/images/events.png",
-    "assets/images/areas.png",
-    "assets/images/companies.png",
-    "assets/images/maps.png"
-  ];
-  final List<Color> _colors = const [
-    Color.fromARGB(255, 23, 134, 34),
-    Color.fromRGBO(241, 136, 37, 1),
-    Color.fromRGBO(0, 58, 90, 1),
-    Color.fromRGBO(214, 0, 0, 1),
-    Color.fromRGBO(247, 222, 28, 1)
-  ];
-
+  
   int _selectedIndex = -1;
 
   @override
@@ -60,18 +39,16 @@ class _HomeScreenState extends State<HomeScreen> {
                   color: Color.fromRGBO(0, 58, 90, 1),
                 ),
               ),
-              //const SizedBox(
-               // height: 20,
-              //),
+              
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 15),
                 height: 550,
                 child: ListView.builder(
-                    itemCount: _titles.length,
+                    itemCount: _fields.length,
                     itemBuilder: (BuildContext context, int index) {
                       return Container(
                         decoration: BoxDecoration(
-                          color: _colors[index],
+                          color: _fields[index].color,
                           //border: Border.all(width: 2, color: Colors.grey),
                           borderRadius: BorderRadius.circular(40),
                           boxShadow: [
@@ -88,14 +65,14 @@ class _HomeScreenState extends State<HomeScreen> {
                         margin: const EdgeInsets.symmetric(vertical: 8),
                         child: ListTile(
                           title: Text(
-                            _titles[index],
+                            _fields[index].title,
                             style: const TextStyle(
                                 fontSize: 26,
                                 fontFamily: "Lato",
                                 color: Colors.white),
                           ),
                           leading: ImageIcon(
-                            AssetImage(_icons[index]),
+                            AssetImage(_fields[index].icon),
                             size: 65,
                             color: Colors.white,
                           ),
@@ -134,3 +111,50 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+
+
+
+
+
+  class Field{
+  final String title;
+  final String icon;
+  final Color color;
+
+  Field({required this.title,required this.icon, required this.color} );
+}
+
+
+
+final _fields = [
+  Field(
+    title: "Дома",
+    icon: "assets/images/buildings.png" ,
+    color: const Color.fromARGB(255, 23, 134, 34),
+    ),
+
+  Field(
+    title: "Мероприятия",
+    icon: "assets/images/events.png" ,
+    color: const Color.fromRGBO(241,136,37,1),
+    ),
+
+  Field(
+    title: "Пространства",
+    icon: "assets/images/areas.png" ,
+    color: const Color.fromRGBO(0,58,90,1),
+    ),
+
+  Field(
+    title: "Организации",
+    icon: "assets/images/companies.png" ,
+    color: const  Color.fromRGBO(214,0,0,1),
+    ),
+
+  Field(
+    title: "Карта TOC",
+    icon: "assets/images/maps.png" ,
+    color: const Color.fromRGBO(247, 222, 28, 1),
+    )  
+
+];
