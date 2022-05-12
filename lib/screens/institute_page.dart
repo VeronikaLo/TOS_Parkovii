@@ -118,7 +118,7 @@ class _InstitutePage extends State<InstitutePage> {
                     return GestureDetector(
                         //pressing with no response
                         onTap: () {
-                          Navigator.of(context).pushNamed('/h_details');
+                          Navigator.of(context).pushNamed('/i_details');
                         },
                         child: Container(
                             padding: const EdgeInsets.symmetric(

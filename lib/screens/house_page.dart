@@ -79,7 +79,7 @@ class _HousePage extends State<HousePage> {
       appBar: AppBar(
         leading: IconButton(
             icon: const Icon(Icons.arrow_back),
-            color: const Color.fromRGBO(35, 33, 34, 1),
+            color: Colors.white,
             splashRadius: 50,
             splashColor: Colors.grey,
             onPressed: () {

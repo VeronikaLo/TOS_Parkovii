@@ -9,6 +9,7 @@ import 'screens/details_screen.dart';
 import 'screens/event_page.dart';
 import 'screens/home_screen.dart';
 import 'screens/house_page.dart';
+import 'screens/institute_detail.dart';
 import 'screens/institute_page.dart';
 import 'screens/splash_screen.dart';
 import 'screens/map_screen.dart';
@@ -31,7 +32,8 @@ class MyApp extends StatelessWidget {
     '/event': (BuildContext context) => const EventPage(),
     '/house': (BuildContext context) => const HousePage(),
     '/institut': (BuildContext context) => const InstitutePage(),
-    '/h_details': (BuildContext context) => const HouseDetail()
+    '/h_details': (BuildContext context) => const HouseDetail(),
+    '/i_details': (BuildContext context) => const InstituteDetail(),
   };
 
   @override
