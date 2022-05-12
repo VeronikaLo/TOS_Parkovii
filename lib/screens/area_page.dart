@@ -121,7 +121,7 @@ class _AreaPage extends State<AreaPage> {
                     return GestureDetector(
                         //pressing with no response
                         onTap: () {
-                          Navigator.of(context).pushNamed('/h_details');
+                          Navigator.of(context).pushNamed('/a_details');
                         },
                         child: Container(
                             padding: const EdgeInsets.symmetric(

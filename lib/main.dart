@@ -4,6 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:tos_parkovii/screens/house_detail.dart';
+import 'screens/area_detail.dart';
 import 'screens/area_page.dart';
 import 'screens/details_screen.dart';
 import 'screens/event_page.dart';
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
     '/institut': (BuildContext context) => const InstitutePage(),
     '/h_details': (BuildContext context) => const HouseDetail(),
     '/i_details': (BuildContext context) => const InstituteDetail(),
+    '/a_details': (BuildContext context) => const AreaDetail(),
   };
 
   @override

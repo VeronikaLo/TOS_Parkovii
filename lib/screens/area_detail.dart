@@ -25,25 +25,25 @@ class Detail {
       required this.image});
 }
 
-class InstituteDetail extends StatefulWidget {
-  const InstituteDetail({Key? key}) : super(key: key);
+class AreaDetail extends StatefulWidget {
+  const AreaDetail({Key? key}) : super(key: key);
 
   @override
-  State<InstituteDetail> createState() => _InstituteDetail();
+  State<AreaDetail> createState() => _AreaDetail();
 }
 
-class _InstituteDetail extends State<InstituteDetail> {
+class _AreaDetail extends State<AreaDetail> {
   final _details = [
-    Detail(
-        title: 'Пенсионный Фонд Российской Федерации',
-        type: 'Государственная',
+    Detail( //дополнить
+        title: '',
+        type: '',
         condition: '',
         financing: '',
-        fullDescription: 'График работы: 8:00 - 20:00 /n тел.: 600-03-81',
-        street: 'Лейтейзена',
-        number: '1В',
-        latitude: '54.20018',
-        longitude: '37.60324',
+        fullDescription: '',
+        street: '',
+        number: '',
+        latitude: '',
+        longitude: '',
         image: '')
   ];
 
