@@ -1,49 +1,15 @@
 import 'package:flutter/material.dart';
-
-class Detail {
-  final String title;
-  final String type;
-  final String shortDescription;
-  final String fullDescription;
-  final String street;
-  final String number;
-  final dynamic latitude;
-  final dynamic longitude;
-  final String image;
-
-  Detail(
-      {required this.title,
-      required this.type,
-      required this.shortDescription,
-      required this.fullDescription,
-      required this.street,
-      required this.number,
-      required this.latitude,
-      required this.longitude,
-      required this.image});
-}
+import 'dart:core';
 
 class InstituteDetail extends StatefulWidget {
   const InstituteDetail({Key? key}) : super(key: key);
 
   @override
-  State<InstituteDetail> createState() => _InstituteDetail();
+  _InstituteDetailState createState() => _InstituteDetailState();
 }
 
-class _InstituteDetail extends State<InstituteDetail> {
-  final _details = [
-    Detail(
-        title: 'Пенсионный Фонд Российской Федерации',
-        type: 'Государственная',
-        shortDescription: 'График работы: 8:00 - 20:00 /n тел.: 600-03-81',
-        fullDescription:
-            'Пенсионный фонд России (ПФР) является одним из трех государственных внебюджетных фондов, на которые возложены функции по обязательному социальному страхованию. Фонд выступает ключевым социальным институтом страны и крупнейшей федеральной системой оказания государственных услуг в области социального обеспечения.',
-        street: 'Лейтейзена',
-        number: '1В',
-        latitude: '54.20018',
-        longitude: '37.60324',
-        image: '')
-  ];
+class _InstituteDetailState extends State<InstituteDetail> {
+  int _selectedIndex = -1;
 
   @override
   Widget build(BuildContext context) {
@@ -72,3 +38,40 @@ class _InstituteDetail extends State<InstituteDetail> {
         ));
   }
 }
+
+class More {
+  final String title;
+  final String type;
+  final String shortDescription;
+  final String fullDescription;
+  final String street;
+  final String number;
+  final dynamic latitude;
+  final dynamic longitude;
+  final String image;
+
+  More(
+      {required this.title,
+      required this.type,
+      required this.shortDescription,
+      required this.fullDescription,
+      required this.street,
+      required this.number,
+      required this.latitude,
+      required this.longitude,
+      required this.image});
+}
+
+final _mores = [
+  More(
+      title: 'Пенсионный Фонд Российской Федерации',
+      type: 'Государственная',
+      shortDescription: 'График работы: 8:00 - 20:00 /n тел.: 600-03-81',
+      fullDescription:
+          'Пенсионный фонд России (ПФР) является одним из трех государственных внебюджетных фондов, на которые возложены функции по обязательному социальному страхованию. Фонд выступает ключевым социальным институтом страны и крупнейшей федеральной системой оказания государственных услуг в области социального обеспечения.',
+      street: 'Лейтейзена',
+      number: '1В',
+      latitude: '54.20018',
+      longitude: '37.60324',
+      image: '')
+];
