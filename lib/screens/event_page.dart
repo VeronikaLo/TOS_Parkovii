@@ -1,12 +1,5 @@
 import 'package:flutter/material.dart';
-
-class Event {
-  final String title;
-  final String description;
-  final String time;
-
-  Event({required this.title, required this.description, required this.time});
-}
+import 'package:tos_parkovii/helper.dart';
 
 class EventPage extends StatefulWidget {
   const EventPage({Key? key}) : super(key: key);
@@ -18,60 +11,83 @@ class EventPage extends StatefulWidget {
 class _EventPageState extends State<EventPage> {
   final _events = [
     Event(
-      title: 'Название мероприятия',
-      description: 'Место find me проведения мероприятия',
-      time: '25 мая 2022',
+      title: 'Фестиваль "Сила в Правде"',
+      place: 'Центр. парк культуры и отдыха им. Белоусова',
+      description: 'Обязательно приходите, вас ждет разнообразная программа для всех возрастов. Каждый найдет себе занятие по душе. Вместе мы - сила!',
+      time: '19:00',
+      date: '18 марта 2022',
+      type: 'культура',
+      longitude: 37.588458,
+      latitude: 54.181647,
+      picture:'https://sun9-65.userapi.com/s/v1/if2/SLqSHXtuax11NFtVh3MOvG1ZWeb_PWQIAs0FStYe2G5rIZl8GHiOgqoA-1ym7Fu7aKb9dG_-KyVZxHJa16vyo_tH.jpg?size=905x1280&quality=95&type=album',
     ),
     Event(
-      title: 'Название Test search мероприятия',
-      description: 'Место проведения мероприятия',
-      time: '25 мая 2022',
+      title: 'Экомобиль Тульская область',
+      place: 'ул.Л.Толстого 93',
+      description: 'Вчера Экомобиль принимал вторсырьё на ул. ул.Металлургов, 62а (парковка ТЦ "Демидовский"). Вопреки обыкновению пришло лишь восемь человек. Тем не менее, среди них были люди, сдававшие вторсырьё огромными мешками, а также те, кто навещает нас каждый месяц. Благодарим всех пришедших и призываем других начинать жить осознанно! Следующий раз ждём всех желающих по адресу ул. Льва Толстого, д. 93 с 18:00 до 19:30.',
+      time: '18:00 - 19:30 ',
+      date: '22 мая 2022',
+      type: 'экология',
+      longitude: 37.602687,
+      latitude: 54.184856,
+      picture:'https://sun9-9.userapi.com/s/v1/if2/xS2zd-WG4I0lDHmU4EcI9oPh1cz0l_TZ2B8E2w1W4-9uIfICSgHiSmsxbVisz1i6mwuHYtNhmy-vHei-TepHNKvU.jpg?size=1080x675&quality=96&type=album',
     ),
     Event(
-      title: 'Название мероприятия',
-      description: 'Место проведения мероприятия',
-      time: '25 мая 2022',
+      title: 'Готовимся к Пасхе',
+      place: 'Центр. парк культуры и отдыха им. Белоусова',
+      description: 'Посмотрите, с каким удовольствием наши юные посетители Центрального парка погрузились в процесс украшение пасхальных яиц. Мастер-класс от Тульской птицефабрики будет проходить в этом году на главной эстраде ЦПКиО. Время проведения с 12.00 до 16.00. Не пропустите! Ваши дети точно скажут вам спасибо.',
+      time: '12:00 - 16:00',
+      date: '17 апреля 2022',
+      type: 'семейное добрососедство',
+      longitude: 37.588458,
+      latitude: 54.181647,
+      picture:'https://sun9-6.userapi.com/s/v1/if2/hS_5W9Bd6bqJMjARyJq9BACfK3etWpqSbAwaG7o6W8ifPRpL0U50WENyX2V67XOkHhZCa3RtNsHtqFE9FsJkjaM3.jpg?size=1280x960&quality=96&type=album',
     ),
     Event(
-      title: 'Название мероприятия',
-      description: 'Место проведения мероприятия',
-      time: '25 мая 2022',
+      title: 'Открытие "Моего семейного центра"',
+      place: 'ул. Гоголевская д.71',
+      description: 'В центре можно решить такие вопросы, как улучшение жилищных условий, взыскание алиментов, оформление мер соц. поддержки и заключение социального контракта, урегулирование семейных споров и улучшение отношений между детьми и родителями и т.д. Новое отделение работает в режиме семейного многофункционального центра. Граждане могут обратиться за помощью как в «Семейную диспетчерскую» по единому бесплатному номеру 129, так и лично. Здесь созданы все условия для мам с колясками и игровая зона для детей. Семья получает комплексную социальную помощь на основе «бесшовного» взаимодействия, и с момента обращения до решения вопроса семью сопровождает один и тот же специалист.',
+      time: '14:00',
+      date: '1 февраля 2022',
+      type: 'образование',
+      longitude: 37.588458,
+      latitude: 54.181647,
+      picture:'https://sun9-86.userapi.com/s/v1/if2/dHoT4asCc1n432NCTnhHgf3ygwZcTsxsmRtvic7J46cpQLGDKKS1xxmaj9jgqhg2RmFuEWCmMJq5ioxm5h87AQ_s.jpg?size=1800x1200&quality=96&type=album',
     ),
     Event(
-      title: 'Название мероприятия',
-      description: 'Место проведения мероприятия',
-      time: '25 мая 2022',
+      title: 'Mероприятиe 1',
+      place: '',
+      description: 'Description проведения мероприятия',
+      time: '',
+      date: '12 октября 2021',
+      type: '',
+      longitude: 37.588458,
+      latitude: 54.181647,
+      picture:'',
     ),
     Event(
-      title: 'Название мероприятия',
-      description: 'Место проведения мероприятия',
-      time: '25 мая 2022',
+      title: 'Mероприятиe 2',
+      place: '',
+      description: 'Description проведения мероприятия',
+      time: '25 мая',
+      date: '25 мая',
+      type: '',
+      longitude: 37.588458,
+      latitude: 54.181647,
+      picture:'',
     ),
     Event(
-      title: 'Название мероприятия',
-      description: 'Место проведения мероприятия',
-      time: '25 мая 2022',
+      title: 'Mероприятиe 3',
+      place: '',
+      description: 'Description проведения мероприятия',
+      time: '25 мая',
+      date: '25 мая 2022',
+      type: '',
+      longitude: 37.588458,
+      latitude: 54.181647,
+      picture:'',
     ),
-    Event(
-      title: 'Название мероприятия',
-      description: 'Место проведения мероприятия',
-      time: '25 мая 2022',
-    ),
-    Event(
-      title: 'Название мероприятия',
-      description: 'Место проведения мероприятия',
-      time: '25 мая 2022',
-    ),
-    Event(
-      title: 'Название мероприятия',
-      description: 'Место проведения мероприятия',
-      time: '25 мая 2022',
-    ),
-    Event(
-      title: 'Название мероприятия',
-      description: 'Место проведения мероприятия',
-      time: '25.05.22',
-    )
+    
   ];
   //title&description search
   var _filteredEvents = <Event>[];
@@ -144,7 +160,7 @@ class _EventPageState extends State<EventPage> {
                     return GestureDetector(
                         //pressing with no response
                         onTap: () {
-                          Navigator.of(context).pushNamed('/h_details');
+                          Navigator.of(context).pushNamed('/e_details', arguments: _events[index] );
                         },
                         child: Container(
                             padding: const EdgeInsets.symmetric(
@@ -172,7 +188,7 @@ class _EventPageState extends State<EventPage> {
                                             padding: const EdgeInsets.all(3),
                                             child: Align(
                                               alignment: Alignment.center,
-                                              child: Text(event.time,
+                                              child: Text(event.date,
                                                   textAlign: TextAlign.center,
                                                   maxLines: 3,
                                                   overflow:
@@ -192,7 +208,7 @@ class _EventPageState extends State<EventPage> {
                                                 fontFamily: "Lato",
                                                 color: Color.fromRGBO(
                                                     35, 33, 34, 1))),
-                                        subtitle: Text(event.description,
+                                        subtitle: Text(event.place,
                                             maxLines: 1,
                                             overflow: TextOverflow.ellipsis,
                                             style: const TextStyle(
@@ -205,9 +221,9 @@ class _EventPageState extends State<EventPage> {
                                           color: const Color.fromRGBO(
                                               35, 33, 34, 1),
                                           onPressed: () {
-                                            //временно переходит на страницу с деталями "дома"
+                                            
                                             Navigator.of(context)
-                                                .pushNamed('/h_details');
+                                                .pushNamed('/e_details', arguments: _events[index] );
                                           },
                                         ))),
                               ],

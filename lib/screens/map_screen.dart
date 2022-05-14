@@ -1,8 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:tos_parkovii/helper.dart';
 
-class Institute {
+/*class Institute {
   final String title;
   final String type;
   final String shortDesc;
@@ -23,7 +24,7 @@ class Institute {
     required this.openHours,
   });
 }
-
+*/
 class FifthPage extends StatefulWidget {
   const FifthPage({Key? key}) : super(key: key);
 
@@ -35,24 +36,15 @@ class _FifthPageState extends State<FifthPage> {
   Set<Marker> markers = {};
   final Completer<GoogleMapController> _controller = Completer();
   double zoomValue = 14.0;
+  late Event event;
+
+
   //add main target of screen
-  final institute = Institute(
-    title: 'Пенсионный фонд РФ',
-    type: 'ГОС',
-    shortDesc:
-        'Государственное учреждение, занимающееся обязательным социальным обеспечением.',
-    fullDesc:
-        'Пенсионный фонд Российской Федерации (ПФР) создан для государственного управления средствами пенсионной системы и обеспечения прав граждан РФ на пенсионное обеспечение.',
-    adress: 'ул. Льва Толстого, 107',
-    latitude: 54.186088,
-    longitude: 37.600088,
-    openHours: '10:00 - 21:00',
-  );
 
   @override
   void initState() {
     super.initState();
-    _addMarkerMainTarget();
+    //_addMarkerMainTarget(); // Problem!
   }
 
   // create widget-button-minus
@@ -93,7 +85,7 @@ class _FifthPageState extends State<FifthPage> {
   Future<void> _minus(double zoomVal) async {
     final GoogleMapController controller = await _controller.future;
     controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
-        target: LatLng(institute.latitude, institute.longitude),
+        target: LatLng(event.latitude, event.longitude),
         zoom: zoomVal)));
   }
 
@@ -101,7 +93,7 @@ class _FifthPageState extends State<FifthPage> {
   Future<void> _plus(double zoomVal) async {
     final GoogleMapController controller = await _controller.future;
     controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
-        target: LatLng(institute.latitude, institute.longitude),
+        target: LatLng(event.latitude, event.longitude),
         zoom: zoomVal)));
   }
 
@@ -109,8 +101,8 @@ class _FifthPageState extends State<FifthPage> {
   void _addMarkerMainTarget() {
     markers.add(Marker(
       markerId: const MarkerId('main target'),
-      infoWindow: InfoWindow(title: institute.title),
-      position: LatLng(institute.latitude, institute.longitude),
+      infoWindow: InfoWindow(title: event.title),
+      position: LatLng(event.latitude, event.longitude),
       icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
     ));
 
@@ -119,6 +111,8 @@ class _FifthPageState extends State<FifthPage> {
 
   @override
   Widget build(BuildContext context) {
+    RouteSettings settings = ModalRoute.of(context)!.settings;
+    event= settings.arguments as Event;
     return Scaffold(
       appBar: AppBar(
           leading: IconButton(
@@ -146,7 +140,7 @@ class _FifthPageState extends State<FifthPage> {
               children: [
                 GoogleMap(
                     initialCameraPosition: CameraPosition(
-                      target: LatLng(institute.latitude, institute.longitude),
+                      target: LatLng(event.latitude, event.longitude),
                       zoom: 14,
                     ),
                     onMapCreated: (GoogleMapController controller) {
@@ -197,7 +191,7 @@ class _FifthPageState extends State<FifthPage> {
                             const Text('Адрес:',
                                 style: TextStyle(fontFamily: 'Lato')),
                             const SizedBox(height: 20),
-                            Text((institute.adress),
+                            Text((event.place),
                                 style: const TextStyle(
                                     fontSize: 18, fontFamily: 'Lato')),
                           ],
@@ -215,7 +209,7 @@ class _FifthPageState extends State<FifthPage> {
                           const Text('График работы:',
                               style: TextStyle(fontFamily: 'Lato')),
                           const SizedBox(height: 20),
-                          Text(institute.openHours,
+                          Text(event.time,
                               style: const TextStyle(
                                   fontSize: 18, fontFamily: 'Lato')),
                         ],

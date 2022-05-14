@@ -15,6 +15,7 @@ import 'screens/institute_page.dart';
 import 'screens/splash_screen.dart';
 import 'screens/map_screen.dart';
 import 'screens/map_all_screen.dart';
+import 'screens/event_detail.dart';
 
 void main() {
   runApp(MyApp());
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
     '/h_details': (BuildContext context) => const HouseDetail(),
     '/i_details': (BuildContext context) => const InstituteDetail(),
     '/a_details': (BuildContext context) => const AreaDetail(),
+    '/e_details': (BuildContext context) => const EventDetail(),
   };
 
   @override
