@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'dart:core';
+import 'package:tos_parkovii/helper.dart';
 
 class InstituteDetail extends StatefulWidget {
   const InstituteDetail({Key? key}) : super(key: key);
@@ -9,10 +9,10 @@ class InstituteDetail extends StatefulWidget {
 }
 
 class _InstituteDetailState extends State<InstituteDetail> {
-  int _selectedIndex = -1;
-
   @override
   Widget build(BuildContext context) {
+    RouteSettings settings = ModalRoute.of(context)!.settings;
+    final institute = settings.arguments as Institute;
     return Scaffold(
         resizeToAvoidBottomInset: false,
         backgroundColor: const Color.fromRGBO(240, 240, 238, 1),
@@ -31,47 +31,107 @@ class _InstituteDetailState extends State<InstituteDetail> {
                 style: TextStyle(
                     fontSize: 24, fontFamily: "Lato", color: Colors.white)),
             centerTitle: true),
-        body: Column(
-          children: const [
-            Flexible(child: SingleChildScrollView(child: Text("заглушка")))
-          ],
+        body: Container(
+          width: double.infinity,
+          decoration: const BoxDecoration(
+              image: DecorationImage(
+            image: AssetImage('assets/images/background-details.jpg'),
+            fit: BoxFit.cover,
+          )),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Flexible(
+                flex: 2,
+                child: Container(
+                    padding: const EdgeInsets.only(
+                        top: 20, bottom: 10, left: 10, right: 10),
+                    child: Column(
+                      children: [
+                        Text(
+                          institute.title,
+                          style: const TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: "Lato"),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Text(
+                          institute.street,
+                          style: const TextStyle(fontSize: 16),
+                        ),
+                        Text(
+                          institute.number,
+                          style: const TextStyle(fontSize: 16),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            SizedBox(
+                              width: 200,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text('Тип: ${institute.type}',
+                                      style: const TextStyle(
+                                          fontSize: 15, fontFamily: "Lato")),
+                                  Text(
+                                      'Описание: ${institute.shortDescription}',
+                                      style: const TextStyle(
+                                          fontSize: 15, fontFamily: "Lato")),
+                                ],
+                              ),
+                            ),
+                            ElevatedButton.icon(
+                              // <-- ElevatedButton
+                              onPressed: () {
+                                Navigator.of(context)
+                                    .pushNamed('/map', arguments: institute);
+                              },
+                              style: ElevatedButton.styleFrom(
+                                  primary: const Color.fromRGBO(
+                                      214, 0, 0, 1), // background
+                                  onPrimary: Colors.white, // foreground
+                                  elevation: 5,
+                                  fixedSize: const Size(125, 50)),
+                              icon: const Icon(
+                                Icons.pin_drop_outlined,
+                                size: 30.0,
+                              ),
+                              label: const Text('Найти'),
+                            ),
+                          ],
+                        )
+                      ],
+                    )),
+              ),
+              Flexible(
+                  flex: 2,
+                  child: Image.network(
+                    institute.image,
+                    //height: 200,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                  )),
+              Flexible(
+                  flex: 2,
+                  child: SingleChildScrollView(
+                      child: Container(
+                          padding: const EdgeInsets.only(
+                              top: 20, bottom: 10, left: 10, right: 10),
+                          child: Text(
+                            institute.fullDescription,
+                            style: const TextStyle(
+                                fontSize: 16, fontFamily: "Lato"),
+                            textAlign: TextAlign.center,
+                          ))))
+            ],
+          ),
         ));
   }
 }
-
-class More {
-  final String title;
-  final String type;
-  final String shortDescription;
-  final String fullDescription;
-  final String street;
-  final String number;
-  final dynamic latitude;
-  final dynamic longitude;
-  final String image;
-
-  More(
-      {required this.title,
-      required this.type,
-      required this.shortDescription,
-      required this.fullDescription,
-      required this.street,
-      required this.number,
-      required this.latitude,
-      required this.longitude,
-      required this.image});
-}
-
-final _mores = [
-  More(
-      title: 'Пенсионный Фонд Российской Федерации',
-      type: 'Государственная',
-      shortDescription: 'График работы: 8:00 - 20:00 /n тел.: 600-03-81',
-      fullDescription:
-          'Пенсионный фонд России (ПФР) является одним из трех государственных внебюджетных фондов, на которые возложены функции по обязательному социальному страхованию. Фонд выступает ключевым социальным институтом страны и крупнейшей федеральной системой оказания государственных услуг в области социального обеспечения.',
-      street: 'Лейтейзена',
-      number: '1В',
-      latitude: '54.20018',
-      longitude: '37.60324',
-      image: '')
-];
