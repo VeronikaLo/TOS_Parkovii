@@ -38,7 +38,6 @@ class _FifthPageState extends State<FifthPage> {
   double zoomValue = 14.0;
   late Event event;
 
-
   //add main target of screen
 
   @override
@@ -93,8 +92,7 @@ class _FifthPageState extends State<FifthPage> {
   Future<void> _plus(double zoomVal) async {
     final GoogleMapController controller = await _controller.future;
     controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
-        target: LatLng(event.latitude, event.longitude),
-        zoom: zoomVal)));
+        target: LatLng(event.latitude, event.longitude), zoom: zoomVal)));
   }
 
   //function for adding marker in the main target

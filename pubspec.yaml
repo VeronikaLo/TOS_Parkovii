@@ -82,6 +82,7 @@ flutter:
     - assets/images/pin_house.png
     - assets/images/pin_event.png
     - assets/images/pin_event.png
+    - assets/images/default_photoSenior.png
     
 
   # An image asset can refer to one or more resolution-specific "variants", see
