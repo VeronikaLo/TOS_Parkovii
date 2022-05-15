@@ -44,7 +44,7 @@ class _FifthPageState extends State<FifthPage> {
   @override
   void initState() {
     super.initState();
-    //_addMarkerMainTarget(); // Problem!
+    
   }
 
   // create widget-button-minus
@@ -85,7 +85,7 @@ class _FifthPageState extends State<FifthPage> {
   Future<void> _minus(double zoomVal) async {
     final GoogleMapController controller = await _controller.future;
     controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
-        target: LatLng(event.latitude, event.longitude),
+        target: LatLng(event.latitude , event.longitude),
         zoom: zoomVal)));
   }
 
@@ -112,7 +112,9 @@ class _FifthPageState extends State<FifthPage> {
   @override
   Widget build(BuildContext context) {
     RouteSettings settings = ModalRoute.of(context)!.settings;
-    event= settings.arguments as Event;
+    event = settings.arguments as Event;
+    _addMarkerMainTarget();
+    
     return Scaffold(
       appBar: AppBar(
           leading: IconButton(
@@ -190,7 +192,7 @@ class _FifthPageState extends State<FifthPage> {
                           children: [
                             const Text('Адрес:',
                                 style: TextStyle(fontFamily: 'Lato')),
-                            const SizedBox(height: 20),
+                            const SizedBox(height: 15),
                             Text((event.place),
                                 style: const TextStyle(
                                     fontSize: 18, fontFamily: 'Lato')),
@@ -208,7 +210,7 @@ class _FifthPageState extends State<FifthPage> {
                         children: [
                           const Text('График работы:',
                               style: TextStyle(fontFamily: 'Lato')),
-                          const SizedBox(height: 20),
+                          const SizedBox(height: 15),
                           Text(event.time,
                               style: const TextStyle(
                                   fontSize: 18, fontFamily: 'Lato')),
