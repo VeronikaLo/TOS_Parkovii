@@ -3,40 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:tos_parkovii/helper.dart';
 
-/*class Institute {
-  final String title;
-  final String type;
-  final String shortDesc;
-  final String fullDesc;
-  final String adress;
-  final dynamic latitude;
-  final dynamic longitude;
-  final String openHours;
 
-  Institute({
-    required this.title,
-    required this.type,
-    required this.shortDesc,
-    required this.fullDesc,
-    required this.adress,
-    required this.latitude,
-    required this.longitude,
-    required this.openHours,
-  });
-}
-*/
-class FifthPage extends StatefulWidget {
-  const FifthPage({Key? key}) : super(key: key);
+class FifthPageHouse extends StatefulWidget {
+  const FifthPageHouse({Key? key}) : super(key: key);
 
   @override
-  State<FifthPage> createState() => _FifthPageState();
+  State<FifthPageHouse> createState() => _FifthPageHouseState();
 }
 
-class _FifthPageState extends State<FifthPage> {
+class _FifthPageHouseState extends State<FifthPageHouse> {
   Set<Marker> markers = {};
   final Completer<GoogleMapController> _controller = Completer();
   double zoomValue = 14.0;
-  late Event event;
+  late House house;
 
   //add main target of screen
 
@@ -84,7 +63,7 @@ class _FifthPageState extends State<FifthPage> {
   Future<void> _minus(double zoomVal) async {
     final GoogleMapController controller = await _controller.future;
     controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
-        target: LatLng(event.latitude , event.longitude),
+        target: LatLng(house.latitude , house.longitude),
         zoom: zoomVal)));
   }
 
@@ -92,15 +71,15 @@ class _FifthPageState extends State<FifthPage> {
   Future<void> _plus(double zoomVal) async {
     final GoogleMapController controller = await _controller.future;
     controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
-        target: LatLng(event.latitude, event.longitude), zoom: zoomVal)));
+        target: LatLng(house.latitude, house.longitude), zoom: zoomVal)));
   }
 
   //function for adding marker in the main target
   void _addMarkerMainTarget() {
     markers.add(Marker(
       markerId: const MarkerId('main target'),
-      infoWindow: InfoWindow(title: event.title),
-      position: LatLng(event.latitude, event.longitude),
+      infoWindow: InfoWindow(title: house.street),
+      position: LatLng(house.latitude, house.longitude),
       icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
     ));
 
@@ -110,7 +89,7 @@ class _FifthPageState extends State<FifthPage> {
   @override
   Widget build(BuildContext context) {
     RouteSettings settings = ModalRoute.of(context)!.settings;
-    event = settings.arguments as Event;
+    house = settings.arguments as House;
     _addMarkerMainTarget();
     
     return Scaffold(
@@ -140,7 +119,7 @@ class _FifthPageState extends State<FifthPage> {
               children: [
                 GoogleMap(
                     initialCameraPosition: CameraPosition(
-                      target: LatLng(event.latitude, event.longitude),
+                      target: LatLng(house.latitude, house.longitude),
                       zoom: 14,
                     ),
                     onMapCreated: (GoogleMapController controller) {
@@ -191,9 +170,12 @@ class _FifthPageState extends State<FifthPage> {
                             const Text('Адрес:',
                                 style: TextStyle(fontFamily: 'Lato')),
                             const SizedBox(height: 15),
-                            Text((event.place),
+                            Text(house.street,
                                 style: const TextStyle(
                                     fontSize: 18, fontFamily: 'Lato')),
+                            Text(house.number,
+                                style: const TextStyle(
+                                    fontSize: 18, fontFamily: 'Lato')),        
                           ],
                         )),
                     const VerticalDivider(
@@ -206,12 +188,14 @@ class _FifthPageState extends State<FifthPage> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          const Text('График работы:',
+                          const Text('Компания:',
                               style: TextStyle(fontFamily: 'Lato')),
                           const SizedBox(height: 15),
-                          Text(event.time,
+                          Text(house.company,
+                              textAlign: TextAlign.center,
                               style: const TextStyle(
-                                  fontSize: 18, fontFamily: 'Lato')),
+                                  fontSize: 18, fontFamily: 'Lato',
+                                  )),
                         ],
                       ),
                     )

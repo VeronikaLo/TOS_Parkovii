@@ -48,7 +48,7 @@ class _EventPageState extends State<EventPage> {
       place: 'ул. Гоголевская д.71',
       description: 'В центре можно решить такие вопросы, как улучшение жилищных условий, взыскание алиментов, оформление мер соц. поддержки и заключение социального контракта, урегулирование семейных споров и улучшение отношений между детьми и родителями и т.д. Новое отделение работает в режиме семейного многофункционального центра. Граждане могут обратиться за помощью как в «Семейную диспетчерскую» по единому бесплатному номеру 129, так и лично. Здесь созданы все условия для мам с колясками и игровая зона для детей. Семья получает комплексную социальную помощь на основе «бесшовного» взаимодействия, и с момента обращения до решения вопроса семью сопровождает один и тот же специалист.',
       time: '14:00',
-      date: '1 февраля 2022',
+      date: '29 января 2022',
       type: 'образование',
       longitude: 37.588458,
       latitude: 54.181647,
@@ -69,8 +69,8 @@ class _EventPageState extends State<EventPage> {
       title: 'Mероприятиe 2',
       place: '',
       description: 'Description проведения мероприятия',
-      time: '25 мая',
-      date: '25 мая',
+      time: '14:00',
+      date: '24 августа',
       type: '',
       longitude: 37.588458,
       latitude: 54.181647,
@@ -80,8 +80,8 @@ class _EventPageState extends State<EventPage> {
       title: 'Mероприятиe 3',
       place: '',
       description: 'Description проведения мероприятия',
-      time: '25 мая',
-      date: '25 мая 2022',
+      time: '10:00',
+      date: '24 августа',
       type: '',
       longitude: 37.588458,
       latitude: 54.181647,
@@ -103,7 +103,7 @@ class _EventPageState extends State<EventPage> {
     }
     if (query.isNotEmpty) {
       _filteredEvents = _events.where((Event event) {
-        return event.description.toLowerCase().contains(query.toLowerCase());
+        return event.place.toLowerCase().contains(query.toLowerCase());
       }).toList();
     } else {
       _filteredEvents = _events;

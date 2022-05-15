@@ -93,7 +93,7 @@ class _AreaDetail extends State<AreaDetail> {
                               // <-- ElevatedButton
                               onPressed: () {
                                 Navigator.of(context)
-                                    .pushNamed('/map', arguments: area);
+                                    .pushNamed('/a_map', arguments: area);
                               },
                               style: ElevatedButton.styleFrom(
                                   primary: const Color.fromRGBO(

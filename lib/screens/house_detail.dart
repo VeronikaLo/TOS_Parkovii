@@ -151,7 +151,7 @@ class _HouseDetail extends State<HouseDetail> {
                               // <-- ElevatedButton
                               onPressed: () {
                                 Navigator.of(context)
-                                    .pushNamed('/map', arguments: house);
+                                    .pushNamed('/h_map', arguments: house);
                               },
                               style: ElevatedButton.styleFrom(
                                   primary: const Color.fromARGB(
