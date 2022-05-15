@@ -67,7 +67,7 @@ class _EventDetail extends State<EventDetail> {
                       ),
                       ElevatedButton.icon(   // <-- ElevatedButton
       onPressed: () {
-        Navigator.of(context).pushNamed('/map', arguments: event );
+        Navigator.of(context).pushNamed('/map', arguments: event);
       },
       style:   ElevatedButton.styleFrom(
     primary: const Color.fromRGBO(241, 136, 37, 1), // background

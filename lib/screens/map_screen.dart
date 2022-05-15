@@ -38,7 +38,6 @@ class _FifthPageState extends State<FifthPage> {
   double zoomValue = 14.0;
   late Event event;
 
-
   //add main target of screen
 
   @override
@@ -85,16 +84,14 @@ class _FifthPageState extends State<FifthPage> {
   Future<void> _minus(double zoomVal) async {
     final GoogleMapController controller = await _controller.future;
     controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
-        target: LatLng(event.latitude, event.longitude),
-        zoom: zoomVal)));
+        target: LatLng(event.latitude, event.longitude), zoom: zoomVal)));
   }
 
   //function for animating camera '+'
   Future<void> _plus(double zoomVal) async {
     final GoogleMapController controller = await _controller.future;
     controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
-        target: LatLng(event.latitude, event.longitude),
-        zoom: zoomVal)));
+        target: LatLng(event.latitude, event.longitude), zoom: zoomVal)));
   }
 
   //function for adding marker in the main target
@@ -112,7 +109,7 @@ class _FifthPageState extends State<FifthPage> {
   @override
   Widget build(BuildContext context) {
     RouteSettings settings = ModalRoute.of(context)!.settings;
-    event= settings.arguments as Event;
+    event = settings.arguments as Event;
     return Scaffold(
       appBar: AppBar(
           leading: IconButton(

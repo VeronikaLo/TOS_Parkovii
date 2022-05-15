@@ -1,11 +1,5 @@
 import 'package:flutter/material.dart';
-
-class Detail {
-  final String title;
-  final String description;
-
-  Detail({required this.title, required this.description});
-}
+import 'package:tos_parkovii/helper.dart';
 
 class HouseDetail extends StatefulWidget {
   const HouseDetail({Key? key}) : super(key: key);
@@ -15,173 +9,352 @@ class HouseDetail extends StatefulWidget {
 }
 
 class _HouseDetail extends State<HouseDetail> {
-  final _details = [
-    Detail(
-      title: 'Данные дома: Test search 15, пр-кт Кирова',
-      description: 'Пояснение: номер и улица',
-    ),
-    Detail(
-      title: 'Данные дома: 15, пр-кт Кирова',
-      description: 'Пояснение: номер и улица',
-    ),
-    Detail(
-      title: 'Данные дома: 15, пр-кт Кирова',
-      description: 'Пояснение: номер и улица',
-    ),
-    Detail(
-      title: 'Данные дома: 15, пр-кт Кирова',
-      description: 'Пояснение: номер и улица',
-    ),
-    Detail(
-      title: 'Данные дома: 15, пр-кт Кирова',
-      description: 'Пояснение: номер и улица',
-    ),
-    Detail(
-      title: 'Данные дома: 15, пр-кт Кирова',
-      description: 'Пояснение: номер и улица',
-    ),
-    Detail(
-      title: 'Данные дома: 15, пр-кт Кирова',
-      description: 'Пояснение: номер и улица',
-    ),
-    Detail(
-      title: 'Данные дома: 15, пр-кт Кирова',
-      description: 'Пояснение: номер и улица',
-    )
-  ];
-
-  var _filteredDetails = <Detail>[];
-
-  final _searchController = TextEditingController();
-
-  void _searchDetails() {
-    final query = _searchController.text;
-    if (query.isNotEmpty) {
-      _filteredDetails = _details.where((Detail detail) {
-        return detail.title.toLowerCase().contains(query.toLowerCase());
-      }).toList();
-    } else {
-      _filteredDetails = _details;
-    }
-
-    setState(() {});
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _filteredDetails = _details;
-    _searchController.addListener(_searchDetails);
-  }
-
   @override
   Widget build(BuildContext context) {
+    RouteSettings settings = ModalRoute.of(context)!.settings;
+    final house = settings.arguments as House;
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      backgroundColor: const Color.fromRGBO(240, 240, 238, 1),
-      appBar: AppBar(
-        leading: IconButton(
-            icon: const Icon(Icons.arrow_back),
-            color: const Color.fromRGBO(35, 33, 34, 1),
-            splashRadius: 50,
-            splashColor: Colors.grey,
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            tooltip: "Назад"),
-        backgroundColor: const Color.fromRGBO(166, 197, 0, 1),
-        title: const Text('Дома',
-            style: TextStyle(color: Color.fromRGBO(35, 33, 34, 1))),
-        centerTitle: true,
-      ),
-      body: Container(
+        resizeToAvoidBottomInset: false,
+        backgroundColor: const Color.fromRGBO(240, 240, 238, 1),
+        appBar: AppBar(
+          leading: IconButton(
+              icon: const Icon(Icons.arrow_back),
+              color: Colors.white,
+              splashRadius: 50,
+              splashColor: Colors.grey,
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              tooltip: "Назад"),
+          backgroundColor: const Color.fromARGB(255, 23, 134, 34),
+          title: Text(house.street + ', ' + house.number,
+              style: const TextStyle(
+                  fontSize: 24, fontFamily: "Lato", color: Colors.white)),
+          centerTitle: true,
+        ),
+        body: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           decoration: const BoxDecoration(
               image: DecorationImage(
                   image: AssetImage('assets/images/background-details.jpg'),
                   fit: BoxFit.cover)),
-          child: Stack(
+          child: ListView(
             children: [
-              ListView.builder(
-                  padding: const EdgeInsets.only(top: 80),
-                  keyboardDismissBehavior:
-                      ScrollViewKeyboardDismissBehavior.onDrag,
-                  itemCount: _filteredDetails.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    final detail = _filteredDetails[index];
-                    return GestureDetector(
-                        //pressing with no response
-                        onTap: () {
-                          Navigator.of(context).pushNamed('/map');
-                        },
-                        child: Container(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 15, vertical: 5),
-                            alignment: FractionalOffset.bottomRight,
-                            child: Column(
-                              children: [
-                                Container(
-                                    height: 67,
-                                    decoration: const BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(12)),
+              Column(
+                children: [
+                  Container(
+                    padding:
+                        const EdgeInsets.only(top: 15, left: 15, right: 15),
+                    height: 250.0,
+                    width: MediaQuery.of(context).size.width,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        //'Старший'
+                        const Text('Старший',
+                            style: TextStyle(
+                                fontFamily: 'Lato', fontSize: 21)), //'Старший'
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              //картинка
+                              Container(
+                                  height: 170,
+                                  width: 130,
+                                  decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                          image:
+                                              AssetImage(house.photoSenior)))),
+                              //и фио с телефоном
+                              DataTable(
+                                  columnSpacing: 20,
+                                  horizontalMargin: 10,
+                                  columns: <DataColumn>[
+                                    const DataColumn(
+                                      label: Text(
+                                        'Фамилия',
+                                        style: TextStyle(
+                                            fontFamily: 'Lato',
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold),
+                                      ),
                                     ),
-                                    child: ListTile(
-                                      title: Text(detail.title,
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: const TextStyle(
-                                              fontSize: 17,
-                                              fontFamily: "Lato",
-                                              color: Color.fromRGBO(
-                                                  35, 33, 34, 1))),
-                                      subtitle: Text(detail.description,
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: const TextStyle(
-                                              fontSize: 15,
-                                              fontFamily: "Lato",
-                                              color: Color.fromRGBO(
-                                                  35, 33, 34, 1))),
-                                      trailing: IconButton(
-                                          icon: const Icon(
-                                              Icons.chevron_right_outlined),
-                                          color: const Color.fromRGBO(
-                                              35, 33, 34, 1),
-                                          onPressed: () {
-                                            Navigator.of(context)
-                                                .pushNamed('/map');
-                                          },
-                                          tooltip: "Перейти к карте"),
-                                    )),
-                              ],
-                            )));
-                  }),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 40),
-                child: TextField(
-                  controller: _searchController,
-                  decoration: InputDecoration(
-                    prefixIcon: const Padding(
-                      padding: EdgeInsets.only(left: 15),
-                      child: Icon(
-                        Icons.search,
-                      ),
+                                    DataColumn(
+                                      label: Text(
+                                        house.surnameSenior,
+                                        style: const TextStyle(
+                                            fontFamily: 'Lato', fontSize: 15),
+                                      ),
+                                    )
+                                  ],
+                                  rows: <DataRow>[
+                                    DataRow(
+                                      cells: <DataCell>[
+                                        const DataCell(Text('Имя',
+                                            style: TextStyle(
+                                                fontFamily: 'Lato',
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.bold))),
+                                        DataCell(Text(house.nameSenior,
+                                            style: const TextStyle(
+                                                fontFamily: 'Lato',
+                                                fontSize: 15))),
+                                      ],
+                                    ),
+                                    DataRow(
+                                      cells: <DataCell>[
+                                        const DataCell(Text('Отчество',
+                                            style: TextStyle(
+                                                fontFamily: 'Lato',
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.bold))),
+                                        DataCell(Text(house.patronymicSenior,
+                                            style: const TextStyle(
+                                                fontFamily: 'Lato',
+                                                fontSize: 15))),
+                                      ],
+                                    ),
+                                    DataRow(
+                                      cells: <DataCell>[
+                                        const DataCell(Text('Контакт',
+                                            style: TextStyle(
+                                                fontFamily: 'Lato',
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.bold))),
+                                        DataCell(Text(house.phoneNumber,
+                                            style: const TextStyle(
+                                                fontFamily: 'Lato',
+                                                fontSize: 15))),
+                                      ],
+                                    ),
+                                  ])
+                            ])
+                      ],
                     ),
-                    hintText: ' Поиск ',
-                    hintStyle: const TextStyle(
-                        fontSize: 15.0, color: Color.fromRGBO(35, 33, 34, 1)),
-                    filled: true,
-                    fillColor: Colors.white.withAlpha(235),
-                    enabledBorder: const OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white)),
                   ),
+                  Container(
+                    padding:
+                        const EdgeInsets.only(top: 15, left: 15, right: 15),
+                    height: 180,
+                    width: MediaQuery.of(context).size.width,
+                    child: Column(
+                      children: [
+                        //'информация о доме'
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text('Информация о доме',
+                                style: TextStyle(
+                                    fontFamily: 'Lato', fontSize: 21)),
+                            ElevatedButton.icon(
+                              // <-- ElevatedButton
+                              onPressed: () {
+                                Navigator.of(context)
+                                    .pushNamed('/map', arguments: house);
+                              },
+                              style: ElevatedButton.styleFrom(
+                                  primary: const Color.fromARGB(
+                                      255, 23, 134, 34), // background
+                                  onPrimary: Colors.white, // foreground
+                                  elevation: 5,
+                                  fixedSize: const Size(125, 50)),
+                              icon: const Icon(
+                                Icons.pin_drop_outlined,
+                                size: 30.0,
+                              ),
+                              label: const Text('Найти'),
+                            ),
+                          ],
+                        ),
+                        // год постройки и УК
+                        Row(children: [
+                          DataTable(
+                            columnSpacing: 45,
+                            columns: <DataColumn>[
+                              const DataColumn(
+                                  label: Text('Год постройки',
+                                      style: TextStyle(
+                                          fontFamily: 'Lato',
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold))),
+                              DataColumn(
+                                  label: Text(house.construction,
+                                      style: const TextStyle(
+                                          fontFamily: 'Lato', fontSize: 15)))
+                            ],
+                            rows: <DataRow>[
+                              DataRow(cells: <DataCell>[
+                                const DataCell(Text('УК',
+                                    style: TextStyle(
+                                        fontFamily: 'Lato',
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold))),
+                                DataCell(Text(house.company,
+                                    style: const TextStyle(
+                                        fontFamily: 'Lato', fontSize: 15))),
+                              ])
+                            ],
+                          ),
+                          //Кнопка перехода на карту
+                        ])
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              Container(
+                padding: const EdgeInsets.only(top: 15, left: 15),
+                height: 500,
+                width: MediaQuery.of(context).size.width,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text('Капитальный ремонт',
+                        style: TextStyle(
+                            fontFamily: 'Lato', fontSize: 21)), // 'кап ремонт'
+                    const SizedBox(
+                      height: 13,
+                    ),
+                    DataTable(columns: const <DataColumn>[
+                      DataColumn(
+                          label: Text('Вид работ',
+                              style: TextStyle(
+                                  fontFamily: 'Lato',
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold))),
+                      DataColumn(
+                          label: Text('Год',
+                              style: TextStyle(
+                                  fontFamily: 'Lato',
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold))),
+                      DataColumn(
+                          label: Text('Статус',
+                              style: TextStyle(
+                                  fontFamily: 'Lato',
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold))),
+                    ], rows: const <DataRow>[
+                      DataRow(
+                        cells: <DataCell>[
+                          DataCell(Text('Крыша',
+                              style:
+                                  TextStyle(fontFamily: 'Lato', fontSize: 15))),
+                          DataCell(Text('2020',
+                              style:
+                                  TextStyle(fontFamily: 'Lato', fontSize: 15))),
+                          DataCell(
+                            Icon(
+                              Icons.check_outlined,
+                              color: Colors.green,
+                              size: 25,
+                            ),
+                          )
+                        ],
+                      ),
+                      DataRow(
+                        cells: <DataCell>[
+                          DataCell(Text('Фасад',
+                              style:
+                                  TextStyle(fontFamily: 'Lato', fontSize: 15))),
+                          DataCell(Text('2024',
+                              style:
+                                  TextStyle(fontFamily: 'Lato', fontSize: 15))),
+                          DataCell(
+                            Icon(
+                              Icons.close_outlined,
+                              color: Colors.red,
+                            ),
+                          )
+                        ],
+                      ),
+                      DataRow(
+                        cells: <DataCell>[
+                          DataCell(Text('Электрика',
+                              style:
+                                  TextStyle(fontFamily: 'Lato', fontSize: 15))),
+                          DataCell(Text('2021',
+                              style:
+                                  TextStyle(fontFamily: 'Lato', fontSize: 15))),
+                          DataCell(
+                            Icon(
+                              Icons.check_outlined,
+                              color: Colors.green,
+                            ),
+                          )
+                        ],
+                      ),
+                      DataRow(
+                        cells: <DataCell>[
+                          DataCell(Text('Вода',
+                              style:
+                                  TextStyle(fontFamily: 'Lato', fontSize: 15))),
+                          DataCell(Text('2020',
+                              style:
+                                  TextStyle(fontFamily: 'Lato', fontSize: 15))),
+                          DataCell(
+                            Icon(
+                              Icons.check_outlined,
+                              color: Colors.green,
+                            ),
+                          )
+                        ],
+                      ),
+                      DataRow(
+                        cells: <DataCell>[
+                          DataCell(Text('Канализация',
+                              style:
+                                  TextStyle(fontFamily: 'Lato', fontSize: 15))),
+                          DataCell(Text('2025',
+                              style:
+                                  TextStyle(fontFamily: 'Lato', fontSize: 15))),
+                          DataCell(
+                            Icon(
+                              Icons.close_outlined,
+                              color: Colors.red,
+                            ),
+                          )
+                        ],
+                      ),
+                      DataRow(
+                        cells: <DataCell>[
+                          DataCell(Text('Отопление',
+                              style:
+                                  TextStyle(fontFamily: 'Lato', fontSize: 15))),
+                          DataCell(Text('2019',
+                              style:
+                                  TextStyle(fontFamily: 'Lato', fontSize: 15))),
+                          DataCell(
+                            Icon(
+                              Icons.check_outlined,
+                              color: Colors.green,
+                            ),
+                          )
+                        ],
+                      ),
+                      DataRow(
+                        cells: <DataCell>[
+                          DataCell(Text('Газ',
+                              style:
+                                  TextStyle(fontFamily: 'Lato', fontSize: 15))),
+                          DataCell(Text('2022',
+                              style:
+                                  TextStyle(fontFamily: 'Lato', fontSize: 15))),
+                          DataCell(
+                            Icon(
+                              Icons.close_outlined,
+                              color: Colors.red,
+                            ),
+                          )
+                        ],
+                      ),
+                    ]) //табличка капремонта
+                  ],
                 ),
               ),
             ],
-          )),
-    );
+          ),
+        ));
   }
 }

@@ -47,10 +47,8 @@ class Institute {
       required this.longitude,
       required this.image});
 }
-
-// дома
-
 // пространства
+
 class Area {
   final String title;
   final String description;
@@ -76,4 +74,35 @@ class Area {
       required this.latitude,
       required this.longitude,
       required this.image});
+}
+
+// дома
+class House {
+  final String street;
+  final String number;
+  final String nameSenior;
+  final String surnameSenior;
+  final String patronymicSenior;
+  final String shortNameSenior;
+  final String phoneNumber;
+  final String photoSenior;
+  final String company;
+  final String construction;
+  final dynamic latitude;
+  final dynamic longitude;
+
+  House({
+    required this.street,
+    required this.number,
+    required this.nameSenior,
+    required this.surnameSenior,
+    required this.patronymicSenior,
+    required this.shortNameSenior,
+    required this.phoneNumber,
+    required this.photoSenior,
+    required this.company,
+    required this.construction,
+    required this.latitude,
+    required this.longitude,
+  });
 }
