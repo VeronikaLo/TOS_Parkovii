@@ -173,6 +173,9 @@ class _FifthPageAreaState extends State<FifthPageArea> {
                             Text(area.street,
                                 style: const TextStyle(
                                     fontSize: 18, fontFamily: 'Lato')),
+                            Text(area.number,
+                                style: const TextStyle(
+                                    fontSize: 18, fontFamily: 'Lato'))        
                           ],
                         )),
                     const VerticalDivider(
