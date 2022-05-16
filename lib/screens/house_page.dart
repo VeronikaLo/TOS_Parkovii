@@ -20,8 +20,8 @@ class _HousePage extends State<HousePage> {
       phoneNumber: '+7(903)037 77 08',
       company: 'ООО "УК Южная"',
       construction: '1998',
-      longitude: "37.603532",
-      latitude: "54.184487",
+      longitude: 37.603532,
+      latitude: 54.184487,
       photoSenior: 'assets/images/default_photoSenior.png',
     ),
     House(
