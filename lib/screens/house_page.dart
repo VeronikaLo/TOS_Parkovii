@@ -50,14 +50,11 @@ class _HousePage extends State<HousePage> {
       _filteredHouses = _houses.where((House house) {
         return house.surnameSenior.toLowerCase().contains(query.toLowerCase());
       }).toList();
-<<<<<<< Updated upstream
     }
     if (query.isNotEmpty) {
       _filteredHouses = _houses.where((House house) {
         return house.street.toLowerCase().contains(query.toLowerCase());
       }).toList();
-=======
->>>>>>> Stashed changes
     } else {
       _filteredHouses = _houses;
     }
