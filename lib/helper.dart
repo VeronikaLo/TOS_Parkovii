@@ -78,6 +78,7 @@ class Area {
 
 // дома
 class House {
+  final String iD;
   final String street;
   final String number;
   final String nameSenior;
@@ -92,6 +93,7 @@ class House {
   final dynamic longitude;
 
   House({
+    required this.iD,
     required this.street,
     required this.number,
     required this.nameSenior,

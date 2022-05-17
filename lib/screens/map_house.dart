@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:tos_parkovii/helper.dart';
 
-
 class FifthPageHouse extends StatefulWidget {
   const FifthPageHouse({Key? key}) : super(key: key);
 
@@ -18,11 +17,9 @@ class _FifthPageHouseState extends State<FifthPageHouse> {
   late House house;
 
   //add main target of screen
-
   @override
   void initState() {
     super.initState();
-    
   }
 
   // create widget-button-minus
@@ -63,7 +60,8 @@ class _FifthPageHouseState extends State<FifthPageHouse> {
   Future<void> _minus(double zoomVal) async {
     final GoogleMapController controller = await _controller.future;
     controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
-        target: LatLng(house.latitude , house.longitude),
+        target:
+            LatLng(double.parse(house.latitude), double.parse(house.longitude)),
         zoom: zoomVal)));
   }
 
@@ -71,7 +69,9 @@ class _FifthPageHouseState extends State<FifthPageHouse> {
   Future<void> _plus(double zoomVal) async {
     final GoogleMapController controller = await _controller.future;
     controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
-        target: LatLng(house.latitude, house.longitude), zoom: zoomVal)));
+        target:
+            LatLng(double.parse(house.latitude), double.parse(house.longitude)),
+        zoom: zoomVal)));
   }
 
   //function for adding marker in the main target
@@ -79,7 +79,8 @@ class _FifthPageHouseState extends State<FifthPageHouse> {
     markers.add(Marker(
       markerId: const MarkerId('main target'),
       infoWindow: InfoWindow(title: house.street),
-      position: LatLng(house.latitude, house.longitude),
+      position:
+          LatLng(double.parse(house.latitude), double.parse(house.longitude)),
       icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
     ));
 
@@ -91,7 +92,7 @@ class _FifthPageHouseState extends State<FifthPageHouse> {
     RouteSettings settings = ModalRoute.of(context)!.settings;
     house = settings.arguments as House;
     _addMarkerMainTarget();
-    
+
     return Scaffold(
       appBar: AppBar(
           leading: IconButton(
@@ -119,7 +120,8 @@ class _FifthPageHouseState extends State<FifthPageHouse> {
               children: [
                 GoogleMap(
                     initialCameraPosition: CameraPosition(
-                      target: LatLng(house.latitude, house.longitude),
+                      target: LatLng(double.parse(house.latitude),
+                          double.parse(house.longitude)),
                       zoom: 14,
                     ),
                     onMapCreated: (GoogleMapController controller) {
@@ -175,7 +177,7 @@ class _FifthPageHouseState extends State<FifthPageHouse> {
                                     fontSize: 18, fontFamily: 'Lato')),
                             Text(house.number,
                                 style: const TextStyle(
-                                    fontSize: 18, fontFamily: 'Lato')),        
+                                    fontSize: 18, fontFamily: 'Lato')),
                           ],
                         )),
                     const VerticalDivider(
@@ -194,8 +196,9 @@ class _FifthPageHouseState extends State<FifthPageHouse> {
                           Text(house.company,
                               textAlign: TextAlign.center,
                               style: const TextStyle(
-                                  fontSize: 18, fontFamily: 'Lato',
-                                  )),
+                                fontSize: 18,
+                                fontFamily: 'Lato',
+                              )),
                         ],
                       ),
                     )

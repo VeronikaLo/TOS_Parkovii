@@ -53,12 +53,10 @@ class _HouseDetail extends State<HouseDetail> {
                       children: [
                         //'Старший'
                         const Text('Старший',
-                            style: TextStyle(
-                                fontFamily: 'Lato', fontSize: 21)), //'Старший'
+                            style: TextStyle(fontFamily: 'Lato', fontSize: 21)),
                         Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              //картинка
                               Container(
                                   height: 170,
                                   width: 130,
@@ -167,7 +165,6 @@ class _HouseDetail extends State<HouseDetail> {
                             ),
                           ],
                         ),
-                        // год постройки и УК
                         Row(children: [
                           DataTable(
                             columnSpacing: 45,
@@ -196,7 +193,6 @@ class _HouseDetail extends State<HouseDetail> {
                               ])
                             ],
                           ),
-                          //Кнопка перехода на карту
                         ])
                       ],
                     ),
@@ -211,8 +207,7 @@ class _HouseDetail extends State<HouseDetail> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text('Капитальный ремонт',
-                        style: TextStyle(
-                            fontFamily: 'Lato', fontSize: 21)), // 'кап ремонт'
+                        style: TextStyle(fontFamily: 'Lato', fontSize: 21)),
                     const SizedBox(
                       height: 13,
                     ),
@@ -349,7 +344,7 @@ class _HouseDetail extends State<HouseDetail> {
                           )
                         ],
                       ),
-                    ]) //табличка капремонта
+                    ])
                   ],
                 ),
               ),
