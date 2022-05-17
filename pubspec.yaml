@@ -73,10 +73,10 @@ flutter:
     - assets/images/background-thirdpage.jpg
     - assets/images/background-details.jpg
     - assets/images/splash.jpg
-    - assets/test_json_for_map/areas.json
-    - assets/test_json_for_map/events.json
-    - assets/test_json_for_map/houses.json
-    - assets/test_json_for_map/institutes.json
+    - assets/json/areas.json
+    - assets/json/events.json
+    - assets/json/houses.json
+    - assets/json/institutes.json
     - assets/images/pin_area.png
     - assets/images/pin_institute.png
     - assets/images/pin_house.png

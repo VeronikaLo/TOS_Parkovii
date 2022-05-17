@@ -16,8 +16,7 @@ class _HousePage extends State<HousePage> {
   final List<House> _houses = [];
 
   Future addHouse() async {
-    var jsonData =
-        await rootBundle.loadString('assets/test_json_for_map/houses.json');
+    var jsonData = await rootBundle.loadString('assets/json/houses.json');
     var data = json.decode(jsonData);
 
     data["house"].forEach((item) {
@@ -49,12 +48,12 @@ class _HousePage extends State<HousePage> {
     final query = _searchController.text;
     if (query.isNotEmpty) {
       _filteredHouses = _houses.where((House house) {
-        return house.street.toLowerCase().contains(query.toLowerCase());
+        return house.surnameSenior.toLowerCase().contains(query.toLowerCase());
       }).toList();
     }
     if (query.isNotEmpty) {
       _filteredHouses = _houses.where((House house) {
-        return house.surnameSenior.toLowerCase().contains(query.toLowerCase());
+        return house.street.toLowerCase().contains(query.toLowerCase());
       }).toList();
     } else {
       _filteredHouses = _houses;
