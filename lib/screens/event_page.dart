@@ -107,12 +107,7 @@ class _EventPageState extends State<EventPage> {
       _filteredEvents = _events.where((Event event) {
         return event.title.toLowerCase().contains(query.toLowerCase());
       }).toList();
-    }
-    if (query.isNotEmpty) {
-      _filteredEvents = _events.where((Event event) {
-        return event.place.toLowerCase().contains(query.toLowerCase());
-      }).toList();
-    } else {
+    }else {
       _filteredEvents = _events;
     }
 

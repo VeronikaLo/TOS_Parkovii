@@ -106,11 +106,6 @@ class _AreaPage extends State<AreaPage> {
       _filteredAreas = _areas.where((Area area) {
         return area.title.toLowerCase().contains(query.toLowerCase());
       }).toList();
-    }
-    if (query.isNotEmpty) {
-      _filteredAreas = _areas.where((Area area) {
-        return area.title.toLowerCase().contains(query.toLowerCase());
-      }).toList();
     } else {
       _filteredAreas = _areas;
     }
