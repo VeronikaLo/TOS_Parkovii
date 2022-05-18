@@ -90,8 +90,8 @@ class _InstituteDetailState extends State<InstituteDetail> {
                             ElevatedButton.icon(
                               // <-- ElevatedButton
                               onPressed: () {
-                                Navigator.of(context)
-                                    .pushNamed('/i_map', arguments: institute);
+                                Navigator.of(context).pushNamed('/i_map',
+                                    arguments: institute);
                               },
                               style: ElevatedButton.styleFrom(
                                   primary: const Color.fromRGBO(

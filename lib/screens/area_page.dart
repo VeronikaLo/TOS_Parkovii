@@ -45,7 +45,8 @@ class _AreaPage extends State<AreaPage> {
     final query = _searchController.text;
     if (query.isNotEmpty) {
       _filteredAreas = _areas.where((Area area) {
-        return area.title.toLowerCase().contains(query.toLowerCase()) || area.street.toLowerCase().contains(query.toLowerCase());
+        return area.title.toLowerCase().contains(query.toLowerCase()) ||
+            area.street.toLowerCase().contains(query.toLowerCase());
       }).toList();
     } else {
       _filteredAreas = _areas;
@@ -104,8 +105,8 @@ class _AreaPage extends State<AreaPage> {
                     return GestureDetector(
                         //pressing with no response
                         onTap: () {
-                          Navigator.of(context).pushNamed('/a_details',
-                              arguments: _areas[index]);
+                          Navigator.of(context)
+                              .pushNamed('/a_details', arguments: area);
                         },
                         child: Container(
                             padding: const EdgeInsets.symmetric(

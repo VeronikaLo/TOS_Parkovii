@@ -105,7 +105,7 @@ class _EventPageState extends State<EventPage> {
                         //pressing with no response
                         onTap: () {
                           Navigator.of(context).pushNamed('/e_details',
-                              arguments: _events[index]);
+                              arguments: event);
                         },
                         child: Container(
                             padding: const EdgeInsets.symmetric(
