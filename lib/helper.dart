@@ -26,6 +26,7 @@ class Event {
 
 // организации
 class Institute {
+  final String iD;
   final String title;
   final String description;
   final String type;
@@ -38,7 +39,8 @@ class Institute {
   final String image;
 
   Institute(
-      {required this.title,
+      {required this.iD,
+      required this.title,
       required this.description,
       required this.type,
       required this.shortDescription,
@@ -52,6 +54,7 @@ class Institute {
 // пространства
 
 class Area {
+  final String iD;
   final String title;
   final String description;
   final String type;
@@ -65,7 +68,8 @@ class Area {
   final String image;
 
   Area(
-      {required this.title,
+      {required this.iD,
+      required this.title,
       required this.description,
       required this.type,
       required this.condition,
