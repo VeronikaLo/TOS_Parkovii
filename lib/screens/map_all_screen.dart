@@ -119,7 +119,7 @@ class _FifthPageState extends State<FifthScreen> {
           markerId: MarkerId(item["ID"]),
           position: LatLng((item["latitude"]), (item["longitude"])),
           infoWindow: InfoWindow(
-            title: item["street"] + "," + item["number"],
+            title: item["street"] + ", " + item["number"],
           ),
           icon: BitmapDescriptor.defaultMarkerWithHue(
               BitmapDescriptor.hueGreen)));

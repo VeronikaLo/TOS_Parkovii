@@ -74,7 +74,7 @@ class _FifthPageHouseState extends State<FifthPageHouse> {
   void _addMarkerMainTarget() {
     markers.add(Marker(
       markerId: const MarkerId('main target'),
-      infoWindow: InfoWindow(title: house.street + "," + house.number),
+      infoWindow: InfoWindow(title: house.street + ", " + house.number),
       position: LatLng(house.latitude, house.longitude),
       icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
     ));
