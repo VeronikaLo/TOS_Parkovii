@@ -46,7 +46,7 @@ class _EventPageState extends State<EventPage> {
     final query = _searchController.text;
     if (query.isNotEmpty) {
       _filteredEvents = _events.where((Event event) {
-        return event.title.toLowerCase().contains(query.toLowerCase());
+        return event.title.toLowerCase().contains(query.toLowerCase()) || event.place.toLowerCase().contains(query.toLowerCase());
       }).toList();
     }else {
       _filteredEvents = _events;

@@ -17,7 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: Stack(children: [
         SizedBox(
-          height: double.infinity,
+          height: 800,
           child: Image.asset(
             'assets/images/background-homepage.jpg',
             color: const Color.fromRGBO(255, 255, 255, 0.3),
@@ -25,85 +25,83 @@ class _HomeScreenState extends State<HomeScreen> {
             fit: BoxFit.cover,
           ),
         ),
-        Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const Text(
-                "Выберите раздел",
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromRGBO(0, 58, 90, 1),
-                ),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const Text(
+              "Выберите раздел",
+              style: TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+                color: Color.fromRGBO(0, 58, 90, 1),
               ),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                height: 550,
-                child: ListView.builder(
-                    itemCount: _fields.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Container(
-                        decoration: BoxDecoration(
-                          color: _fields[index].color,
-                          //border: Border.all(width: 2, color: Colors.grey),
-                          borderRadius: BorderRadius.circular(40),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.deepPurple.withOpacity(0.3),
-                              spreadRadius: 3,
-                              blurRadius: 4,
-                              offset: const Offset(3, 3),
-                            ),
-                          ],
-                        ),
-                        alignment: Alignment.center,
-                        height: 80,
-                        margin: const EdgeInsets.symmetric(vertical: 8),
-                        child: ListTile(
-                          title: Text(
-                            _fields[index].title,
-                            style: const TextStyle(
-                                fontSize: 26,
-                                fontFamily: "Lato",
-                                color: Colors.white),
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              height: 550,
+              child: ListView.builder(
+                  itemCount: _fields.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Container(
+                      decoration: BoxDecoration(
+                        color: _fields[index].color,
+                        //border: Border.all(width: 2, color: Colors.grey),
+                        borderRadius: BorderRadius.circular(40),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.deepPurple.withOpacity(0.3),
+                            spreadRadius: 3,
+                            blurRadius: 4,
+                            offset: const Offset(3, 3),
                           ),
-                          leading: ImageIcon(
-                            AssetImage(_fields[index].icon),
-                            size: 65,
-                            color: Colors.white,
-                          ),
-                          onTap: () {
-                            setState(() {
-                              // set selected index
-                              _selectedIndex = index;
-
-                              switch (_selectedIndex) {
-                                case 0:
-                                  Navigator.of(context).pushNamed('/house');
-                                  break;
-                                case 1:
-                                  Navigator.of(context).pushNamed('/event');
-                                  break;
-                                case 2:
-                                  Navigator.of(context).pushNamed('/area');
-                                  break;
-                                case 3:
-                                  Navigator.of(context).pushNamed('/institut');
-                                  break;
-                                case 4:
-                                  Navigator.of(context).pushNamed('/map_all');
-                                  break;
-                              }
-                            });
-                          },
+                        ],
+                      ),
+                      alignment: Alignment.center,
+                      height: 80,
+                      margin: const EdgeInsets.symmetric(vertical: 8),
+                      child: ListTile(
+                        title: Text(
+                          _fields[index].title,
+                          style: const TextStyle(
+                              fontSize: 26,
+                              fontFamily: "Lato",
+                              color: Colors.white),
                         ),
-                      );
-                    }),
-              ),
-            ],
-          ),
+                        leading: ImageIcon(
+                          AssetImage(_fields[index].icon),
+                          size: 65,
+                          color: Colors.white,
+                        ),
+                        onTap: () {
+                          setState(() {
+                            // set selected index
+                            _selectedIndex = index;
+        
+                            switch (_selectedIndex) {
+                              case 0:
+                                Navigator.of(context).pushNamed('/house');
+                                break;
+                              case 1:
+                                Navigator.of(context).pushNamed('/event');
+                                break;
+                              case 2:
+                                Navigator.of(context).pushNamed('/area');
+                                break;
+                              case 3:
+                                Navigator.of(context).pushNamed('/institut');
+                                break;
+                              case 4:
+                                Navigator.of(context).pushNamed('/map_all');
+                                break;
+                            }
+                          });
+                        },
+                      ),
+                    );
+                  }),
+            ),
+          ],
         ),
       ]),
     );

@@ -48,14 +48,10 @@ class _HousePage extends State<HousePage> {
     final query = _searchController.text;
     if (query.isNotEmpty) {
       _filteredHouses = _houses.where((House house) {
-        return house.surnameSenior.toLowerCase().contains(query.toLowerCase());
+        return house.surnameSenior.toLowerCase().contains(query.toLowerCase()) || house.street.toLowerCase().contains(query.toLowerCase());
       }).toList();
     }
-    if (query.isNotEmpty) {
-      _filteredHouses = _houses.where((House house) {
-        return house.street.toLowerCase().contains(query.toLowerCase());
-      }).toList();
-    } else {
+    else {
       _filteredHouses = _houses;
     }
 
