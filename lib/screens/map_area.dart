@@ -91,7 +91,6 @@ class _FifthPageAreaState extends State<FifthPageArea> {
 
     return Scaffold(
       appBar: AppBar(
-          
           title: const Text("Местоположение",
               style: TextStyle(
                   fontSize: 24, fontFamily: 'Lato', color: Colors.white)),
@@ -158,10 +157,10 @@ class _FifthPageAreaState extends State<FifthPageArea> {
                             const SizedBox(height: 15),
                             Text(area.street,
                                 style: const TextStyle(
-                                    fontSize: 18, fontFamily: 'Lato')),
+                                    fontSize: 16, fontFamily: 'Lato')),
                             Text(area.number,
                                 style: const TextStyle(
-                                    fontSize: 18, fontFamily: 'Lato'))
+                                    fontSize: 16, fontFamily: 'Lato'))
                           ],
                         )),
                     const VerticalDivider(
@@ -180,7 +179,7 @@ class _FifthPageAreaState extends State<FifthPageArea> {
                           Text(area.title,
                               textAlign: TextAlign.center,
                               style: const TextStyle(
-                                fontSize: 18,
+                                fontSize: 16,
                                 fontFamily: 'Lato',
                               )),
                         ],

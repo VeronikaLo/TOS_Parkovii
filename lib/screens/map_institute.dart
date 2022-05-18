@@ -159,10 +159,10 @@ class _FifthPageInstituteState extends State<FifthPageInstitute> {
                             const SizedBox(height: 15),
                             Text(institute.street,
                                 style: const TextStyle(
-                                    fontSize: 18, fontFamily: 'Lato')),
+                                    fontSize: 16, fontFamily: 'Lato')),
                             Text(institute.number,
                                 style: const TextStyle(
-                                    fontSize: 18, fontFamily: 'Lato')),
+                                    fontSize: 16, fontFamily: 'Lato')),
                           ],
                         )),
                     const VerticalDivider(
@@ -181,7 +181,7 @@ class _FifthPageInstituteState extends State<FifthPageInstitute> {
                           Text(institute.title,
                               textAlign: TextAlign.center,
                               style: const TextStyle(
-                                fontSize: 18,
+                                fontSize: 16,
                                 fontFamily: 'Lato',
                               )),
                         ],

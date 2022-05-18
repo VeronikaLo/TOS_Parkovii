@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:tos_parkovii/helper.dart';
 
-
 class FifthPage extends StatefulWidget {
   const FifthPage({Key? key}) : super(key: key);
 
@@ -22,7 +21,6 @@ class _FifthPageState extends State<FifthPage> {
   @override
   void initState() {
     super.initState();
-    
   }
 
   // create widget-button-minus
@@ -63,8 +61,7 @@ class _FifthPageState extends State<FifthPage> {
   Future<void> _minus(double zoomVal) async {
     final GoogleMapController controller = await _controller.future;
     controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
-        target: LatLng(event.latitude , event.longitude),
-        zoom: zoomVal)));
+        target: LatLng(event.latitude, event.longitude), zoom: zoomVal)));
   }
 
   //function for animating camera '+'
@@ -91,7 +88,7 @@ class _FifthPageState extends State<FifthPage> {
     RouteSettings settings = ModalRoute.of(context)!.settings;
     event = settings.arguments as Event;
     _addMarkerMainTarget();
-    
+
     return Scaffold(
       appBar: AppBar(
           /*leading: IconButton(
@@ -172,7 +169,7 @@ class _FifthPageState extends State<FifthPage> {
                             const SizedBox(height: 15),
                             Text((event.place),
                                 style: const TextStyle(
-                                    fontSize: 18, fontFamily: 'Lato')),
+                                    fontSize: 16, fontFamily: 'Lato')),
                           ],
                         )),
                     const VerticalDivider(
@@ -190,7 +187,7 @@ class _FifthPageState extends State<FifthPage> {
                           const SizedBox(height: 15),
                           Text(event.time,
                               style: const TextStyle(
-                                  fontSize: 18, fontFamily: 'Lato')),
+                                  fontSize: 16, fontFamily: 'Lato')),
                         ],
                       ),
                     )
