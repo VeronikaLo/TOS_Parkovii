@@ -94,18 +94,7 @@ class _FifthPageInstituteState extends State<FifthPageInstitute> {
     
     return Scaffold(
       appBar: AppBar(
-          leading: IconButton(
-              icon: const Icon(
-                Icons.arrow_back,
-                color: Colors.white,
-              ),
-              color: const Color.fromRGBO(35, 33, 34, 1),
-              splashRadius: 50,
-              splashColor: Colors.grey,
-              onPressed: () {
-                Navigator.of(context).pushNamed('/Home');
-              },
-              tooltip: "Назад"),
+          
           title: const Text("Местоположение",
               style: TextStyle(
                   fontSize: 24, fontFamily: 'Lato', color: Colors.white)),

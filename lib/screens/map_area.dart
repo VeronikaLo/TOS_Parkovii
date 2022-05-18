@@ -77,7 +77,7 @@ class _FifthPageAreaState extends State<FifthPageArea> {
       markerId: const MarkerId('main target'),
       infoWindow: InfoWindow(title: area.title),
       position:
-          LatLng(double.parse(area.latitude), double.parse(area.longitude)),
+          LatLng(area.latitude, area.longitude),
       icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
     ));
 
@@ -92,18 +92,7 @@ class _FifthPageAreaState extends State<FifthPageArea> {
 
     return Scaffold(
       appBar: AppBar(
-          leading: IconButton(
-              icon: const Icon(
-                Icons.arrow_back,
-                color: Colors.white,
-              ),
-              color: const Color.fromRGBO(35, 33, 34, 1),
-              splashRadius: 50,
-              splashColor: Colors.grey,
-              onPressed: () {
-                Navigator.of(context).pushNamed('/Home');
-              },
-              tooltip: "Назад"),
+          
           title: const Text("Местоположение",
               style: TextStyle(
                   fontSize: 24, fontFamily: 'Lato', color: Colors.white)),
@@ -117,8 +106,7 @@ class _FifthPageAreaState extends State<FifthPageArea> {
               children: [
                 GoogleMap(
                     initialCameraPosition: CameraPosition(
-                      target: LatLng(double.parse(area.latitude),
-                          double.parse(area.longitude)),
+                      target: LatLng(area.latitude, area.longitude),
                       zoom: 14,
                     ),
                     onMapCreated: (GoogleMapController controller) {
@@ -160,7 +148,7 @@ class _FifthPageAreaState extends State<FifthPageArea> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Flexible(
-                        flex: 2,
+                        flex: 1,
                         fit: FlexFit.tight,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
