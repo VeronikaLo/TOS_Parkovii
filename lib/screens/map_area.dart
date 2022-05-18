@@ -156,9 +156,11 @@ class _FifthPageAreaState extends State<FifthPageArea> {
                                 style: TextStyle(fontFamily: 'Lato')),
                             const SizedBox(height: 15),
                             Text(area.street,
+                            textAlign: TextAlign.center,
                                 style: const TextStyle(
                                     fontSize: 16, fontFamily: 'Lato')),
                             Text(area.number,
+                            textAlign: TextAlign.center,
                                 style: const TextStyle(
                                     fontSize: 16, fontFamily: 'Lato'))
                           ],

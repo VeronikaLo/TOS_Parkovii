@@ -155,9 +155,11 @@ class _FifthPageHouseState extends State<FifthPageHouse> {
                                 style: TextStyle(fontFamily: 'Lato')),
                             const SizedBox(height: 15),
                             Text(house.street,
+                                textAlign: TextAlign.center,
                                 style: const TextStyle(
                                     fontSize: 18, fontFamily: 'Lato')),
                             Text(house.number,
+                                textAlign: TextAlign.center,
                                 style: const TextStyle(
                                     fontSize: 18, fontFamily: 'Lato')),
                           ],

@@ -168,6 +168,7 @@ class _FifthPageState extends State<FifthPage> {
                                 style: TextStyle(fontFamily: 'Lato')),
                             const SizedBox(height: 15),
                             Text((event.place),
+                                textAlign: TextAlign.center,
                                 style: const TextStyle(
                                     fontSize: 16, fontFamily: 'Lato')),
                           ],

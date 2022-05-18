@@ -158,9 +158,11 @@ class _FifthPageInstituteState extends State<FifthPageInstitute> {
                                 style: TextStyle(fontFamily: 'Lato')),
                             const SizedBox(height: 15),
                             Text(institute.street,
+                            textAlign: TextAlign.center,
                                 style: const TextStyle(
                                     fontSize: 16, fontFamily: 'Lato')),
                             Text(institute.number,
+                            textAlign: TextAlign.center,
                                 style: const TextStyle(
                                     fontSize: 16, fontFamily: 'Lato')),
                           ],
