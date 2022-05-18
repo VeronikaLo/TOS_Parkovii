@@ -21,7 +21,7 @@ class _FifthPageState extends State<FifthScreen> {
 
   double zoomValue = 14.0;
   final _mainTarget =
-      const LatLng(54.183307, 37.592364); //add main target of screen
+      const LatLng(54.1810493, 37.60115); //add main target of screen
   final _isSelectedHouse = <bool>[false];
   final _isSelectedEvent = <bool>[false];
   final _isSelectedInstitute = <bool>[false];
@@ -93,96 +93,72 @@ class _FifthPageState extends State<FifthScreen> {
 
   //decode json and insert in the Set of Markers (Area)
   Future loadMarkersArea() async {
-    var jsonData =
-        await rootBundle.loadString('assets/test_json_for_map/areas.json');
+    var jsonData = await rootBundle.loadString('assets/json/areas.json');
     var data = json.decode(jsonData);
-
-    BitmapDescriptor markerArea = await BitmapDescriptor.fromAssetImage(
-      const ImageConfiguration(),
-      "assets/images/pin_area.png",
-    );
 
     data["area"].forEach((item) {
       markersArea.add(Marker(
           markerId: MarkerId(item["ID"]),
-          position: LatLng(
-              double.parse(item["latitude"]), double.parse(item["longitude"])),
+          position: LatLng((item["latitude"]), (item["longitude"])),
           infoWindow: InfoWindow(
-            title: item["description"],
+            title: item["title"],
           ),
-          icon: markerArea));
+          icon: BitmapDescriptor.defaultMarkerWithHue(
+              BitmapDescriptor.hueAzure)));
     });
     setState(() {});
   }
 
 //decode json and insert in the Set of Markers (House)
   Future loadMarkersHouse() async {
-    var jsonData =
-        await rootBundle.loadString('assets/test_json_for_map/houses.json');
+    var jsonData = await rootBundle.loadString('assets/json/houses.json');
     var data = json.decode(jsonData);
 
-    BitmapDescriptor markerHouse = await BitmapDescriptor.fromAssetImage(
-      const ImageConfiguration(),
-      "assets/images/pin_house.png",
-    );
-
-    data["coords"].forEach((item) {
+    data["house"].forEach((item) {
       markersHouse.add(Marker(
           markerId: MarkerId(item["ID"]),
-          position: LatLng(
-              double.parse(item["latitude"]), double.parse(item["longitude"])),
+          position: LatLng((item["latitude"]), (item["longitude"])),
           infoWindow: InfoWindow(
-            title: item["description"],
+            title: item["street"] + "," + item["number"],
           ),
-          icon: markerHouse));
+          icon: BitmapDescriptor.defaultMarkerWithHue(
+              BitmapDescriptor.hueGreen)));
     });
     setState(() {});
   }
 
 //decode json and insert in the Set of Markers (Institute)
   Future loadMarkersInstitute() async {
-    var jsonData =
-        await rootBundle.loadString('assets/test_json_for_map/institutes.json');
+    var jsonData = await rootBundle.loadString('assets/json/institutes.json');
     var data = json.decode(jsonData);
 
-    BitmapDescriptor markerInstitute = await BitmapDescriptor.fromAssetImage(
-      const ImageConfiguration(),
-      "assets/images/pin_institute.png",
-    );
-
-    data["coords"].forEach((item) {
+    data["institute"].forEach((item) {
       markersInstitute.add(Marker(
           markerId: MarkerId(item["ID"]),
-          position: LatLng(
-              double.parse(item["latitude"]), double.parse(item["longitude"])),
+          position: LatLng((item["latitude"]), (item["longitude"])),
           infoWindow: InfoWindow(
-            title: item["description"],
+            title: item["title"],
           ),
-          icon: markerInstitute));
+          icon:
+              BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed)));
     });
     setState(() {});
   }
 
 //decode json and insert in the Set of Markers (Event)
   Future loadMarkersEvent() async {
-    var jsonData =
-        await rootBundle.loadString('assets/test_json_for_map/events.json');
+    var jsonData = await rootBundle.loadString('assets/json/events.json');
     var data = json.decode(jsonData);
 
-    BitmapDescriptor markerEvent = await BitmapDescriptor.fromAssetImage(
-      const ImageConfiguration(),
-      "assets/images/pin_event.png",
-    );
-
-    data["coords"].forEach((item) {
+    data["event"].forEach((item) {
       markersEvent.add(Marker(
           markerId: MarkerId(item["ID"]),
-          position: LatLng(
-              double.parse(item["latitude"]), double.parse(item["longitude"])),
+          position: LatLng((item["latitude"]), (item["longitude"])),
           infoWindow: InfoWindow(
-            title: item["description"],
+            title: item["title"],
           ),
-          icon: markerEvent));
+          icon: BitmapDescriptor.defaultMarkerWithHue(
+              BitmapDescriptor.hueOrange)));
     });
     setState(() {});
   }
@@ -217,7 +193,7 @@ class _FifthPageState extends State<FifthScreen> {
                 GoogleMap(
                     initialCameraPosition: CameraPosition(
                       target: _mainTarget,
-                      zoom: 14,
+                      zoom: 13,
                     ),
                     onMapCreated: (GoogleMapController controller) {
                       _controller.complete(controller);

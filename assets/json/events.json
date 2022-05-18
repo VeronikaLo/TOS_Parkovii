@@ -1,5 +1,5 @@
 {
-    "events": [
+    "event": [
         {
             "ID": "100",
             "title": "Фестиваль «Сила в Правде»",
@@ -9,8 +9,8 @@
             "time": "19:00",
             "date": "18 марта 2022",
             "type": "культура",
-            "longitude": 37.588458,
-            "latitude": 54.181647,
+            "longitude": 37.583659,
+            "latitude": 54.1783752,
             "picture":
                 "https://sun9-65.userapi.com/s/v1/if2/SLqSHXtuax11NFtVh3MOvG1ZWeb_PWQIAs0FStYe2G5rIZl8GHiOgqoA-1ym7Fu7aKb9dG_-KyVZxHJa16vyo_tH.jpg?size=905x1280&quality=95&type=album"
         },
@@ -51,8 +51,8 @@
             "time": "14:00",
             "date": "29 января 2022",
             "type": "образование",
-            "longitude": 37.588458,
-            "latitude": 54.181647,
+            "longitude": 37.5965553,
+            "latitude": 54.1891981,
             "picture":
                 "https://sun9-86.userapi.com/s/v1/if2/dHoT4asCc1n432NCTnhHgf3ygwZcTsxsmRtvic7J46cpQLGDKKS1xxmaj9jgqhg2RmFuEWCmMJq5ioxm5h87AQ_s.jpg?size=1800x1200&quality=96&type=album"
         },
@@ -121,13 +121,13 @@
             "time": "12:00",
             "date": "14 марта 2022",
             "type": "культура",
-            "longitude": 37.5848096,
-            "latitude": 54.1792905,
+            "longitude": 37.5856768,
+            "latitude": 54.1761211,
             "picture":
                 "http://zuok.ranepa.ru/images/gallery/news/news_12.jpg"
         },
         {
-            "ID": "109",
+            "ID": "110",
             "title": "Зима по-тульски",
             "place": "Центр. парк культуры и отдыха им. Белоусова",
             "description":

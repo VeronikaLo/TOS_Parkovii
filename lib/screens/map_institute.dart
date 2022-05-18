@@ -77,7 +77,7 @@ class _FifthPageInstituteState extends State<FifthPageInstitute> {
   void _addMarkerMainTarget() {
     markers.add(Marker(
       markerId: const MarkerId('main target'),
-      infoWindow: InfoWindow(title: institute.street),
+      infoWindow: InfoWindow(title: institute.title),
       position: LatLng(institute.latitude, institute.longitude),
       icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
     ));

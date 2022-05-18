@@ -5,7 +5,6 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
-
 class EventPage extends StatefulWidget {
   const EventPage({Key? key}) : super(key: key);
 
@@ -15,12 +14,12 @@ class EventPage extends StatefulWidget {
 
 class _EventPageState extends State<EventPage> {
   final List<Event> _events = [];
-  
+
   Future addEvent() async {
     var jsonData = await rootBundle.loadString('assets/json/events.json');
     var data = json.decode(jsonData);
 
-    data["events"].forEach((item) {
+    data["event"].forEach((item) {
       _events.add(Event(
           iD: item["ID"],
           title: item["title"],
@@ -35,8 +34,7 @@ class _EventPageState extends State<EventPage> {
     });
     setState(() {});
   }
-  
-  
+
   //title&description search
   var _filteredEvents = <Event>[];
 
@@ -46,9 +44,10 @@ class _EventPageState extends State<EventPage> {
     final query = _searchController.text;
     if (query.isNotEmpty) {
       _filteredEvents = _events.where((Event event) {
-        return event.title.toLowerCase().contains(query.toLowerCase()) || event.place.toLowerCase().contains(query.toLowerCase());
+        return event.title.toLowerCase().contains(query.toLowerCase()) ||
+            event.place.toLowerCase().contains(query.toLowerCase());
       }).toList();
-    }else {
+    } else {
       _filteredEvents = _events;
     }
 

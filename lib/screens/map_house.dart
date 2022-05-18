@@ -60,27 +60,22 @@ class _FifthPageHouseState extends State<FifthPageHouse> {
   Future<void> _minus(double zoomVal) async {
     final GoogleMapController controller = await _controller.future;
     controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
-        target:
-            LatLng(house.latitude, house.longitude),
-        zoom: zoomVal)));
+        target: LatLng(house.latitude, house.longitude), zoom: zoomVal)));
   }
 
   //function for animating camera '+'
   Future<void> _plus(double zoomVal) async {
     final GoogleMapController controller = await _controller.future;
     controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
-        target:
-            LatLng(house.latitude, house.longitude),
-        zoom: zoomVal)));
+        target: LatLng(house.latitude, house.longitude), zoom: zoomVal)));
   }
 
   //function for adding marker in the main target
   void _addMarkerMainTarget() {
     markers.add(Marker(
       markerId: const MarkerId('main target'),
-      infoWindow: InfoWindow(title: house.street),
-      position:
-          LatLng(house.latitude, house.longitude),
+      infoWindow: InfoWindow(title: house.street + "," + house.number),
+      position: LatLng(house.latitude, house.longitude),
       icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
     ));
 
