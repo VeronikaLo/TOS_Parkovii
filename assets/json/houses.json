@@ -2,7 +2,7 @@
     {
         "house": [
             {
-                "ID": "7",
+                "ID": "9",
                 "street": "ул. Льва Толстого",
                 "number": "91",
                 "nameSenior": "Александр",
@@ -17,7 +17,7 @@
                 "photoSenior": "assets/images/default_photoSenior.png"
             },
             {
-                "ID": "8",
+                "ID": "10",
                 "street": "ул. Фридриха Энгельса",
                 "number": "54",
                 "nameSenior": "Пётр",
@@ -32,7 +32,7 @@
                 "photoSenior": "assets/images/default_photoSenior.png"
             },
             {
-                "ID": "9",
+                "ID": "11",
                 "street": "ул. Бундурина",
                 "number": "31",
                 "nameSenior": "Егор",
@@ -47,7 +47,7 @@
                 "photoSenior": "assets/images/default_photoSenior.png"
             },
             {
-                "ID": "10",
+                "ID": "12",
                 "street": "Первомайская ул.",
                 "number": "12",
                 "nameSenior": "Анатолий",
@@ -62,7 +62,7 @@
                 "photoSenior": "assets/images/default_photoSenior.png"
             },
             {
-                "ID": "11",
+                "ID": "13",
                 "street": "ул. Софьи Перовской",
                 "number": "22",
                 "nameSenior": "Валентин",
@@ -77,7 +77,7 @@
                 "photoSenior": "assets/images/default_photoSenior.png"
             },
             {
-                "ID": "12",
+                "ID": "14",
                 "street": "ул. Льва Толстого",
                 "number": "111",
                 "nameSenior": "Евгения",
@@ -92,7 +92,7 @@
                 "photoSenior": "assets/images/default_photoSenior.png"
             },
             {
-                "ID": "12",
+                "ID": "15",
                 "street": "Гоголевская ул.",
                 "number": "65",
                 "nameSenior": "Владимир",
@@ -107,7 +107,7 @@
                 "photoSenior": "assets/images/default_photoSenior.png"
             },
             {   
-                "ID": "13",
+                "ID": "16",
                 "street": "ул. Бундурина",
                 "number": "61",
                 "nameSenior": "Виктор",
@@ -122,7 +122,7 @@
                 "photoSenior": "assets/images/default_photoSenior.png"
             },
             {
-                "ID": "14",
+                "ID": "17",
                 "street": "ул. Свободы",
                 "number": "35",
                 "nameSenior": "Роман",
@@ -137,7 +137,7 @@
                 "photoSenior": "assets/images/default_photoSenior.png"
             },
             {   
-                "ID": "15",
+                "ID": "18",
                 "street": "Первомайская ул.",
                 "number": "24",
                 "nameSenior": "Ирина",

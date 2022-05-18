@@ -1,19 +1,19 @@
 {
     "coords": [
         {
-            "ID": "4",
+            "ID": "6",
             "longitude": "37.578655",
             "latitude": "54.172279",
             "description": "Уборка территории"
         },
         {
-            "ID": "5",
+            "ID": "7",
             "longitude": "37.581402",
             "latitude": "54.174652",
             "description": "Установка детской площадки"
         },
         {
-            "ID": "6",
+            "ID": "8",
             "longitude": "37.589427",
             "latitude": "54.175053",
             "description": "Ремонтные работы"

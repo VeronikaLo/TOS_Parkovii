@@ -1,19 +1,19 @@
 {
     "coords": [
         {
-            "ID": "12",
+            "ID": "19",
             "longitude": "37.599202",
             "latitude": "54.185056",
             "description": "Детский сад"
         },
         {
-            "ID": "13",
+            "ID": "20",
             "longitude": "37.600088",
             "latitude": "54.186088",
             "description": "Пенсионный фонд"
         },
         {
-            "ID": "14",
+            "ID": "21",
             "longitude": "37.601779",
             "latitude": "54.185547",
             "description": "Дом Губернатора"

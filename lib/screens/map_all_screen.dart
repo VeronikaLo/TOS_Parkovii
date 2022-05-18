@@ -102,7 +102,7 @@ class _FifthPageState extends State<FifthScreen> {
       "assets/images/pin_area.png",
     );
 
-    data["coords"].forEach((item) {
+    data["area"].forEach((item) {
       markersArea.add(Marker(
           markerId: MarkerId(item["ID"]),
           position: LatLng(

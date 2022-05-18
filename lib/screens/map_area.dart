@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:tos_parkovii/helper.dart';
 
-
 class FifthPageArea extends StatefulWidget {
   const FifthPageArea({Key? key}) : super(key: key);
 
@@ -22,7 +21,6 @@ class _FifthPageAreaState extends State<FifthPageArea> {
   @override
   void initState() {
     super.initState();
-    
   }
 
   // create widget-button-minus
@@ -63,8 +61,7 @@ class _FifthPageAreaState extends State<FifthPageArea> {
   Future<void> _minus(double zoomVal) async {
     final GoogleMapController controller = await _controller.future;
     controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
-        target: LatLng(area.latitude , area.longitude),
-        zoom: zoomVal)));
+        target: LatLng(area.latitude, area.longitude), zoom: zoomVal)));
   }
 
   //function for animating camera '+'
@@ -79,7 +76,8 @@ class _FifthPageAreaState extends State<FifthPageArea> {
     markers.add(Marker(
       markerId: const MarkerId('main target'),
       infoWindow: InfoWindow(title: area.title),
-      position: LatLng(area.latitude, area.longitude),
+      position:
+          LatLng(double.parse(area.latitude), double.parse(area.longitude)),
       icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
     ));
 
@@ -91,7 +89,7 @@ class _FifthPageAreaState extends State<FifthPageArea> {
     RouteSettings settings = ModalRoute.of(context)!.settings;
     area = settings.arguments as Area;
     _addMarkerMainTarget();
-    
+
     return Scaffold(
       appBar: AppBar(
           leading: IconButton(
@@ -119,7 +117,8 @@ class _FifthPageAreaState extends State<FifthPageArea> {
               children: [
                 GoogleMap(
                     initialCameraPosition: CameraPosition(
-                      target: LatLng(area.latitude, area.longitude),
+                      target: LatLng(double.parse(area.latitude),
+                          double.parse(area.longitude)),
                       zoom: 14,
                     ),
                     onMapCreated: (GoogleMapController controller) {
@@ -175,7 +174,7 @@ class _FifthPageAreaState extends State<FifthPageArea> {
                                     fontSize: 18, fontFamily: 'Lato')),
                             Text(area.number,
                                 style: const TextStyle(
-                                    fontSize: 18, fontFamily: 'Lato'))        
+                                    fontSize: 18, fontFamily: 'Lato'))
                           ],
                         )),
                     const VerticalDivider(
@@ -194,8 +193,9 @@ class _FifthPageAreaState extends State<FifthPageArea> {
                           Text(area.title,
                               textAlign: TextAlign.center,
                               style: const TextStyle(
-                                  fontSize: 18, fontFamily: 'Lato',
-                                  )),
+                                fontSize: 18,
+                                fontFamily: 'Lato',
+                              )),
                         ],
                       ),
                     )
