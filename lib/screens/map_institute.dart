@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:tos_parkovii/helper.dart';
 
-
 class FifthPageInstitute extends StatefulWidget {
   const FifthPageInstitute({Key? key}) : super(key: key);
 
@@ -22,7 +21,6 @@ class _FifthPageInstituteState extends State<FifthPageInstitute> {
   @override
   void initState() {
     super.initState();
-    
   }
 
   // create widget-button-minus
@@ -63,7 +61,7 @@ class _FifthPageInstituteState extends State<FifthPageInstitute> {
   Future<void> _minus(double zoomVal) async {
     final GoogleMapController controller = await _controller.future;
     controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
-        target: LatLng(institute.latitude , institute.longitude),
+        target: LatLng(institute.latitude, institute.longitude),
         zoom: zoomVal)));
   }
 
@@ -71,7 +69,8 @@ class _FifthPageInstituteState extends State<FifthPageInstitute> {
   Future<void> _plus(double zoomVal) async {
     final GoogleMapController controller = await _controller.future;
     controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
-        target: LatLng(institute.latitude, institute.longitude), zoom: zoomVal)));
+        target: LatLng(institute.latitude, institute.longitude),
+        zoom: zoomVal)));
   }
 
   //function for adding marker in the main target
@@ -91,10 +90,9 @@ class _FifthPageInstituteState extends State<FifthPageInstitute> {
     RouteSettings settings = ModalRoute.of(context)!.settings;
     institute = settings.arguments as Institute;
     _addMarkerMainTarget();
-    
+
     return Scaffold(
       appBar: AppBar(
-          
           title: const Text("Местоположение",
               style: TextStyle(
                   fontSize: 24, fontFamily: 'Lato', color: Colors.white)),
@@ -164,7 +162,7 @@ class _FifthPageInstituteState extends State<FifthPageInstitute> {
                                     fontSize: 18, fontFamily: 'Lato')),
                             Text(institute.number,
                                 style: const TextStyle(
-                                    fontSize: 18, fontFamily: 'Lato')),        
+                                    fontSize: 18, fontFamily: 'Lato')),
                           ],
                         )),
                     const VerticalDivider(
@@ -183,8 +181,9 @@ class _FifthPageInstituteState extends State<FifthPageInstitute> {
                           Text(institute.title,
                               textAlign: TextAlign.center,
                               style: const TextStyle(
-                                  fontSize: 18, fontFamily: 'Lato',
-                                  )),
+                                fontSize: 18,
+                                fontFamily: 'Lato',
+                              )),
                         ],
                       ),
                     )

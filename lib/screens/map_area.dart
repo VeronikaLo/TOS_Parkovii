@@ -76,8 +76,7 @@ class _FifthPageAreaState extends State<FifthPageArea> {
     markers.add(Marker(
       markerId: const MarkerId('main target'),
       infoWindow: InfoWindow(title: area.title),
-      position:
-          LatLng(area.latitude, area.longitude),
+      position: LatLng(area.latitude, area.longitude),
       icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
     ));
 

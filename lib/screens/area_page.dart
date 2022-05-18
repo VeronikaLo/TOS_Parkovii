@@ -45,7 +45,7 @@ class _AreaPage extends State<AreaPage> {
     final query = _searchController.text;
     if (query.isNotEmpty) {
       _filteredAreas = _areas.where((Area area) {
-        return area.title.toLowerCase().contains(query.toLowerCase());
+        return area.title.toLowerCase().contains(query.toLowerCase()) || area.street.toLowerCase().contains(query.toLowerCase());
       }).toList();
     } else {
       _filteredAreas = _areas;
