@@ -61,7 +61,7 @@ class _FifthPageHouseState extends State<FifthPageHouse> {
     final GoogleMapController controller = await _controller.future;
     controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
         target:
-            LatLng(double.parse(house.latitude), double.parse(house.longitude)),
+            LatLng(house.latitude, house.longitude),
         zoom: zoomVal)));
   }
 
@@ -70,7 +70,7 @@ class _FifthPageHouseState extends State<FifthPageHouse> {
     final GoogleMapController controller = await _controller.future;
     controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
         target:
-            LatLng(double.parse(house.latitude), double.parse(house.longitude)),
+            LatLng(house.latitude, house.longitude),
         zoom: zoomVal)));
   }
 
@@ -80,7 +80,7 @@ class _FifthPageHouseState extends State<FifthPageHouse> {
       markerId: const MarkerId('main target'),
       infoWindow: InfoWindow(title: house.street),
       position:
-          LatLng(double.parse(house.latitude), double.parse(house.longitude)),
+          LatLng(house.latitude, house.longitude),
       icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
     ));
 
@@ -95,18 +95,6 @@ class _FifthPageHouseState extends State<FifthPageHouse> {
 
     return Scaffold(
       appBar: AppBar(
-          leading: IconButton(
-              icon: const Icon(
-                Icons.arrow_back,
-                color: Colors.white,
-              ),
-              color: const Color.fromRGBO(35, 33, 34, 1),
-              splashRadius: 50,
-              splashColor: Colors.grey,
-              onPressed: () {
-                Navigator.of(context).pushNamed('/Home');
-              },
-              tooltip: "Назад"),
           title: const Text("Местоположение",
               style: TextStyle(
                   fontSize: 24, fontFamily: 'Lato', color: Colors.white)),
@@ -120,8 +108,7 @@ class _FifthPageHouseState extends State<FifthPageHouse> {
               children: [
                 GoogleMap(
                     initialCameraPosition: CameraPosition(
-                      target: LatLng(double.parse(house.latitude),
-                          double.parse(house.longitude)),
+                      target: LatLng(house.latitude, house.longitude),
                       zoom: 14,
                     ),
                     onMapCreated: (GoogleMapController controller) {

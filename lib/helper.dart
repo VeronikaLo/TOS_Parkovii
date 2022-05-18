@@ -1,5 +1,6 @@
 // мероприятия
 class Event {
+  final String iD;
   final String title;
   final String place;
   final String time;
@@ -19,7 +20,8 @@ class Event {
       required this.type,
       required this.longitude,
       required this.latitude,
-      required this.picture});
+      required this.picture,
+      required this.iD});
 }
 
 // организации

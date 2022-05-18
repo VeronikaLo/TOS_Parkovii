@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:tos_parkovii/helper.dart';
+import 'dart:convert';
+import 'dart:async';
+import 'package:flutter/services.dart';
+import 'package:flutter/services.dart' show rootBundle;
+
 
 class EventPage extends StatefulWidget {
   const EventPage({Key? key}) : super(key: key);
@@ -9,93 +14,29 @@ class EventPage extends StatefulWidget {
 }
 
 class _EventPageState extends State<EventPage> {
-  final _events = [
-    Event(
-      title: 'Фестиваль "Сила в Правде"',
-      place: 'Центр. парк культуры и отдыха им. Белоусова',
-      description:
-          'Обязательно приходите, вас ждет разнообразная программа для всех возрастов. Каждый найдет себе занятие по душе. Вместе мы - сила!',
-      time: '19:00',
-      date: '18 марта 2022',
-      type: 'культура',
-      longitude: 37.588458,
-      latitude: 54.181647,
-      picture:
-          'https://sun9-65.userapi.com/s/v1/if2/SLqSHXtuax11NFtVh3MOvG1ZWeb_PWQIAs0FStYe2G5rIZl8GHiOgqoA-1ym7Fu7aKb9dG_-KyVZxHJa16vyo_tH.jpg?size=905x1280&quality=95&type=album',
-    ),
-    Event(
-      title: 'Экомобиль Тульская область',
-      place: 'ул.Л.Толстого 93',
-      description:
-          'Вчера Экомобиль принимал вторсырьё на ул. ул.Металлургов, 62а (парковка ТЦ "Демидовский"). Вопреки обыкновению пришло лишь восемь человек. Тем не менее, среди них были люди, сдававшие вторсырьё огромными мешками, а также те, кто навещает нас каждый месяц. Благодарим всех пришедших и призываем других начинать жить осознанно! Следующий раз ждём всех желающих по адресу ул. Льва Толстого, д. 93 с 18:00 до 19:30.',
-      time: '18:00 - 19:30 ',
-      date: '22 мая 2022',
-      type: 'экология',
-      longitude: 37.602687,
-      latitude: 54.184856,
-      picture:
-          'https://sun9-9.userapi.com/s/v1/if2/xS2zd-WG4I0lDHmU4EcI9oPh1cz0l_TZ2B8E2w1W4-9uIfICSgHiSmsxbVisz1i6mwuHYtNhmy-vHei-TepHNKvU.jpg?size=1080x675&quality=96&type=album',
-    ),
-    Event(
-      title: 'Готовимся к Пасхе',
-      place: 'Центр. парк культуры и отдыха им. Белоусова',
-      description:
-          'Посмотрите, с каким удовольствием наши юные посетители Центрального парка погрузились в процесс украшение пасхальных яиц. Мастер-класс от Тульской птицефабрики будет проходить в этом году на главной эстраде ЦПКиО. Время проведения с 12.00 до 16.00. Не пропустите! Ваши дети точно скажут вам спасибо.',
-      time: '12:00 - 16:00',
-      date: '17 апреля 2022',
-      type: 'семейное добрососедство',
-      longitude: 37.588458,
-      latitude: 54.181647,
-      picture:
-          'https://sun9-6.userapi.com/s/v1/if2/hS_5W9Bd6bqJMjARyJq9BACfK3etWpqSbAwaG7o6W8ifPRpL0U50WENyX2V67XOkHhZCa3RtNsHtqFE9FsJkjaM3.jpg?size=1280x960&quality=96&type=album',
-    ),
-    Event(
-      title: 'Открытие "Моего семейного центра"',
-      place: 'ул. Гоголевская д.71',
-      description:
-          'В центре можно решить такие вопросы, как улучшение жилищных условий, взыскание алиментов, оформление мер соц. поддержки и заключение социального контракта, урегулирование семейных споров и улучшение отношений между детьми и родителями и т.д. Новое отделение работает в режиме семейного многофункционального центра. Граждане могут обратиться за помощью как в «Семейную диспетчерскую» по единому бесплатному номеру 129, так и лично. Здесь созданы все условия для мам с колясками и игровая зона для детей. Семья получает комплексную социальную помощь на основе «бесшовного» взаимодействия, и с момента обращения до решения вопроса семью сопровождает один и тот же специалист.',
-      time: '14:00',
-      date: '29 января 2022',
-      type: 'образование',
-      longitude: 37.588458,
-      latitude: 54.181647,
-      picture:
-          'https://sun9-86.userapi.com/s/v1/if2/dHoT4asCc1n432NCTnhHgf3ygwZcTsxsmRtvic7J46cpQLGDKKS1xxmaj9jgqhg2RmFuEWCmMJq5ioxm5h87AQ_s.jpg?size=1800x1200&quality=96&type=album',
-    ),
-    Event(
-      title: 'Mероприятиe 1',
-      place: '',
-      description: 'Description проведения мероприятия',
-      time: '',
-      date: '12 октября 2021',
-      type: '',
-      longitude: 37.588458,
-      latitude: 54.181647,
-      picture: '',
-    ),
-    Event(
-      title: 'Mероприятиe 2',
-      place: '',
-      description: 'Description проведения мероприятия',
-      time: '14:00',
-      date: '24 августа',
-      type: '',
-      longitude: 37.588458,
-      latitude: 54.181647,
-      picture: '',
-    ),
-    Event(
-      title: 'Mероприятиe 3',
-      place: '',
-      description: 'Description проведения мероприятия',
-      time: '10:00',
-      date: '24 августа',
-      type: '',
-      longitude: 37.588458,
-      latitude: 54.181647,
-      picture: '',
-    ),
-  ];
+  final List<Event> _events = [];
+  
+  Future addEvent() async {
+    var jsonData = await rootBundle.loadString('assets/json/events.json');
+    var data = json.decode(jsonData);
+
+    data["events"].forEach((item) {
+      _events.add(Event(
+          iD: item["ID"],
+          title: item["title"],
+          place: item["place"],
+          description: item["description"],
+          time: item["time"],
+          date: item["date"],
+          type: item["type"],
+          longitude: item["longitude"],
+          latitude: item["latitude"],
+          picture: item["picture"]));
+    });
+    setState(() {});
+  }
+  
+  
   //title&description search
   var _filteredEvents = <Event>[];
 
@@ -119,6 +60,7 @@ class _EventPageState extends State<EventPage> {
     super.initState();
     _filteredEvents = _events;
     _searchController.addListener(_searchEvents);
+    addEvent();
   }
 
   @override

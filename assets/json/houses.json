@@ -12,8 +12,8 @@
                 "phoneNumber": "+7(903)037 77 08",
                 "company": "ООО 'УК Южная'",
                 "construction": "1998",
-                "longitude": "37.603532",
-                "latitude": "54.184487",
+                "longitude": 37.603532,
+                "latitude": 54.184487,
                 "photoSenior": "assets/images/default_photoSenior.png"
             },
             {
@@ -27,8 +27,8 @@
                 "phoneNumber": "+7(903)037 77 07",
                 "company": "ООО 'АСТЕК'",
                 "construction": "1999",
-                "longitude": "37.601862",
-                "latitude": "54.183158",
+                "longitude": 37.601862,
+                "latitude": 54.183158,
                 "photoSenior": "assets/images/default_photoSenior.png"
             },
             {
@@ -42,8 +42,8 @@
                 "phoneNumber": "+7(903)037 77 03",
                 "company": "ООО УК 'Горизонт'",
                 "construction": "2000",
-                "longitude": "37.601274",
-                "latitude": "54.187304",
+                "longitude": 37.601274,
+                "latitude": 54.187304,
                 "photoSenior": "assets/images/default_photoSenior.png"
             },
             {
@@ -57,8 +57,8 @@
                 "phoneNumber": "+7(903)037 77 06",
                 "company": "ООО 'АДС Тулы'",
                 "construction": "1998",
-                "longitude": "37.601003",
-                "latitude": "54.182940",
+                "longitude": 37.601003,
+                "latitude": 54.182940,
                 "photoSenior": "assets/images/default_photoSenior.png"
             },
             {
@@ -72,8 +72,8 @@
                 "phoneNumber": "+7(903)037 77 05",
                 "company": "ООО 'Велиград'",
                 "construction": "1998",
-                "longitude": "37.598701",
-                "latitude": "54.188528",
+                "longitude": 37.598701,
+                "latitude": 54.188528,
                 "photoSenior": "assets/images/default_photoSenior.png"
             },
             {
@@ -87,8 +87,8 @@
                 "phoneNumber": "+7(903)037 77 04",
                 "company": "ООО 'Велиград'",
                 "construction": "1998",
-                "longitude": "37.598582",
-                "latitude": "54.186727",
+                "longitude": 37.598582,
+                "latitude": 54.186727,
                 "photoSenior": "assets/images/default_photoSenior.png"
             },
             {
@@ -102,8 +102,8 @@
                 "phoneNumber": "+7(903)037 77 02",
                 "company": "ООО 'УК Аврора'",
                 "construction": "2001",
-                "longitude": "37.601919",
-                "latitude": "54.187915",
+                "longitude": 37.601919,
+                "latitude": 54.187915,
                 "photoSenior": "assets/images/default_photoSenior.png"
             },
             {   
@@ -117,8 +117,8 @@
                 "phoneNumber": "+7(903)037 77 00",
                 "company": "ООО УК 'Жилхоз'",
                 "construction": "1997",
-                "longitude":"37.597966",
-                "latitude": "54.184211",
+                "longitude":37.597966,
+                "latitude": 54.184211,
                 "photoSenior": "assets/images/default_photoSenior.png"
             },
             {
@@ -132,8 +132,8 @@
                 "phoneNumber": "+7(903)037 77 89",
                 "company": "ООО УК 'ЗелинГрад'",
                 "construction": "1998",
-                "longitude": "37.603741",
-                "latitude": "54.186778",
+                "longitude": 37.603741,
+                "latitude": 54.186778,
                 "photoSenior": "assets/images/default_photoSenior.png"
             },
             {   
@@ -147,8 +147,8 @@
                 "phoneNumber": "+7(903)037 77 01",
                 "company": "ООО Евросити'",
                 "construction": "2003",
-                "longitude": "37.595859",
-                "latitude": "54.184920",
+                "longitude": 37.595859,
+                "latitude": 54.184920,
                 "photoSenior": "assets/images/default_photoSenior.png"
             }
         ]
