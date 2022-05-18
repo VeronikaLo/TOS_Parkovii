@@ -50,6 +50,7 @@ class _AreaDetail extends State<AreaDetail> {
                       children: [
                         Text(
                           area.title,
+                          textAlign: TextAlign.center,
                           style: const TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
@@ -60,10 +61,12 @@ class _AreaDetail extends State<AreaDetail> {
                         ),
                         Text(
                           area.street,
+                          textAlign: TextAlign.center,
                           style: const TextStyle(fontSize: 16),
                         ),
                         Text(
                           area.number,
+                          textAlign: TextAlign.center,
                           style: const TextStyle(fontSize: 16),
                         ),
                         const SizedBox(

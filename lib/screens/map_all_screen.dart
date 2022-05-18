@@ -201,7 +201,7 @@ class _FifthPageState extends State<FifthScreen> {
                     mapType: MapType.normal,
                     zoomControlsEnabled: false,
                     myLocationButtonEnabled: false,
-                    zoomGesturesEnabled: false,
+                    zoomGesturesEnabled: true,
                     //union sets of different markers in one (markers)
                     markers: markers
                         .union(markersArea)

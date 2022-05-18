@@ -112,7 +112,7 @@ class _FifthPageHouseState extends State<FifthPageHouse> {
                     mapType: MapType.normal,
                     zoomControlsEnabled: false,
                     myLocationButtonEnabled: false,
-                    zoomGesturesEnabled: false,
+                    zoomGesturesEnabled: true,
                     markers: markers),
 
                 // implement column of the buttons +/-

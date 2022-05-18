@@ -50,6 +50,7 @@ class _InstituteDetailState extends State<InstituteDetail> {
                       children: [
                         Text(
                           institute.title,
+                          textAlign: TextAlign.center,
                           style: const TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
@@ -60,10 +61,12 @@ class _InstituteDetailState extends State<InstituteDetail> {
                         ),
                         Text(
                           institute.street,
+                          textAlign: TextAlign.center,
                           style: const TextStyle(fontSize: 16),
                         ),
                         Text(
                           institute.number,
+                          textAlign: TextAlign.center,
                           style: const TextStyle(fontSize: 16),
                         ),
                         const SizedBox(
@@ -90,8 +93,8 @@ class _InstituteDetailState extends State<InstituteDetail> {
                             ElevatedButton.icon(
                               // <-- ElevatedButton
                               onPressed: () {
-                                Navigator.of(context).pushNamed('/i_map',
-                                    arguments: institute);
+                                Navigator.of(context)
+                                    .pushNamed('/i_map', arguments: institute);
                               },
                               style: ElevatedButton.styleFrom(
                                   primary: const Color.fromRGBO(

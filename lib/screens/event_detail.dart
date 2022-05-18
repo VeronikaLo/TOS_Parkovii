@@ -50,6 +50,7 @@ class _EventDetail extends State<EventDetail> {
                       children: [
                         Text(
                           event.title,
+                          textAlign: TextAlign.center,
                           style: const TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
@@ -60,6 +61,7 @@ class _EventDetail extends State<EventDetail> {
                         ),
                         Text(
                           event.place,
+                          textAlign: TextAlign.center,
                           style: const TextStyle(fontSize: 16),
                         ),
                         const SizedBox(
