@@ -152,9 +152,9 @@ class _HouseDetail extends State<HouseDetail> {
                                     .pushNamed('/h_map', arguments: house);
                               },
                               style: ElevatedButton.styleFrom(
-                                  primary: const Color.fromARGB(
+                                  backgroundColor: const Color.fromARGB(
                                       255, 23, 134, 34), // background
-                                  onPrimary: Colors.white, // foreground
+                                  foregroundColor: Colors.white, // foreground
                                   elevation: 5,
                                   fixedSize: const Size(125, 50)),
                               icon: const Icon(

@@ -4,7 +4,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:tos_parkovii/screens/house_detail.dart';
-import 'package:tos_parkovii/screens/map_institute.dart';
 import 'screens/area_detail.dart';
 import 'screens/area_page.dart';
 import 'screens/event_page.dart';

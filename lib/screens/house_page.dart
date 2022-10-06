@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:tos_parkovii/helper.dart';
 import 'package:flutter/services.dart' show rootBundle;
 

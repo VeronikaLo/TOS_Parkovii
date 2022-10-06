@@ -99,9 +99,9 @@ class _AreaDetail extends State<AreaDetail> {
                                     .pushNamed('/a_map', arguments: area);
                               },
                               style: ElevatedButton.styleFrom(
-                                  primary: const Color.fromRGBO(
+                                  backgroundColor: const Color.fromRGBO(
                                       0, 58, 90, 1), // background
-                                  onPrimary: Colors.white, // foreground
+                                  foregroundColor: Colors.white, // foreground
                                   elevation: 5,
                                   fixedSize: const Size(125, 50)),
                               icon: const Icon(

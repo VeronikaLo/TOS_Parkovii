@@ -94,9 +94,9 @@ class _EventDetail extends State<EventDetail> {
                                     .pushNamed('/map', arguments: event);
                               },
                               style: ElevatedButton.styleFrom(
-                                  primary: const Color.fromRGBO(
-                                      241, 136, 37, 1), // background
-                                  onPrimary: Colors.white, // foreground
+                                  foregroundColor: Colors.white, 
+                                  backgroundColor: const Color.fromRGBO(
+                                      241, 136, 37, 1), // foreground
                                   elevation: 5,
                                   fixedSize: const Size(125, 50)),
                               icon: const Icon(

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tos_parkovii/helper.dart';
 import 'dart:convert';
 import 'dart:async';
-import 'package:flutter/services.dart';
+//import 'package:flutter/services.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
 class EventPage extends StatefulWidget {

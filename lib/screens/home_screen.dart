@@ -17,7 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: Stack(children: [
         SizedBox(
-          height: 800,
+          height: MediaQuery.of(context).size.height,
           child: Image.asset(
             'assets/images/background-homepage.jpg',
             color: const Color.fromRGBO(255, 255, 255, 0.3),
@@ -25,18 +25,21 @@ class _HomeScreenState extends State<HomeScreen> {
             fit: BoxFit.cover,
           ),
         ),
-        Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
+        ListView(
+          //mainAxisAlignment: MainAxisAlignment.center,
+          //crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            const SizedBox(height: 30,),
             const Text(
               "Выберите раздел",
+              textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
                 color: Color.fromRGBO(0, 58, 90, 1),
               ),
             ),
+            const SizedBox(height: 50,),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               height: 550,

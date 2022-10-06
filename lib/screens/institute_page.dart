@@ -3,7 +3,7 @@ import 'package:tos_parkovii/helper.dart';
 import 'dart:convert';
 import 'dart:async';
 import 'package:flutter/services.dart' show rootBundle;
-import 'package:flutter/services.dart';
+
 
 class InstitutePage extends StatefulWidget {
   const InstitutePage({Key? key}) : super(key: key);
